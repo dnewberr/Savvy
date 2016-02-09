@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86EF1C6A74D300252F97 /* Flashcard.swift */; };
+		C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */; };
+		C3BC86F41C6A8B7500252F97 /* ImportQuizletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */; };
 		CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C21C6135FC001F75DF /* AppDelegate.swift */; };
 		CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C41C6135FC001F75DF /* LoginViewController.swift */; };
 		CD9D24C81C6135FC001F75DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9D24C61C6135FC001F75DF /* Main.storyboard */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3BC86EF1C6A74D300252F97 /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSetsViewController.swift; sourceTree = "<group>"; };
+		C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportQuizletViewController.swift; sourceTree = "<group>"; };
 		CD9D24BF1C6135FC001F75DF /* Savvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9D24C21C6135FC001F75DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD9D24C41C6135FC001F75DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,9 +124,12 @@
 				CD9D24C21C6135FC001F75DF /* AppDelegate.swift */,
 				CD9D24C41C6135FC001F75DF /* LoginViewController.swift */,
 				CD9D24F61C614AFA001F75DF /* HomeViewController.swift */,
+				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
+				C3BC86EF1C6A74D300252F97 /* Flashcard.swift */,
 				CD9D24FC1C69E466001F75DF /* CreateSetController.swift */,
 				CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */,
 				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
+				C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */,
 				CD9D24C91C6135FC001F75DF /* Assets.xcassets */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
 				CD9D24CE1C6135FC001F75DF /* Info.plist */,
@@ -280,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */,
+				C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */,
 				CD9D24FF1C69F947001F75DF /* EditCardsViewController.swift in Sources */,
 				CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */,
+				C3BC86F41C6A8B7500252F97 /* ImportQuizletViewController.swift in Sources */,
 				CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */,
 				CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */,
 				CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */,
@@ -432,7 +444,7 @@
 				);
 				INFOPLIST_FILE = Savvy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = csc458.Savvy;
+				PRODUCT_BUNDLE_IDENTIFIER = cpe458.Savvy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -447,7 +459,7 @@
 				);
 				INFOPLIST_FILE = Savvy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = csc458.Savvy;
+				PRODUCT_BUNDLE_IDENTIFIER = cpe458.Savvy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

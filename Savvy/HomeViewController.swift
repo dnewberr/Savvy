@@ -11,13 +11,27 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
-    @IBOutlet var createSetButton: UIButton!
+    @IBOutlet weak var createSetButton: UIButton!
+    @IBOutlet weak var viewSetsButton: UIButton!
+    @IBOutlet weak var importButton: UIButton!
     
     @IBOutlet weak var logoutButton: FBSDKLoginButton!
     
     @IBAction func createSet(sender: AnyObject) {
-        print("Touched button")
+        print("Touched Create Set button")
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create")
+        presentViewController(nextScene!, animated: false, completion: nil)
+    }
+    
+    @IBAction func viewSets(sender: AnyObject) {
+        print("Touched View Sets button")
+        let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("View")
+        presentViewController(nextScene!, animated: false, completion: nil)
+    }
+    
+    @IBAction func importFromQuizlet(sender: AnyObject) {
+        print("Touched Import from Quizlet button")
+        let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Import")
         presentViewController(nextScene!, animated: false, completion: nil)
     }
     
