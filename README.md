@@ -1,6 +1,10 @@
 # Savvy
 CPE 458 Project
 
+Facebook Test User:
+Email: savvy_qeucvph_student@tfbnw.net
+Password: testuser
+
 5 screens
 
 CODY:

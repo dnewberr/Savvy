@@ -45,17 +45,19 @@
                     </view>
                     <connections>
                         <outlet property="createSetButton" destination="k1I-Bk-99R" id="hO9-P1-ye6"/>
+                        <outlet property="logoutButton" destination="Mzx-ww-V21" id="DRa-kM-xSf"/>
                         <segue destination="WtO-q9-Hmd" kind="show" id="jda-dL-YUH"/>
+                        <segue destination="BYZ-38-t0r" kind="show" id="KcA-Cd-DU1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Rs-aj-VhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-852" y="-695"/>
+            <point key="canvasLocation" x="-776" y="-865"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Savvy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Savvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
