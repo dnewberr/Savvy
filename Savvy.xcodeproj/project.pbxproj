@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C21C6135FC001F75DF /* AppDelegate.swift */; };
-		CD9D24C51C6135FC001F75DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C41C6135FC001F75DF /* ViewController.swift */; };
+		CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C41C6135FC001F75DF /* LoginViewController.swift */; };
 		CD9D24C81C6135FC001F75DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9D24C61C6135FC001F75DF /* Main.storyboard */; };
 		CD9D24CA1C6135FC001F75DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD9D24C91C6135FC001F75DF /* Assets.xcassets */; };
 		CD9D24CD1C6135FC001F75DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */; };
 		CD9D24D81C6135FC001F75DF /* SavvyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24D71C6135FC001F75DF /* SavvyTests.swift */; };
 		CD9D24E31C6135FC001F75DF /* SavvyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24E21C6135FC001F75DF /* SavvyUITests.swift */; };
+		CD9D24F31C613709001F75DF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9D24F01C613709001F75DF /* FBSDKCoreKit.framework */; };
+		CD9D24F41C613709001F75DF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9D24F11C613709001F75DF /* FBSDKLoginKit.framework */; };
+		CD9D24F51C613709001F75DF /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */; };
+		CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24F61C614AFA001F75DF /* HomeViewController.swift */; };
+		CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24FC1C69E466001F75DF /* CreateSetController.swift */; };
+		CD9D24FF1C69F947001F75DF /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,7 @@
 /* Begin PBXFileReference section */
 		CD9D24BF1C6135FC001F75DF /* Savvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9D24C21C6135FC001F75DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD9D24C41C6135FC001F75DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD9D24C41C6135FC001F75DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CD9D24C71C6135FC001F75DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD9D24C91C6135FC001F75DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD9D24CC1C6135FC001F75DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,12 @@
 		CD9D24DE1C6135FC001F75DF /* SavvyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SavvyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9D24E21C6135FC001F75DF /* SavvyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavvyUITests.swift; sourceTree = "<group>"; };
 		CD9D24E41C6135FC001F75DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD9D24F01C613709001F75DF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CD9D24F11C613709001F75DF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		CD9D24F61C614AFA001F75DF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CD9D24FC1C69E466001F75DF /* CreateSetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSetController.swift; sourceTree = "<group>"; };
+		CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD9D24F41C613709001F75DF /* FBSDKLoginKit.framework in Frameworks */,
+				CD9D24F51C613709001F75DF /* FBSDKMessengerShareKit.framework in Frameworks */,
+				CD9D24F31C613709001F75DF /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +112,14 @@
 		CD9D24C11C6135FC001F75DF /* Savvy */ = {
 			isa = PBXGroup;
 			children = (
+				CD9D24F01C613709001F75DF /* FBSDKCoreKit.framework */,
+				CD9D24F11C613709001F75DF /* FBSDKLoginKit.framework */,
+				CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */,
 				CD9D24C21C6135FC001F75DF /* AppDelegate.swift */,
-				CD9D24C41C6135FC001F75DF /* ViewController.swift */,
+				CD9D24C41C6135FC001F75DF /* LoginViewController.swift */,
+				CD9D24F61C614AFA001F75DF /* HomeViewController.swift */,
+				CD9D24FC1C69E466001F75DF /* CreateSetController.swift */,
+				CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */,
 				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
 				CD9D24C91C6135FC001F75DF /* Assets.xcassets */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
@@ -259,8 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD9D24C51C6135FC001F75DF /* ViewController.swift in Sources */,
+				CD9D24FF1C69F947001F75DF /* EditCardsViewController.swift in Sources */,
+				CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */,
+				CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */,
 				CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */,
+				CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +426,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Savvy",
+				);
 				INFOPLIST_FILE = Savvy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = csc458.Savvy;
@@ -413,6 +441,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Savvy",
+				);
 				INFOPLIST_FILE = Savvy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = csc458.Savvy;
@@ -487,6 +519,7 @@
 				CD9D24E91C6135FC001F75DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD9D24EA1C6135FC001F75DF /* Build configuration list for PBXNativeTarget "SavvyTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +528,7 @@
 				CD9D24EC1C6135FC001F75DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD9D24ED1C6135FC001F75DF /* Build configuration list for PBXNativeTarget "SavvyUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +537,7 @@
 				CD9D24EF1C6135FC001F75DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
