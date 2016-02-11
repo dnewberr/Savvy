@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -36,13 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="190" y="505" width="221" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="221" id="RsC-yG-x6T"/>
-                                </constraints>
-                                <state key="normal" title="Log Out"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDU-th-AgX">
                                 <rect key="frame" x="266" y="391" width="68" height="30"/>
                                 <state key="normal" title="View Sets"/>
@@ -57,6 +50,7 @@
                                 <connections>
                                     <action selector="importFromQuizlet:" destination="w6k-X3-KLg" eventType="touchUpInside" id="cF7-qS-PI2"/>
                                     <action selector="viewSets:" destination="w6k-X3-KLg" eventType="touchUpInside" id="CZt-Lu-het"/>
+                                    <segue destination="2ip-e6-fH1" kind="show" identifier="importFromQuizletSegue" id="ehC-aN-naJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds8-ma-MsV">
@@ -71,7 +65,15 @@
                                 <state key="normal" title="Create Set"/>
                                 <connections>
                                     <action selector="createSet:" destination="w6k-X3-KLg" eventType="touchUpInside" id="Uq2-HW-1I7"/>
+                                    <segue destination="WtO-q9-Hmd" kind="show" identifier="createSetSegue" id="39J-S4-KAF"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="190" y="511" width="221" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="221" id="RsC-yG-x6T"/>
+                                </constraints>
+                                <state key="normal" title="Log Out"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.7725490196" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -95,8 +97,6 @@
                         <outlet property="createSetButton" destination="k1I-Bk-99R" id="hO9-P1-ye6"/>
                         <outlet property="importButton" destination="WX6-mO-lz8" id="4lG-sH-Wzq"/>
                         <outlet property="viewSetsButton" destination="pDU-th-AgX" id="J1p-gS-cn3"/>
-                        <segue destination="WtO-q9-Hmd" kind="show" identifier="createSet" id="jda-dL-YUH"/>
-                        <segue destination="2ip-e6-fH1" kind="show" identifier="importQuizlet" id="Z3C-dE-LDP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Rs-aj-VhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,18 +154,18 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="24"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SRB-6v-ClR" id="ZLc-7h-H2T">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="23.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2XJ-PG-8jz">
-                                                    <rect key="frame" x="15" y="2" width="31.5" height="19.5"/>
+                                                    <rect key="frame" x="15" y="2" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njH-Wy-354">
-                                                    <rect key="frame" x="503.5" y="2" width="41.5" height="19.5"/>
+                                                    <rect key="frame" x="503" y="2" width="42" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-t5-9fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-800" y="-61"/>
+            <point key="canvasLocation" x="-800" y="109"/>
         </scene>
         <!--Edit Cards View Controller-->
         <scene sceneID="hvQ-qK-LSO">
@@ -366,11 +366,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvV-4b-KF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-800" y="707"/>
+            <point key="canvasLocation" x="-800" y="971"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jda-dL-YUH"/>
+        <segue reference="39J-S4-KAF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.7725490196" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

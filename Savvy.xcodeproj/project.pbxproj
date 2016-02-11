@@ -124,15 +124,15 @@
 				CD9D24C21C6135FC001F75DF /* AppDelegate.swift */,
 				CD9D24C41C6135FC001F75DF /* LoginViewController.swift */,
 				CD9D24F61C614AFA001F75DF /* HomeViewController.swift */,
-				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
-				C3BC86EF1C6A74D300252F97 /* Flashcard.swift */,
 				CD9D24FC1C69E466001F75DF /* CreateSetController.swift */,
 				CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */,
-				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
+				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
 				C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */,
-				CD9D24C91C6135FC001F75DF /* Assets.xcassets */,
+				C3BC86EF1C6A74D300252F97 /* Flashcard.swift */,
+				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
 				CD9D24CE1C6135FC001F75DF /* Info.plist */,
+				CD9D24C91C6135FC001F75DF /* Assets.xcassets */,
 			);
 			path = Savvy;
 			sourceTree = "<group>";
