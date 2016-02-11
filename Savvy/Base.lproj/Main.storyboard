@@ -68,12 +68,16 @@
                                     <segue destination="WtO-q9-Hmd" kind="show" identifier="createSetSegue" id="39J-S4-KAF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21">
                                 <rect key="frame" x="190" y="511" width="221" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="221" id="RsC-yG-x6T"/>
                                 </constraints>
                                 <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOut:" destination="w6k-X3-KLg" eventType="touchUpInside" id="Ize-nF-a6e"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="loginSegue" id="hx7-po-Zrm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.7725490196" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,12 +100,13 @@
                     <connections>
                         <outlet property="createSetButton" destination="k1I-Bk-99R" id="hO9-P1-ye6"/>
                         <outlet property="importButton" destination="WX6-mO-lz8" id="4lG-sH-Wzq"/>
+                        <outlet property="logoutButton" destination="Mzx-ww-V21" id="IUM-2x-McP"/>
                         <outlet property="viewSetsButton" destination="pDU-th-AgX" id="J1p-gS-cn3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Rs-aj-VhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-800" y="-820"/>
+            <point key="canvasLocation" x="-800" y="-602"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l2n-Hs-Enr">
@@ -117,7 +122,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBx-TL-Jiw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1504" y="-820"/>
+            <point key="canvasLocation" x="-1504" y="-602"/>
         </scene>
         <!--View Sets View Controller-->
         <scene sceneID="gdP-RM-nPt">
@@ -204,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqg-Rz-wUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-87" y="-820"/>
+            <point key="canvasLocation" x="-45" y="-602"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -239,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2246" y="-820"/>
+            <point key="canvasLocation" x="-1504" y="-1508"/>
         </scene>
         <!--Create Set Controller-->
         <scene sceneID="qWS-A2-oLa">
@@ -348,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-t5-9fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-800" y="109"/>
+            <point key="canvasLocation" x="-800" y="173"/>
         </scene>
         <!--Edit Cards View Controller-->
         <scene sceneID="hvQ-qK-LSO">
@@ -366,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvV-4b-KF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-800" y="971"/>
+            <point key="canvasLocation" x="-800" y="923"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

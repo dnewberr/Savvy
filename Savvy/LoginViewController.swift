@@ -11,8 +11,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
-
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
@@ -30,15 +28,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func reviewOrHomeScene() {
-        print("User is already logged in. Now figuring out if we go to the review or home screen.")
+        print("User is already logged in. Now",
+            "figuring out if we go to the review or home screen.")
         
-        let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Home")
+        let nextScene =
+            self.storyboard?.instantiateViewControllerWithIdentifier("Home")
         presentViewController(nextScene!, animated: false, completion: nil)
         
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
+    func loginButton(loginButton: FBSDKLoginButton!,
+        didCompleteWithResult result: FBSDKLoginManagerLoginResult!,
+        error: NSError!) {reviewOrHomeScene()
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

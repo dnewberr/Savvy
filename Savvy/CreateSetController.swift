@@ -23,6 +23,7 @@ class CreateSetController: UIViewController {
     }
     
     @IBOutlet weak var editCardsButton: UIButton!
+    
     @IBAction func editCardsPushedAction(sender: AnyObject) {
         if checkInput() {
             let nextScene = self.storyboard!.instantiateViewControllerWithIdentifier("EditCards") as! EditCardsViewController
@@ -48,35 +49,55 @@ class CreateSetController: UIViewController {
     
     func checkInput() -> Bool {
         if let numCards = numCardsTextField.text {
-            if Int(numCards) != nil {
-                cardsToCreate = Int(numCards)
-            
+            let numCards = Int(numCards)
+            if numCards != nil && numCards > 0 {
+                cardsToCreate = numCards
             } else {
                 //show alert
+                let alertController = UIAlertController(title: "",
+                    message: "The number of cards must be a natural number greater than 0 (ie, 1, 2, 3, ...).",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: "Dismiss",
+                        style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController,
+                    animated: true, completion: nil)
+                
                 print("num cards must be an int")
+                
                 return false
             }
-        } else {
-            // show alert
-            print("didn't set num cards")
-            return false
         }
         
         
         if let setName = setNameTextField.text {
+            if setName.isEmpty {
+                // show alert
+                let alertController = UIAlertController(title: "",
+                    message: "Please enter a name for the set.",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: "Dismiss",
+                        style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController,
+                    animated: true, completion: nil)
+                print("didn't set the name")
+                return false
+
+            } else {
             // check to see if it already exist; if so => warning
             // return false
             // print("name already exists; want to overwrite?")
             
             // else
             
-            cardSetName = setName
-        } else {
-            // show alert
-            print("didn't set the name")
-            return false
+                cardSetName = setName
+            }
         }
-        
         if !dueDatePicker.hidden {
             setDueDate = dueDatePicker.date
             print("Date selected: \(setDueDate!)")

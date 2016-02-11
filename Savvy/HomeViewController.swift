@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var viewSetsButton: UIButton!
     @IBOutlet weak var importButton: UIButton!
     
-    @IBOutlet weak var logoutButton: FBSDKLoginButton!
+    @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func createSet(sender: AnyObject) {
         print("Touched Create Set button")
@@ -32,6 +32,12 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         performSegueWithIdentifier("importFromQuizletSegue", sender: sender)
     }
     
+    @IBAction func logOut(sender: AnyObject) {
+        print("Touched log out from FB.")
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut() // this is an instance function
+        performSegueWithIdentifier("loginSegue", sender: sender)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Now in home.")
@@ -43,6 +49,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("Logged out")
+        
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
         presentViewController(nextScene!, animated: false, completion: nil)
     }
