@@ -41,7 +41,7 @@
                                 <state key="normal" title="View Sets"/>
                                 <connections>
                                     <action selector="viewSets:" destination="w6k-X3-KLg" eventType="touchUpInside" id="VgI-hY-8gP"/>
-                                    <segue destination="VJb-lF-fGQ" kind="show" identifier="viewSets" id="6b3-ec-v7w"/>
+                                    <segue destination="VJb-lF-fGQ" kind="show" identifier="viewSetsSegue" id="6b3-ec-v7w"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX6-mO-lz8">

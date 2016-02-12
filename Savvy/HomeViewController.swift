@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func viewSets(sender: AnyObject) {
         print("Touched View Sets button")
-        performSegueWithIdentifier("viewSetSegue", sender: sender)
+        performSegueWithIdentifier("viewSetsSegue", sender: sender)
     }
     
     @IBAction func importFromQuizlet(sender: AnyObject) {
