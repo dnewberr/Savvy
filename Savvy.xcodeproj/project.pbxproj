@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C38030BC1C6DA41400C37FBA /* StudySetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */; };
 		C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86EF1C6A74D300252F97 /* Flashcard.swift */; };
 		C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */; };
 		C3BC86F41C6A8B7500252F97 /* ImportQuizletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySetViewController.swift; sourceTree = "<group>"; };
 		C3BC86EF1C6A74D300252F97 /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 		C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSetsViewController.swift; sourceTree = "<group>"; };
 		C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportQuizletViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */,
 				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
 				C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */,
+				C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */,
 				C3BC86EF1C6A74D300252F97 /* Flashcard.swift */,
 				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
@@ -297,6 +300,7 @@
 				CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */,
 				CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */,
 				CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */,
+				C38030BC1C6DA41400C37FBA /* StudySetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
