@@ -15,11 +15,15 @@ class ViewSetsViewController: UIViewController {
     
     @IBAction func studySet(sender: AnyObject) {
         print("Touched Study Set button")
+        
         performSegueWithIdentifier("studySetSegue", sender: sender)
     }
     
     @IBAction func editSet(sender: AnyObject) {
         print("Touched Edit Set button")
-        performSegueWithIdentifier("editSetSegue", sender: sender)
+        
+        let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
+        nextScene.prevSceneId = "View"
+        presentViewController(nextScene, animated: false, completion: nil)
     }
 }

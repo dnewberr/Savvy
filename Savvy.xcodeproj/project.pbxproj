@@ -11,6 +11,11 @@
 		C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86EF1C6A74D300252F97 /* Flashcard.swift */; };
 		C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */; };
 		C3BC86F41C6A8B7500252F97 /* ImportQuizletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */; };
+		CD39B0691C730E1A00407A9D /* FlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0681C730E1A00407A9D /* FlashcardViewController.swift */; };
+		CD39B0701C7315FF00407A9D /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */; };
+		CD39B0721C732B8F00407A9D /* EditCardsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */; };
+		CD39B0741C733C5900407A9D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0731C733C5800407A9D /* GameViewController.swift */; };
+		CD39B0761C733C6200407A9D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0751C733C6200407A9D /* ResultViewController.swift */; };
 		CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C21C6135FC001F75DF /* AppDelegate.swift */; };
 		CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24C41C6135FC001F75DF /* LoginViewController.swift */; };
 		CD9D24C81C6135FC001F75DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9D24C61C6135FC001F75DF /* Main.storyboard */; };
@@ -23,7 +28,6 @@
 		CD9D24F51C613709001F75DF /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */; };
 		CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24F61C614AFA001F75DF /* HomeViewController.swift */; };
 		CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24FC1C69E466001F75DF /* CreateSetController.swift */; };
-		CD9D24FF1C69F947001F75DF /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,11 @@
 		C3BC86EF1C6A74D300252F97 /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 		C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSetsViewController.swift; sourceTree = "<group>"; };
 		C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportQuizletViewController.swift; sourceTree = "<group>"; };
+		CD39B0681C730E1A00407A9D /* FlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardViewController.swift; sourceTree = "<group>"; };
+		CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
+		CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditCardsTableView.swift; path = ../EditCardsTableView.swift; sourceTree = "<group>"; };
+		CD39B0731C733C5800407A9D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CD39B0751C733C6200407A9D /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CD9D24BF1C6135FC001F75DF /* Savvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9D24C21C6135FC001F75DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD9D24C41C6135FC001F75DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +75,6 @@
 		CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		CD9D24F61C614AFA001F75DF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CD9D24FC1C69E466001F75DF /* CreateSetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSetController.swift; sourceTree = "<group>"; };
-		CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD39B06A1C730E1F00407A9D /* Flashcards */ = {
+			isa = PBXGroup;
+			children = (
+				C3BC86EF1C6A74D300252F97 /* Flashcard.swift */,
+				CD39B0681C730E1A00407A9D /* FlashcardViewController.swift */,
+			);
+			name = Flashcards;
+			sourceTree = "<group>";
+		};
+		CD39B0771C733C6800407A9D /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				CD39B0731C733C5800407A9D /* GameViewController.swift */,
+				CD39B0751C733C6200407A9D /* ResultViewController.swift */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		CD9D24B61C6135FC001F75DF = {
 			isa = PBXGroup;
 			children = (
@@ -123,15 +149,17 @@
 				CD9D24F01C613709001F75DF /* FBSDKCoreKit.framework */,
 				CD9D24F11C613709001F75DF /* FBSDKLoginKit.framework */,
 				CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */,
+				CD39B06A1C730E1F00407A9D /* Flashcards */,
+				CD39B0771C733C6800407A9D /* Game */,
 				CD9D24C21C6135FC001F75DF /* AppDelegate.swift */,
 				CD9D24C41C6135FC001F75DF /* LoginViewController.swift */,
 				CD9D24F61C614AFA001F75DF /* HomeViewController.swift */,
 				CD9D24FC1C69E466001F75DF /* CreateSetController.swift */,
-				CD9D24FE1C69F947001F75DF /* EditCardsViewController.swift */,
+				CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */,
+				CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */,
 				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
 				C3BC86F31C6A8B7500252F97 /* ImportQuizletViewController.swift */,
 				C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */,
-				C3BC86EF1C6A74D300252F97 /* Flashcard.swift */,
 				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
 				CD9D24CE1C6135FC001F75DF /* Info.plist */,
@@ -292,13 +320,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD39B0761C733C6200407A9D /* ResultViewController.swift in Sources */,
+				CD39B0721C732B8F00407A9D /* EditCardsTableView.swift in Sources */,
 				C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */,
 				C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */,
-				CD9D24FF1C69F947001F75DF /* EditCardsViewController.swift in Sources */,
 				CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */,
+				CD39B0741C733C5900407A9D /* GameViewController.swift in Sources */,
 				C3BC86F41C6A8B7500252F97 /* ImportQuizletViewController.swift in Sources */,
 				CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */,
 				CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */,
+				CD39B0701C7315FF00407A9D /* EditCardsViewController.swift in Sources */,
+				CD39B0691C730E1A00407A9D /* FlashcardViewController.swift in Sources */,
 				CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */,
 				C38030BC1C6DA41400C37FBA /* StudySetViewController.swift in Sources */,
 			);

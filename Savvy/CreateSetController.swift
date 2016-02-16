@@ -12,6 +12,8 @@ class CreateSetController: UIViewController {
     var cardsToCreate: Int!
     var cardSetName: String!
     var setDueDate: NSDate?
+    var prevScene: UIViewController!
+    var prevSceneId: String!
     
     @IBOutlet weak var numCardsTextField: UITextField!
     @IBOutlet weak var setNameTextField: UITextField!
@@ -21,8 +23,6 @@ class CreateSetController: UIViewController {
     @IBAction func switchChange(sender: AnyObject) {
          dueDatePicker.hidden = !dueDatePicker.hidden
     }
-    
-    @IBOutlet weak var editCardsButton: UIButton!
     
     @IBAction func editCardsPushedAction(sender: AnyObject) {
         if checkInput() {
@@ -37,13 +37,60 @@ class CreateSetController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBAction func donePushedAction(sender: AnyObject) {
         if checkInput() {
+            let alertController = UIAlertController(title: "",
+                message: "Save these changes?",
+                preferredStyle: UIAlertControllerStyle.ActionSheet)
             
+            alertController.addAction(
+                UIAlertAction(title: "Yes",
+                    style: UIAlertActionStyle.Default,
+                    handler: { (action: UIAlertAction!) in
+                        self.presentViewController(self.prevScene, animated: false, completion: nil)
+                }))
+            
+            alertController.addAction(
+                UIAlertAction(title: "No",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil))
+            
+            self.presentViewController(alertController,
+                animated: true, completion: nil)
         }
     }
+    
+    @IBAction func cancelPushedAction(sender: AnyObject) {
+        let alertController = UIAlertController(title: "",
+            message: "Are you sure you want to cancel these changes?",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Yes",
+                style: UIAlertActionStyle.Destructive,
+                handler: { (action: UIAlertAction!) in
+                    self.presentViewController(self.prevScene, animated: false, completion: nil)
+            }))
+        
+        alertController.addAction(
+            UIAlertAction(title: "No",
+                style: UIAlertActionStyle.Default,
+                handler: nil))
+        
+        self.presentViewController(alertController,
+            animated: true, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Now in create set.")
+        
+        if prevSceneId == "View" {
+            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! ViewSetsViewController
+        } else {
+            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! HomeViewController
+        }
+        
+        
         dueDatePicker.hidden = true
     }
     
@@ -87,7 +134,6 @@ class CreateSetController: UIViewController {
                     animated: true, completion: nil)
                 print("didn't set the name")
                 return false
-
             } else {
             // check to see if it already exist; if so => warning
             // return false

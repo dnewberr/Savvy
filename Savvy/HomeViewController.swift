@@ -19,7 +19,9 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func createSet(sender: AnyObject) {
         print("Touched Create Set button")
-        performSegueWithIdentifier("createSetSegue", sender: sender)
+        let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
+        nextScene.prevSceneId = "Home"
+        presentViewController(nextScene, animated: false, completion: nil)
     }
     
     @IBAction func viewSets(sender: AnyObject) {

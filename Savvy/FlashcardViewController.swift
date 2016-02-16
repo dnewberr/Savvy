@@ -1,24 +1,34 @@
 //
-//  StudySetViewController.swift
+//  FlashcardViewController.swift
 //  Savvy
 //
-//  Created by Cody Rhoads on 2/11/16.
+//  Created by Deborah Newberry on 2/15/16.
 //  Copyright © 2016 Deborah Newberry. All rights reserved.
 //
 
 import UIKit
 
-class StudySetViewController: UIViewController {
-    @IBAction func startGame(sender: AnyObject) {
-        performSegueWithIdentifier("studyToGame", sender: sender)
+class FlashcardViewController: UIViewController {
+    var currentCard : Flashcard!
+    var front = true
+    
+    @IBOutlet weak var currentView: UILabel!
+    
+    
+    @IBAction func flipCard(sender: AnyObject) {
+        if front {
+            currentView.text = currentCard.description
+            front = false
+        } else {
+            currentView.text = currentCard.term
+            front = true
+        }
+        
     }
-
-    @IBAction func backToView(sender: AnyObject) {
-        performSegueWithIdentifier("studyToViewSets", sender: sender)
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        currentView.text = currentCard.term
         // Do any additional setup after loading the view.
     }
 

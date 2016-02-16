@@ -1,21 +1,26 @@
 //
-//  StudySetViewController.swift
+//  ResultViewController.swift
 //  Savvy
 //
-//  Created by Cody Rhoads on 2/11/16.
+//  Created by Deborah Newberry on 2/16/16.
 //  Copyright © 2016 Deborah Newberry. All rights reserved.
 //
 
 import UIKit
 
-class StudySetViewController: UIViewController {
-    @IBAction func startGame(sender: AnyObject) {
-        performSegueWithIdentifier("studyToGame", sender: sender)
+class ResultViewController: UIViewController {
+    @IBAction func studySet(sender: AnyObject) {
+        performSegueWithIdentifier("resultToStudy", sender: sender)
     }
-
-    @IBAction func backToView(sender: AnyObject) {
-        performSegueWithIdentifier("studyToViewSets", sender: sender)
+    
+    @IBAction func tryAgain(sender: AnyObject) {
+         performSegueWithIdentifier("resultToGame", sender: sender)
     }
+    
+    @IBAction func goHome(sender: AnyObject) {
+        performSegueWithIdentifier("resultToHome", sender: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,21 +7,35 @@
 //
 
 import Foundation
+import UIKit
 
-class Flashcard {
+class Flashcard : UIViewPrintFormatter {
     var term : String
     var definition : String
     var due : Int?
+    var termSide: Bool!
     
-    init() {
+    override init() {
         term = ""
         definition = ""
         due = nil
+        termSide = true
+        super.init()
     }
     
     init(newTerm : String, newDef : String, newDue : Int?) {
         term = newTerm
         definition = newDef
         due = newDue
+        termSide = true
+        super.init()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        term = ""
+        definition = ""
+        due = nil
+        termSide = true
+        super.init()
     }
 }
