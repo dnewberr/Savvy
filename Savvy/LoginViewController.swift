@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageName = "SavvyLogo"
+        let imageName = "background"
         self.view?.backgroundColor = UIColor(patternImage: UIImage(named: imageName)!)    }
     
     override func viewDidAppear(animated: Bool) {
