@@ -15,11 +15,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-
-        
-    }
+        let imageName = "SavvyLogo"
+        self.view?.backgroundColor = UIColor(patternImage: UIImage(named: imageName)!)    }
     
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
@@ -32,10 +29,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             "figuring out if we go to the review or home screen.")
         
         performSegueWithIdentifier("loginToHome", sender: nil)
-//        let nextScene =
-//            self.storyboard?.instantiateViewControllerWithIdentifier("Home")
-//        presentViewController(nextScene!, animated: false, completion: nil)
-        
     }
     
     func loginButton(loginButton: FBSDKLoginButton!,

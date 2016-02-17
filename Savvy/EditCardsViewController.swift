@@ -12,15 +12,65 @@ class EditCardsViewController: UIViewController {
     var cardsToCreate : Int!
     var cardSetName : String!
     var setDueDate : NSDate?
+    var prevSceneId: String!
+    var prevScene: UIViewController!
+    
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var table: EditCardsTableView!
+    @IBAction func done(sender: AnyObject) {
+        let alertController = UIAlertController(title: "",
+            message: "Save these changes?",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Yes",
+                style: UIAlertActionStyle.Default,
+                handler: { (action: UIAlertAction!) in
+                    self.presentViewController(self.prevScene, animated: false, completion: nil)
+            }))
+        
+        alertController.addAction(
+            UIAlertAction(title: "No",
+                style: UIAlertActionStyle.Default,
+                handler: nil))
+        
+        self.presentViewController(alertController,
+            animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        let alertController = UIAlertController(title: "",
+            message: "Are you sure you want to cancel these changes?",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Yes",
+                style: UIAlertActionStyle.Destructive,
+                handler: { (action: UIAlertAction!) in
+                    self.presentViewController(self.prevScene, animated: false, completion: nil)
+            }))
+        
+        alertController.addAction(
+            UIAlertAction(title: "No",
+                style: UIAlertActionStyle.Default,
+                handler: nil))
+        
+        self.presentViewController(alertController,
+            animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("fucking at the view")
+        if prevSceneId == "View" {
+            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! ViewSetsViewController
+        } else {
+            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! HomeViewController
+        }
         
         table.cardsToCreate = self.cardsToCreate
+        nameLabel.text? = cardSetName
         // Do any additional setup after loading the view.
     }
 

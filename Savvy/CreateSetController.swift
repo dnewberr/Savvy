@@ -30,6 +30,7 @@ class CreateSetController: UIViewController {
             nextScene.cardsToCreate = cardsToCreate
             nextScene.cardSetName = cardSetName
             nextScene.setDueDate = setDueDate
+            nextScene.prevSceneId = prevSceneId
             presentViewController(nextScene, animated: false, completion: nil)
         }
     }

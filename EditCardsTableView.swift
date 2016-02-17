@@ -23,7 +23,7 @@ class EditCardsTableView: UITableView, UITableViewDataSource, UITableViewDelegat
     */
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardsToCreate
+        return 11
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
