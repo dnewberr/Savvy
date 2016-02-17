@@ -31,9 +31,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User is already logged in. Now",
             "figuring out if we go to the review or home screen.")
         
-        let nextScene =
-            self.storyboard?.instantiateViewControllerWithIdentifier("Home")
-        presentViewController(nextScene!, animated: false, completion: nil)
+        performSegueWithIdentifier("loginToHome", sender: nil)
+//        let nextScene =
+//            self.storyboard?.instantiateViewControllerWithIdentifier("Home")
+//        presentViewController(nextScene!, animated: false, completion: nil)
         
     }
     

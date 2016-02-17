@@ -9,13 +9,15 @@
 import UIKit
 
 class StudySetViewController: UIViewController {
+
     @IBAction func startGame(sender: AnyObject) {
         performSegueWithIdentifier("studyToGame", sender: sender)
     }
-
+    
     @IBAction func backToView(sender: AnyObject) {
         performSegueWithIdentifier("studyToViewSets", sender: sender)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

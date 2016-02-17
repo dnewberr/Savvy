@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("Touched log out from FB.")
         let loginManager = FBSDKLoginManager()
         loginManager.logOut() // this is an instance function
-        performSegueWithIdentifier("loginSegue", sender: sender)
+        performSegueWithIdentifier("homeToLogin", sender: sender)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
