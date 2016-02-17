@@ -17,6 +17,9 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var logoutButton: UIButton!
     
+    @IBAction func viewBadges(sender: AnyObject) {
+        performSegueWithIdentifier("homeToBadges", sender: sender)
+    }
     @IBAction func createSet(sender: AnyObject) {
         print("Touched Create Set button")
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
