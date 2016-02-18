@@ -21,21 +21,12 @@ class ImportQuizletViewController: UIViewController {
                 }
                 else {
                     let path = "https://api.quizlet.com/2.0/users/\(QuizletAPIManager.sharedInstance.userID!)/sets"
-                    print(path)
+                    let headers = ["Authorization": "Bearer \(QuizletAPIManager.sharedInstance.OAuthToken!)"]
                     
-                    // I believe I have to make the .GET call here, using the defined path
-                    // and the token in QuizletAPIManager.sharedInstance.OAuthToken
-                    
-                    
-                    // Code that doesn't work
-                    
-//                    var manager = Alamofire.Manager.sharedInstance
-//                    
-//                    manager.session.configuration.HTTPAdditionalHeaders = ["Authorization": "Bearer \(QuizletAPIManager.sharedInstance.OAuthToken!)"]
-//                    print(manager.session.configuration.HTTPAdditionalHeaders!["Authorization"])
-//                    manager.request(.GET, path).response { (request, response, data, error) -> Void in
-//                        print("DATA: \(data)")
-//                    }
+                    Alamofire.request(.GET, path, headers: headers)
+                        .responseJSON { response in
+                            print(response)
+                    }
                 }
             }
             QuizletAPIManager.sharedInstance.startOAuth2Login()
@@ -44,7 +35,6 @@ class ImportQuizletViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("In ImportQuizletViewController")
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -21,31 +21,31 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         performSegueWithIdentifier("homeToBadges", sender: sender)
     }
     @IBAction func createSet(sender: AnyObject) {
-        print("Touched Create Set button")
+        //print("Touched Create Set button")
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
         nextScene.prevSceneId = "Home"
         presentViewController(nextScene, animated: false, completion: nil)
     }
     
     @IBAction func viewSets(sender: AnyObject) {
-        print("Touched View Sets button")
+        //print("Touched View Sets button")
         performSegueWithIdentifier("viewSetsSegue", sender: sender)
     }
     
     @IBAction func importFromQuizlet(sender: AnyObject) {
-        print("Touched Import from Quizlet button")
+        //print("Touched Import from Quizlet button")
         performSegueWithIdentifier("importFromQuizletSegue", sender: sender)
     }
     
     @IBAction func logOut(sender: AnyObject) {
-        print("Touched log out from FB.")
+        //print("Touched log out from FB.")
         let loginManager = FBSDKLoginManager()
         loginManager.logOut() // this is an instance function
         performSegueWithIdentifier("homeToLogin", sender: sender)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Now in home.")
+        //print("Now in home.")
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("Logged out")
+        //print("Logged out")
         
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
         presentViewController(nextScene!, animated: false, completion: nil)

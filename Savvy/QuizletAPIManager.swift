@@ -15,31 +15,10 @@ class QuizletAPIManager {
     
     var clientID = "kCdX95Dr9F"
     var clientSecret = "hEftM82BfGH58dMRhzRhfT"
-    var OAuthToken : String? //{
-//        set {
-//            if let valueToSave = newValue {
-//                addSessionHeader("Authorization: Bearer ", value: "\(valueToSave)")
-//            }
-//            else {
-//                removeSessionHeaderIfExists("Authorization: Bearer ")
-//            }
-//        }
-    //}
+    var OAuthToken : String?
     var userID : String?
     
     var OAuthTokenCompletionHandler : (NSError? -> Void)?
-    
-//    init() {
-//        if hasOAuthToken() {
-//            addSessionHeader("Authorization: Bearer ", value: "\(OAuthToken)")
-//            print(Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders?.first)
-//        }
-//    }
-    
-    func alamofireManager() -> Manager {
-        let manager = Alamofire.Manager.sharedInstance
-        return manager
-    }
     
     func hasOAuthToken() -> Bool {
         if let token = self.OAuthToken {

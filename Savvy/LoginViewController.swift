@@ -25,8 +25,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func reviewOrHomeScene() {
-        print("User is already logged in. Now",
-            "figuring out if we go to the review or home screen.")
+        //print("User is already logged in. Now",
+            //"figuring out if we go to the review or home screen.")
         
         performSegueWithIdentifier("loginToHome", sender: nil)
     }

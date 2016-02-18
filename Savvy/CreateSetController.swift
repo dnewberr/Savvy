@@ -83,7 +83,7 @@ class CreateSetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Now in create set.")
+        //print("Now in create set.")
         
         if prevSceneId == "View" {
             prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! ViewSetsViewController
@@ -113,7 +113,7 @@ class CreateSetController: UIViewController {
                 self.presentViewController(alertController,
                     animated: true, completion: nil)
                 
-                print("num cards must be an int")
+                //print("num cards must be an int")
                 
                 return false
             }
@@ -133,7 +133,7 @@ class CreateSetController: UIViewController {
                 
                 self.presentViewController(alertController,
                     animated: true, completion: nil)
-                print("didn't set the name")
+                //print("didn't set the name")
                 return false
             } else {
             // check to see if it already exist; if so => warning
@@ -147,10 +147,10 @@ class CreateSetController: UIViewController {
         }
         if !dueDatePicker.hidden {
             setDueDate = dueDatePicker.date
-            print("Date selected: \(setDueDate!)")
+            //print("Date selected: \(setDueDate!)")
         }
         
-        print("Will create \(cardsToCreate) cards for set \(cardSetName)")
+        //print("Will create \(cardsToCreate) cards for set \(cardSetName)")
 
         
         return true
