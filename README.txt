@@ -6,6 +6,10 @@ Facebook Test User:
 Email: savvy_qeucvph_student@tfbnw.net
 Password: testuser
 
+Quizlet Test User:
+Username: cpe458-savvy
+Password testuser
+
 NOTE ON QUIZLET API INTEGRATION
 We had a hard time getting authentication for our app even though we were following instructions found online (both from the quizlet site and a search). We've emailed them to get support but they haven't responded to us yet, thus delaying our ability to fully integrate quizlet features.
 
