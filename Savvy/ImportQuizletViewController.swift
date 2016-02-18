@@ -7,20 +7,53 @@
 //
 
 import UIKit
+import Alamofire
 
 class ImportQuizletViewController: UIViewController {
     
     func authenticateQuizlet() {
-        let authURL = "https://quizlet.com/authorize?response_type=code&client_id=kCdX95Dr9F&scope=read&state=NewberryRhoad"
-        if let url = NSURL(string: authURL) {
-            UIApplication.sharedApplication().openURL(url)
+        if !QuizletAPIManager.sharedInstance.hasOAuthToken() {
+            QuizletAPIManager.sharedInstance.OAuthTokenCompletionHandler = {
+                (error) -> Void in
+                if let receivedError = error {
+                    print(receivedError)
+                    QuizletAPIManager.sharedInstance.startOAuth2Login()
+                }
+                else {
+                    let path = "https://api.quizlet.com/2.0/users/\(QuizletAPIManager.sharedInstance.userID!)/sets"
+                    print(path)
+                    
+                    // I believe I have to make the .GET call here, using the defined path
+                    // and the token in QuizletAPIManager.sharedInstance.OAuthToken
+                    
+                    
+                    // Code that doesn't work
+                    
+//                    var manager = Alamofire.Manager.sharedInstance
+//                    
+//                    manager.session.configuration.HTTPAdditionalHeaders = ["Authorization": "Bearer \(QuizletAPIManager.sharedInstance.OAuthToken!)"]
+//                    print(manager.session.configuration.HTTPAdditionalHeaders!["Authorization"])
+//                    manager.request(.GET, path).response { (request, response, data, error) -> Void in
+//                        print("DATA: \(data)")
+//                    }
+                }
+            }
+            QuizletAPIManager.sharedInstance.startOAuth2Login()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("In ImportQuizletViewController")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         authenticateQuizlet()
+    }
+    
+    @IBAction func doneButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,4 +72,3 @@ class ImportQuizletViewController: UIViewController {
     */
     
 }
-
