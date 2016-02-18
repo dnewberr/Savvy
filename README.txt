@@ -8,10 +8,11 @@ Password: testuser
 
 Quizlet Test User:
 Username: cpe458-savvy
-Password testuser
+Password: testuser
 
-NOTE ON QUIZLET API INTEGRATION
-We had a hard time getting authentication for our app even though we were following instructions found online (both from the quizlet site and a search). We've emailed them to get support but they haven't responded to us yet, thus delaying our ability to fully integrate quizlet features.
+QUIZLET API
+After logging in, select the “Import from Quizlet” option on the home screen. You are redirected to the Quizlet login screen. Log in using the username and password specified above. Select “Allow” to let Savvy use the information on the test Quizlet account. After you select “Open”, Savvy opens back up and the JSON for the test account’s Quizlet set is in the standard output.
+
 
 Project Workload Split - Vertical Prototype
 CODY:
