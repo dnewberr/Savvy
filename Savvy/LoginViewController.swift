@@ -20,14 +20,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
+            print("User was successfully logged in to Facebook.")
             reviewOrHomeScene()
         }
     }
     
     func reviewOrHomeScene() {
-        //print("User is already logged in. Now",
-            //"figuring out if we go to the review or home screen.")
-        
         performSegueWithIdentifier("loginToHome", sender: nil)
     }
     

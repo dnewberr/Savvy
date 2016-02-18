@@ -83,7 +83,6 @@ class CreateSetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print("Now in create set.")
         
         if prevSceneId == "View" {
             prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! ViewSetsViewController
@@ -101,7 +100,6 @@ class CreateSetController: UIViewController {
             if numCards != nil && numCards > 0 {
                 cardsToCreate = numCards
             } else {
-                //show alert
                 let alertController = UIAlertController(title: "",
                     message: "The number of cards must be a natural number greater than 0 (ie, 1, 2, 3, ...).",
                     preferredStyle: UIAlertControllerStyle.Alert)
@@ -113,8 +111,6 @@ class CreateSetController: UIViewController {
                 self.presentViewController(alertController,
                     animated: true, completion: nil)
                 
-                //print("num cards must be an int")
-                
                 return false
             }
         }
@@ -122,7 +118,6 @@ class CreateSetController: UIViewController {
         
         if let setName = setNameTextField.text {
             if setName.isEmpty {
-                // show alert
                 let alertController = UIAlertController(title: "",
                     message: "Please enter a name for the set.",
                     preferredStyle: UIAlertControllerStyle.Alert)
@@ -133,7 +128,7 @@ class CreateSetController: UIViewController {
                 
                 self.presentViewController(alertController,
                     animated: true, completion: nil)
-                //print("didn't set the name")
+
                 return false
             } else {
             // check to see if it already exist; if so => warning
@@ -147,11 +142,7 @@ class CreateSetController: UIViewController {
         }
         if !dueDatePicker.hidden {
             setDueDate = dueDatePicker.date
-            //print("Date selected: \(setDueDate!)")
         }
-        
-        //print("Will create \(cardsToCreate) cards for set \(cardSetName)")
-
         
         return true
     }

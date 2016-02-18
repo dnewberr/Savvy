@@ -15,22 +15,16 @@ class ViewSetsViewController: UIViewController {
     @IBOutlet weak var homeButton: UIButton!
     
     @IBAction func studySet(sender: AnyObject) {
-        //print("Touched Study Set button")
-        
         performSegueWithIdentifier("viewSetsToStudySet", sender: sender)
     }
     
     @IBAction func editSet(sender: AnyObject) {
-        //print("Touched Edit Set button")
-        
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
         nextScene.prevSceneId = "View"
         presentViewController(nextScene, animated: false, completion: nil)
     }
     
-    @IBAction func goHome(sender: AnyObject) {
-        //print("Touched Home button")
-        
+    @IBAction func goHome(sender: AnyObject) {        
         performSegueWithIdentifier("viewSetsToHome", sender: sender)
     }
 }

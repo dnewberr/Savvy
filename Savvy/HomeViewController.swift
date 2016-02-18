@@ -21,40 +21,35 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         performSegueWithIdentifier("homeToBadges", sender: sender)
     }
     @IBAction func createSet(sender: AnyObject) {
-        //print("Touched Create Set button")
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
         nextScene.prevSceneId = "Home"
         presentViewController(nextScene, animated: false, completion: nil)
     }
     
     @IBAction func viewSets(sender: AnyObject) {
-        //print("Touched View Sets button")
         performSegueWithIdentifier("viewSetsSegue", sender: sender)
     }
     
     @IBAction func importFromQuizlet(sender: AnyObject) {
-        //print("Touched Import from Quizlet button")
         performSegueWithIdentifier("importFromQuizletSegue", sender: sender)
     }
     
     @IBAction func logOut(sender: AnyObject) {
-        //print("Touched log out from FB.")
         let loginManager = FBSDKLoginManager()
         loginManager.logOut() // this is an instance function
+        
+        print("User will now be logged out of Facebook.")
+        
         performSegueWithIdentifier("homeToLogin", sender: sender)
     }
     override func viewDidLoad() {
-        super.viewDidLoad()
-        //print("Now in home.")
-    }
+        super.viewDidLoad()    }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        //print("Logged out")
-        
         let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
         presentViewController(nextScene!, animated: false, completion: nil)
     }
