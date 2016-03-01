@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -87,26 +87,69 @@
                                     <action selector="logOut:" destination="w6k-X3-KLg" eventType="touchUpInside" id="Ize-nF-a6e"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-Bu-QN8">
+                                <rect key="frame" x="20" y="40" width="560" height="295"/>
+                                <color key="backgroundColor" red="0.82745098039215681" green="0.90980392156862744" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LN6-SF-G8a">
+                                    <size key="itemSize" width="246" height="141"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="liH-mB-5ep" customClass="CardCollectionViewCell" customModule="Savvy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="246" height="141"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Term" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgP-Op-xPY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outlet property="label" destination="LgP-Op-xPY" id="RZM-Qw-IzI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mRm-u5-7Ne" appends="YES" id="Cwz-o4-DvI"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.69803921568627447" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.047084731543624164" green="0.18878460570469799" blue="0.43689702181207934" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="WX6-mO-lz8" firstAttribute="centerX" secondItem="pDU-th-AgX" secondAttribute="centerX" id="0y7-U3-Wqn"/>
                             <constraint firstItem="pDU-th-AgX" firstAttribute="centerX" secondItem="k1I-Bk-99R" secondAttribute="centerX" id="3n1-Ie-NaQ"/>
+                            <constraint firstItem="NFf-Bu-QN8" firstAttribute="leading" secondItem="taz-Pg-QU6" secondAttribute="leadingMargin" id="5ef-Sg-BSq"/>
                             <constraint firstItem="Ds8-ma-MsV" firstAttribute="top" secondItem="WX6-mO-lz8" secondAttribute="bottom" constant="8" symbolic="YES" id="99l-AX-XwY"/>
                             <constraint firstItem="k1I-Bk-99R" firstAttribute="centerX" secondItem="taz-Pg-QU6" secondAttribute="centerX" id="9zv-iu-ohg"/>
+                            <constraint firstItem="NFf-Bu-QN8" firstAttribute="top" secondItem="BnI-Fq-jwb" secondAttribute="bottom" constant="20" id="Bam-ls-CfD"/>
                             <constraint firstItem="Mzx-ww-V21" firstAttribute="top" secondItem="k1I-Bk-99R" secondAttribute="bottom" constant="128" id="H09-Xs-2TZ"/>
                             <constraint firstItem="WX6-mO-lz8" firstAttribute="centerX" secondItem="Ds8-ma-MsV" secondAttribute="centerX" id="L36-lX-8h1"/>
                             <constraint firstItem="pDU-th-AgX" firstAttribute="top" secondItem="k1I-Bk-99R" secondAttribute="bottom" constant="8" symbolic="YES" id="Mmf-yP-v7K"/>
                             <constraint firstItem="WX6-mO-lz8" firstAttribute="top" secondItem="pDU-th-AgX" secondAttribute="bottom" constant="8" symbolic="YES" id="Rqz-Df-Bj7"/>
                             <constraint firstItem="Hku-9l-1MN" firstAttribute="top" secondItem="Mzx-ww-V21" secondAttribute="bottom" constant="29" id="TTe-bL-bBE"/>
                             <constraint firstItem="k1I-Bk-99R" firstAttribute="centerY" secondItem="taz-Pg-QU6" secondAttribute="centerY" constant="68" id="bbE-ON-yM6"/>
+                            <constraint firstItem="k1I-Bk-99R" firstAttribute="top" secondItem="NFf-Bu-QN8" secondAttribute="bottom" constant="18" id="chQ-m4-Csj"/>
                             <constraint firstItem="Mzx-ww-V21" firstAttribute="centerX" secondItem="k1I-Bk-99R" secondAttribute="centerX" id="kgP-E3-5NP"/>
+                            <constraint firstItem="NFf-Bu-QN8" firstAttribute="trailing" secondItem="taz-Pg-QU6" secondAttribute="trailingMargin" id="uhW-zv-LKn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oXv-sr-sa9"/>
                     <connections>
                         <outlet property="createSetButton" destination="k1I-Bk-99R" id="hO9-P1-ye6"/>
+                        <outlet property="flashcardCollection" destination="NFf-Bu-QN8" id="cEf-dN-dVU"/>
+                        <outlet property="importButton" destination="WX6-mO-lz8" id="cF2-44-UIT"/>
                         <outlet property="logoutButton" destination="Mzx-ww-V21" id="IUM-2x-McP"/>
                         <outlet property="viewSetsButton" destination="pDU-th-AgX" id="J1p-gS-cn3"/>
                         <segue destination="VJb-lF-fGQ" kind="show" identifier="viewSetsSegue" id="7QH-TB-pyP"/>
@@ -117,6 +160,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Rs-aj-VhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer delaysTouchesBegan="YES" id="mRm-u5-7Ne">
+                    <connections>
+                        <action selector="tappedCell:" destination="w6k-X3-KLg" id="AEE-EU-Dr9"/>
+                        <outlet property="delegate" destination="w6k-X3-KLg" id="bNk-yb-W7M"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1610" y="-950"/>
         </scene>
@@ -149,18 +198,18 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SRB-6v-ClR" id="ZLc-7h-H2T">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="22"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="22.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2XJ-PG-8jz">
-                                                    <rect key="frame" x="15" y="1" width="32" height="20"/>
+                                                    <rect key="frame" x="15" y="2" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njH-Wy-354">
-                                                    <rect key="frame" x="503" y="1" width="42" height="20"/>
+                                                    <rect key="frame" x="503.5" y="2" width="41.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -691,11 +740,11 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkR-ih-zoM" id="fMh-lg-GuI">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g4p-z6-Qew">
-                                                    <rect key="frame" x="15" y="0.0" width="530" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="530" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -763,11 +812,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bMZ-f8-7zG"/>
-        <segue reference="7QH-TB-pyP"/>
-        <segue reference="4eR-BG-pcK"/>
-        <segue reference="P7i-po-v1F"/>
         <segue reference="ljO-5v-6hw"/>
+        <segue reference="hXE-Sf-IHC"/>
+        <segue reference="7QH-TB-pyP"/>
+        <segue reference="Vxw-aU-PwE"/>
+        <segue reference="4eR-BG-pcK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
