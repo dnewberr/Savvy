@@ -315,7 +315,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="Badges" id="h2B-yg-OBe" customClass="BadgesCollectionViewController" customModule="Savvy" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lJO-rf-auR">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="526"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Ju-vY-XmF">
