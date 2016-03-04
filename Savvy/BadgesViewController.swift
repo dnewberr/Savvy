@@ -10,9 +10,6 @@ import UIKit
 
 class BadgesViewController: UIViewController {
 
-    @IBAction func home(sender: AnyObject) {
-        performSegueWithIdentifier("badgesToHome", sender: sender)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

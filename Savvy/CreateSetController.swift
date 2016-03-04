@@ -12,7 +12,6 @@ class CreateSetController: UIViewController {
     var cardsToCreate: Int!
     var cardSetName: String!
     var setDueDate: NSDate?
-    var prevScene: UIViewController!
     var prevSceneId: String!
     
     @IBOutlet weak var numCardsTextField: UITextField!
@@ -22,17 +21,6 @@ class CreateSetController: UIViewController {
     @IBOutlet weak var dateSwitch: UISwitch!
     @IBAction func switchChange(sender: AnyObject) {
          dueDatePicker.hidden = !dueDatePicker.hidden
-    }
-    
-    @IBAction func editCardsPushedAction(sender: AnyObject) {
-        if checkInput() {
-            let nextScene = self.storyboard!.instantiateViewControllerWithIdentifier("EditCards") as! EditCardsViewController
-            nextScene.cardsToCreate = cardsToCreate
-            nextScene.cardSetName = cardSetName
-            nextScene.setDueDate = setDueDate
-            nextScene.prevSceneId = prevSceneId
-            presentViewController(nextScene, animated: false, completion: nil)
-        }
     }
     
     @IBOutlet weak var doneButton: UIButton!
@@ -46,7 +34,12 @@ class CreateSetController: UIViewController {
                 UIAlertAction(title: "Yes",
                     style: UIAlertActionStyle.Default,
                     handler: { (action: UIAlertAction!) in
-                        self.presentViewController(self.prevScene, animated: false, completion: nil)
+                        if self.prevSceneId == "Home" {
+                            self.performSegueWithIdentifier("editToHome", sender: sender)
+                        }
+                        else if self.prevSceneId == "View" {
+                            self.performSegueWithIdentifier("editToViewSets", sender: sender)
+                        }
                 }))
             
             alertController.addAction(
@@ -68,7 +61,12 @@ class CreateSetController: UIViewController {
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Destructive,
                 handler: { (action: UIAlertAction!) in
-                    self.presentViewController(self.prevScene, animated: false, completion: nil)
+                    if self.prevSceneId == "Home" {
+                        self.performSegueWithIdentifier("editToHome", sender: sender)
+                    }
+                    else if self.prevSceneId == "View" {
+                        self.performSegueWithIdentifier("editToViewSets", sender: sender)
+                    }
             }))
         
         alertController.addAction(
@@ -83,14 +81,6 @@ class CreateSetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if prevSceneId == "View" {
-            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! ViewSetsViewController
-        } else {
-            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! HomeViewController
-        }
-        
-        
         dueDatePicker.hidden = true
     }
     
@@ -145,5 +135,23 @@ class CreateSetController: UIViewController {
         }
         
         return true
+    }
+    
+    // Checks the inputs before using the segue, stops if inputs are not correct
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "createSetToEditCards" {
+            return checkInput()
+        }
+        return false
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "createSetToEditCards" {
+            let dest = segue.destinationViewController as! EditCardsViewController
+                dest.cardsToCreate = cardsToCreate
+                dest.cardSetName = cardSetName
+                dest.setDueDate = setDueDate
+                dest.prevSceneId = prevSceneId
+        }
     }
 }

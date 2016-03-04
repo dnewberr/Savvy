@@ -17,10 +17,6 @@ class ResultViewController: UIViewController {
          performSegueWithIdentifier("resultToGame", sender: sender)
     }
     
-    @IBAction func goHome(sender: AnyObject) {
-        performSegueWithIdentifier("resultToHome", sender: sender)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

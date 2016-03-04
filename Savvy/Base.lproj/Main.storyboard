@@ -22,7 +22,7 @@
                                 <rect key="frame" x="282" y="550" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
-                                    <action selector="doneButton:" destination="2ip-e6-fH1" eventType="touchUpInside" id="UBZ-Me-uXV"/>
+                                    <segue destination="oae-7a-pzF" kind="unwind" unwindAction="unwindToHomeViewController:" id="YdB-Mc-Q4a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,6 +34,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kvn-8r-wlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oae-7a-pzF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-87" y="-1508"/>
         </scene>
@@ -53,28 +54,28 @@
                                 <rect key="frame" x="266" y="391" width="68" height="30"/>
                                 <state key="normal" title="View Sets"/>
                                 <connections>
-                                    <action selector="viewSets:" destination="w6k-X3-KLg" eventType="touchUpInside" id="VgI-hY-8gP"/>
+                                    <segue destination="VJb-lF-fGQ" kind="show" identifier="homeToViewSets" id="7oa-IB-YtB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX6-mO-lz8">
                                 <rect key="frame" x="233" y="429" width="134" height="30"/>
                                 <state key="normal" title="Import from Quizlet"/>
                                 <connections>
-                                    <action selector="importFromQuizlet:" destination="w6k-X3-KLg" eventType="touchUpInside" id="cF7-qS-PI2"/>
+                                    <segue destination="2ip-e6-fH1" kind="show" identifier="homeToQuizlet" id="ru1-i5-M8H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds8-ma-MsV">
                                 <rect key="frame" x="256" y="467" width="89" height="30"/>
                                 <state key="normal" title="View Badges"/>
                                 <connections>
-                                    <action selector="viewBadges:" destination="w6k-X3-KLg" eventType="touchUpInside" id="WwW-FJ-jh3"/>
+                                    <segue destination="2dI-NB-OIm" kind="show" identifier="homeToBadges" id="gDF-jX-lfa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Bk-99R">
                                 <rect key="frame" x="264" y="353" width="73" height="30"/>
                                 <state key="normal" title="Create Set"/>
                                 <connections>
-                                    <action selector="createSet:" destination="w6k-X3-KLg" eventType="touchUpInside" id="Uq2-HW-1I7"/>
+                                    <segue destination="WtO-q9-Hmd" kind="show" identifier="homeToCreateSet" id="Pae-XG-81T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21">
@@ -84,7 +85,7 @@
                                 </constraints>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
-                                    <action selector="logOut:" destination="w6k-X3-KLg" eventType="touchUpInside" id="Ize-nF-a6e"/>
+                                    <segue destination="NtS-QD-bn3" kind="unwind" identifier="homeToLogin" unwindAction="unwindToLoginViewController:" id="xrd-cv-rGQ"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-Bu-QN8">
@@ -107,7 +108,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Term" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgP-Op-xPY">
                                                     <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -147,19 +148,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="oXv-sr-sa9"/>
                     <connections>
-                        <outlet property="createSetButton" destination="k1I-Bk-99R" id="hO9-P1-ye6"/>
                         <outlet property="flashcardCollection" destination="NFf-Bu-QN8" id="cEf-dN-dVU"/>
-                        <outlet property="importButton" destination="WX6-mO-lz8" id="cF2-44-UIT"/>
-                        <outlet property="logoutButton" destination="Mzx-ww-V21" id="IUM-2x-McP"/>
-                        <outlet property="viewSetsButton" destination="pDU-th-AgX" id="J1p-gS-cn3"/>
-                        <segue destination="VJb-lF-fGQ" kind="show" identifier="viewSetsSegue" id="7QH-TB-pyP"/>
-                        <segue destination="WtO-q9-Hmd" kind="show" identifier="homeToCreateSet" id="4eR-BG-pcK"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="homeToLogin" id="aPK-xc-eUo"/>
-                        <segue destination="2ip-e6-fH1" kind="show" identifier="importFromQuizletSegue" id="wnS-FP-vNd"/>
-                        <segue destination="2dI-NB-OIm" kind="show" identifier="homeToBadges" id="ebs-5a-BQi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Rs-aj-VhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="NtS-QD-bn3" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer delaysTouchesBegan="YES" id="mRm-u5-7Ne">
                     <connections>
                         <action selector="tappedCell:" destination="w6k-X3-KLg" id="AEE-EU-Dr9"/>
@@ -187,7 +180,7 @@
                                     <color key="titleColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="studySet:" destination="VJb-lF-fGQ" eventType="touchUpInside" id="Czg-zW-H5s"/>
+                                    <segue destination="A0S-O4-Ong" kind="show" identifier="viewSetsToStudy" id="JtU-gy-wvQ"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="23" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="766-Aw-wV6">
@@ -226,7 +219,7 @@
                                     <color key="titleColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="editSet:" destination="VJb-lF-fGQ" eventType="touchUpInside" id="jPd-cS-NZC"/>
+                                    <segue destination="WtO-q9-Hmd" kind="show" identifier="viewSetsToCreateSet" id="ejC-XN-Ikq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DV-T0-k32">
@@ -234,7 +227,7 @@
                                 <color key="tintColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
-                                    <action selector="goHome:" destination="VJb-lF-fGQ" eventType="touchUpInside" id="k8i-E0-Qxj"/>
+                                    <segue destination="Igq-YW-tqW" kind="unwind" unwindAction="unwindToHomeViewController:" id="g3k-1f-xNq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -252,16 +245,9 @@
                             <constraint firstItem="81D-Oh-dtv" firstAttribute="top" secondItem="Oal-4d-Y78" secondAttribute="bottom" constant="71" id="fl3-jl-t0C"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="editSetButton" destination="Oal-4d-Y78" id="ZL9-49-Xkc"/>
-                        <outlet property="homeButton" destination="8DV-T0-k32" id="5rV-Bj-1mJ"/>
-                        <outlet property="studySetButton" destination="kwh-HN-sis" id="5Po-IF-dy0"/>
-                        <segue destination="A0S-O4-Ong" kind="show" identifier="viewSetsToStudySet" id="hXE-Sf-IHC"/>
-                        <segue destination="WtO-q9-Hmd" kind="show" identifier="editSetSegue" id="cJa-lL-bj5"/>
-                        <segue destination="w6k-X3-KLg" kind="show" identifier="viewSetsToHome" id="Zan-pm-SFF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqg-Rz-wUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Igq-YW-tqW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-403" y="131"/>
         </scene>
@@ -288,7 +274,7 @@
                                 <rect key="frame" x="280" y="562" width="41" height="30"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
-                                    <action selector="home:" destination="2dI-NB-OIm" eventType="touchUpInside" id="6S3-ah-63F"/>
+                                    <segue destination="FMs-2Z-bPf" kind="unwind" unwindAction="unwindToHomeViewController:" id="P7b-0D-9Ju"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -302,11 +288,9 @@
                             <constraint firstItem="NBu-S2-wAH" firstAttribute="leading" secondItem="OPx-Ei-V65" secondAttribute="leadingMargin" id="nYH-Na-SfF"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="w6k-X3-KLg" kind="show" identifier="badgesToHome" id="cex-yC-gXf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82s-ut-eME" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FMs-2Z-bPf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2619" y="131"/>
         </scene>
@@ -315,7 +299,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="Badges" id="h2B-yg-OBe" customClass="BadgesCollectionViewController" customModule="Savvy" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lJO-rf-auR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="526"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Ju-vY-XmF">
@@ -365,14 +349,14 @@
                                 <rect key="frame" x="26" y="562" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="backToView:" destination="A0S-O4-Ong" eventType="touchUpInside" id="o43-WE-nwK"/>
+                                    <segue destination="k3Z-Wg-hzv" kind="unwind" unwindAction="unwindToViewSetsViewController:" id="UPN-a1-Mok"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlW-2Z-WCA">
                                 <rect key="frame" x="502" y="562" width="78" height="30"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
-                                    <action selector="startGame:" destination="A0S-O4-Ong" eventType="touchUpInside" id="urh-1J-EAN"/>
+                                    <segue destination="VkE-1u-XN4" kind="show" identifier="studyToGame" id="0vm-j8-Tta"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPN-7A-QMN">
@@ -408,12 +392,9 @@
                             <constraint firstItem="cOp-hm-GDO" firstAttribute="top" secondItem="HM4-ny-1hD" secondAttribute="bottom" constant="8" symbolic="YES" id="kjM-o3-gR1"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="VkE-1u-XN4" kind="show" identifier="studyToGame" id="ljO-5v-6hw"/>
-                        <segue destination="VJb-lF-fGQ" kind="show" identifier="studyToViewSets" id="1XS-Mt-qJ8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcQ-qK-Tym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="k3Z-Wg-hzv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1900" y="-602"/>
         </scene>
@@ -496,7 +477,7 @@
                                 <rect key="frame" x="539" y="550" width="41" height="30"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
-                                    <action selector="goHome:" destination="xlr-Jk-s1R" eventType="touchUpInside" id="rOA-oa-E2N"/>
+                                    <segue destination="iSK-91-ind" kind="unwind" unwindAction="unwindToHomeViewController:" id="DMr-wd-qgi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxZ-dg-GuH">
@@ -546,10 +527,10 @@
                     <connections>
                         <segue destination="A0S-O4-Ong" kind="show" identifier="resultToStudy" id="P7i-po-v1F"/>
                         <segue destination="VkE-1u-XN4" kind="show" identifier="resultToGame" id="0YN-Wt-iT0"/>
-                        <segue destination="w6k-X3-KLg" kind="show" identifier="resultToHome" id="WiK-4i-NVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhA-RK-bHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="iSK-91-ind" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1900" y="1608"/>
         </scene>
@@ -565,33 +546,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMC-4b-jtg">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMC-4b-jtg">
                                 <rect key="frame" x="-8" y="0.0" width="608" height="600"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="QZa-za-J0M">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QZa-za-J0M">
                                     <rect key="frame" x="0.0" y="0.0" width="608" height="600"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf9-Ao-dVG" customClass="FBSDKLoginButton">
+                                            <rect key="frame" x="281" y="285" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rf9-Ao-dVG" firstAttribute="centerX" secondItem="QZa-za-J0M" secondAttribute="centerX" id="64r-nl-4N6"/>
+                                        <constraint firstItem="rf9-Ao-dVG" firstAttribute="centerY" secondItem="QZa-za-J0M" secondAttribute="centerY" id="LeR-uk-IPG"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hj8-1m-ikl" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES"/>
-                                </accessibility>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hSI-V1-Kcf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.93725490196078431" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Hj8-1m-ikl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9nx-KS-en0"/>
-                            <constraint firstItem="Hj8-1m-ikl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ahv-Op-K5b"/>
+                            <constraint firstItem="nMC-4b-jtg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-28" id="7u1-Sc-FoI"/>
+                            <constraint firstAttribute="trailing" secondItem="nMC-4b-jtg" secondAttribute="trailing" id="B4r-JN-u1M"/>
+                            <constraint firstItem="nMC-4b-jtg" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ZHx-nG-YL1"/>
+                            <constraint firstItem="nMC-4b-jtg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rHq-Q0-nPg"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="Hj8-1m-ikl" id="6vG-mZ-xHl"/>
                         <segue destination="w6k-X3-KLg" kind="show" identifier="loginToHome" id="bMZ-f8-7zG"/>
                     </connections>
                 </viewController>
@@ -655,8 +637,7 @@
                                 <rect key="frame" x="265" y="535" width="71" height="30"/>
                                 <state key="normal" title="Edit Cards"/>
                                 <connections>
-                                    <action selector="editCardsPushedAction:" destination="WtO-q9-Hmd" eventType="touchUpInside" id="9pe-G1-tuk"/>
-                                    <segue destination="JeY-RB-GSI" kind="show" identifier="editCardsSegue" id="obj-ny-UjL"/>
+                                    <segue destination="JeY-RB-GSI" kind="show" identifier="createSetToEditCards" id="QCa-CB-f7h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-W1-o8Q">
@@ -664,7 +645,6 @@
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelPushedAction:" destination="WtO-q9-Hmd" eventType="touchUpInside" id="uPM-1r-YK2"/>
-                                    <action selector="donePushedAction:" destination="WtO-q9-Hmd" eventType="touchUpInside" id="0DL-pc-2I0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcl-BH-uD4">
@@ -709,11 +689,12 @@
                         <outlet property="dueDatePicker" destination="HkS-Io-dtL" id="muG-K4-D75"/>
                         <outlet property="numCardsTextField" destination="joW-WM-HPR" id="5Ll-Qx-AYn"/>
                         <outlet property="setNameTextField" destination="5ZX-Wb-xXl" id="lsc-yt-9qe"/>
-                        <segue destination="w6k-X3-KLg" kind="show" identifier="editToHome" id="Vxw-aU-PwE"/>
-                        <segue destination="VJb-lF-fGQ" kind="show" identifier="editToViewSets" id="fIo-7e-Xma"/>
+                        <segue destination="Xj0-CB-8Lz" kind="unwind" identifier="editToHome" unwindAction="unwindToHomeViewController:" id="tqg-EO-RTh"/>
+                        <segue destination="Xj0-CB-8Lz" kind="unwind" identifier="editToViewSets" unwindAction="unwindToViewSetsViewController:" id="IJZ-hF-UcP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-t5-9fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Xj0-CB-8Lz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1416" y="907"/>
         </scene>
@@ -812,11 +793,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ljO-5v-6hw"/>
-        <segue reference="hXE-Sf-IHC"/>
-        <segue reference="7QH-TB-pyP"/>
-        <segue reference="Vxw-aU-PwE"/>
-        <segue reference="4eR-BG-pcK"/>
+        <segue reference="81R-Ep-1sR"/>
+        <segue reference="ejC-XN-Ikq"/>
+        <segue reference="bON-oV-zAP"/>
+        <segue reference="a0k-uI-62T"/>
+        <segue reference="0YN-Wt-iT0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

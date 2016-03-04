@@ -10,21 +10,13 @@ import UIKit
 
 class ViewSetsViewController: UIViewController {
     
-    @IBOutlet weak var studySetButton: UIButton!
-    @IBOutlet weak var editSetButton: UIButton!
-    @IBOutlet weak var homeButton: UIButton!
+    // Allows unwinding to view sets
+    @IBAction func unwindToViewSetsViewController(segue: UIStoryboardSegue) {}
     
-    @IBAction func studySet(sender: AnyObject) {
-        performSegueWithIdentifier("viewSetsToStudySet", sender: sender)
-    }
-    
-    @IBAction func editSet(sender: AnyObject) {
-        let nextScene = self.storyboard?.instantiateViewControllerWithIdentifier("Create") as! CreateSetController
-        nextScene.prevSceneId = "View"
-        presentViewController(nextScene, animated: false, completion: nil)
-    }
-    
-    @IBAction func goHome(sender: AnyObject) {        
-        performSegueWithIdentifier("viewSetsToHome", sender: sender)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewSetsToCreateSet" {
+            let dest = segue.destinationViewController as! CreateSetController
+            dest.prevSceneId = "View"
+        }
     }
 }
