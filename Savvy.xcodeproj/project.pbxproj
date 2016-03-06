@@ -118,7 +118,7 @@
 		C3D7F1DD1C75778D00DA538B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		CD39B0681C730E1A00407A9D /* FlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardViewController.swift; sourceTree = "<group>"; };
 		CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
-		CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditCardsTableView.swift; path = ../EditCardsTableView.swift; sourceTree = "<group>"; };
+		CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsTableView.swift; sourceTree = "<group>"; };
 		CD39B0731C733C5800407A9D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CD39B0751C733C6200407A9D /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CD39B0781C74302D00407A9D /* BadgesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesCollectionViewController.swift; sourceTree = "<group>"; };

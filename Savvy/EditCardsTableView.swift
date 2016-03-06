@@ -1,0 +1,29 @@
+//
+//  EditCardsTableView.swift
+//  Savvy
+//
+//  Created by Deborah Newberry on 2/16/16.
+//  Copyright © 2016 Deborah Newberry. All rights reserved.
+//
+
+import UIKit
+
+class FlashcardCell : UITableViewCell {
+    
+}
+
+class EditCardsTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
+    var cardsToCreate : Int!
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 11
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("FlashcardCell") as! FlashcardCell
+        
+        cell.textLabel?.text = "UGH"
+        return cell
+    }
+
+}
