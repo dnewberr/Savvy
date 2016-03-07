@@ -19,7 +19,6 @@
 		C3D7F1DB1C7574D800DA538B /* QuizletAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D7F1DA1C7574D800DA538B /* QuizletAPIManager.swift */; };
 		CD39B0691C730E1A00407A9D /* FlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0681C730E1A00407A9D /* FlashcardViewController.swift */; };
 		CD39B0701C7315FF00407A9D /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */; };
-		CD39B0721C732B8F00407A9D /* EditCardsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */; };
 		CD39B0741C733C5900407A9D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0731C733C5800407A9D /* GameViewController.swift */; };
 		CD39B0761C733C6200407A9D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0751C733C6200407A9D /* ResultViewController.swift */; };
 		CD39B0791C74302D00407A9D /* BadgesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39B0781C74302D00407A9D /* BadgesCollectionViewController.swift */; };
@@ -122,7 +121,6 @@
 		C3D7F1DD1C75778D00DA538B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		CD39B0681C730E1A00407A9D /* FlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardViewController.swift; sourceTree = "<group>"; };
 		CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
-		CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsTableView.swift; sourceTree = "<group>"; };
 		CD39B0731C733C5800407A9D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CD39B0751C733C6200407A9D /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CD39B0781C74302D00407A9D /* BadgesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesCollectionViewController.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */,
-				CD39B0711C732B8F00407A9D /* EditCardsTableView.swift */,
 			);
 			name = EditCards;
 			sourceTree = "<group>";
@@ -537,7 +534,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD39B0761C733C6200407A9D /* ResultViewController.swift in Sources */,
-				CD39B0721C732B8F00407A9D /* EditCardsTableView.swift in Sources */,
 				C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */,
 				C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */,
 				CD39B07B1C74318A00407A9D /* BadgesViewController.swift in Sources */,

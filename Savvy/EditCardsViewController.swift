@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class EditCardsViewController: UIViewController {
     var cardsToCreate : Int!
     var cardSetName : String!
@@ -16,8 +17,7 @@ class EditCardsViewController: UIViewController {
     var prevScene: UIViewController!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var table: EditCardsTableView!
+ 
     @IBAction func done(sender: AnyObject) {
         let alertController = UIAlertController(title: "",
             message: "Save these changes?",
@@ -69,29 +69,10 @@ class EditCardsViewController: UIViewController {
             prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! HomeViewController
         }
         
-        table.cardsToCreate = self.cardsToCreate
         nameLabel.text? = cardSetName
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "embededToTable" {
-            let newScene = segue.destinationViewController as! EditCardsTableViewController
-            newScene.cardsToCreate = self.cardsToCreate
-            performSegueWithIdentifier(segue.identifier!, sender: sender)
-        }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-    }*/
-    
-
 }
