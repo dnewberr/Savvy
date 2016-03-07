@@ -36,6 +36,10 @@
 		CD9D24F51C613709001F75DF /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */; };
 		CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24F61C614AFA001F75DF /* HomeViewController.swift */; };
 		CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9D24FC1C69E466001F75DF /* CreateSetController.swift */; };
+		CDB26B121C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B051C8CFE4D00BEEE4F /* Alamofire.framework */; };
+		CDB26B131C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B091C8CFE4D00BEEE4F /* Alamofire.framework */; };
+		CDB26B141C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B111C8CFE4D00BEEE4F /* Alamofire.framework */; };
+		CDB26B151C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B0D1C8CFE4D00BEEE4F /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +152,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB26B121C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */,
+				CDB26B131C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */,
+				CDB26B141C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */,
+				CDB26B151C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */,
 				C31138541C88A95D000B173C /* libsqlite3.tbd in Frameworks */,
 				C31138521C88A944000B173C /* SystemConfiguration.framework in Frameworks */,
 				C311384E1C88A8FC000B173C /* AudioToolbox.framework in Frameworks */,
