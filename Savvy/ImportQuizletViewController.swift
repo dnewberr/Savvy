@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Parse
 
 class ImportQuizletViewController: UIViewController {
     
@@ -20,16 +21,81 @@ class ImportQuizletViewController: UIViewController {
                     QuizletAPIManager.sharedInstance.startOAuth2Login()
                 }
                 else {
-                    let path = "https://api.quizlet.com/2.0/users/\(QuizletAPIManager.sharedInstance.userID!)/sets"
-                    let headers = ["Authorization": "Bearer \(QuizletAPIManager.sharedInstance.OAuthToken!)"]
-                    
-                    Alamofire.request(.GET, path, headers: headers)
-                        .responseJSON { response in
-                            print(response)
-                    }
+                    self.importFromQuizlet()
                 }
             }
             QuizletAPIManager.sharedInstance.startOAuth2Login()
+        }
+        else {
+            importFromQuizlet()
+        }
+    }
+    
+    func importFromQuizlet() {
+        let path = "https://api.quizlet.com/2.0/users/\(QuizletAPIManager.sharedInstance.userID!)/sets"
+        let headers = ["Authorization": "Bearer \(QuizletAPIManager.sharedInstance.OAuthToken!)"]
+        
+        Alamofire.request(.GET, path, headers: headers)
+            .response { (request, response, data, error) in
+                if let data = data {
+                    let json = JSON(data: data)
+                    print(json)
+                    
+                    for (_, set) in json {
+                        let username = set["creator"]["username"].stringValue
+                        let setName = set["title"].stringValue
+                        
+                        // Finding the set in Parse to make sure we don't have duplicates.
+                        let query = PFQuery(className: "Set")
+                        query.whereKey("username", equalTo: username)
+                        query.whereKey("set", equalTo: setName)
+                        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+                            if error == nil {
+                                if let objects = objects {
+                                    if objects.count == 0 {
+                                        // No objects, so save it to Parse.
+                                        let setObject = PFObject(className: "Set")
+                                        setObject["username"] = username
+                                        setObject["set"] = setName
+                                        setObject.saveInBackgroundWithBlock { (success, error) -> Void in
+                                            print("Set \(set["title"].stringValue) is saved")
+                                        }
+                                    }
+                                    for (_, card) in set["terms"] {
+                                        // Finding the card in Parse to make sure we don't have duplicates.
+                                        let query = PFQuery(className: "Flashcard")
+                                        query.whereKey("username", equalTo: username)
+                                        query.whereKey("set", equalTo: setName)
+                                        query.whereKey("term", equalTo: card["term"].stringValue)
+                                        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+                                            if error == nil {
+                                                if let objects = objects {
+                                                    if objects.count == 0 {
+                                                        // No objects, so save it to Parse.
+                                                        let cardObject = PFObject(className: "Flashcard")
+                                                        cardObject["username"] = username
+                                                        cardObject["set"] = setName
+                                                        cardObject["term"] = card["term"].stringValue
+                                                        cardObject["definition"] = card["definition"].stringValue
+                                                        cardObject.saveInBackgroundWithBlock { (success, error) -> Void in
+                                                            print("Card \(cardObject["term"]) is saved")
+                                                        }
+                                                    }
+                                                    else {
+                                                        // There is already an object, so update the definition
+                                                        objects[0]["definition"] = card["definition"].stringValue
+                                                        objects[0].saveInBackground()
+                                                        print("Card \(objects[0]["term"]) is updated")
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
         }
     }
     

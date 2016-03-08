@@ -12,6 +12,7 @@
 		C311384E1C88A8FC000B173C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C311384D1C88A8FC000B173C /* AudioToolbox.framework */; };
 		C31138521C88A944000B173C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31138511C88A944000B173C /* SystemConfiguration.framework */; };
 		C31138541C88A95D000B173C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C31138531C88A95D000B173C /* libsqlite3.tbd */; };
+		C367C56B1C8E8D2900143775 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C367C56A1C8E8D2900143775 /* SwiftyJSON.swift */; };
 		C38030BC1C6DA41400C37FBA /* StudySetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */; };
 		C3BC86F01C6A74D300252F97 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86EF1C6A74D300252F97 /* Flashcard.swift */; };
 		C3BC86F21C6A782600252F97 /* ViewSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */; };
@@ -113,6 +114,7 @@
 		C311384D1C88A8FC000B173C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C31138511C88A944000B173C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C31138531C88A95D000B173C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C367C56A1C8E8D2900143775 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySetViewController.swift; sourceTree = "<group>"; };
 		C3BC86EF1C6A74D300252F97 /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 		C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSetsViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				CD39B07D1C74319600407A9D /* EditCards */,
 				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
 				C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */,
+				C367C56A1C8E8D2900143775 /* SwiftyJSON.swift */,
 				CD39B07C1C74318E00407A9D /* Badges */,
 				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
@@ -544,6 +547,7 @@
 				CD9D24C51C6135FC001F75DF /* LoginViewController.swift in Sources */,
 				CD39B0791C74302D00407A9D /* BadgesCollectionViewController.swift in Sources */,
 				CD9D24C31C6135FC001F75DF /* AppDelegate.swift in Sources */,
+				C367C56B1C8E8D2900143775 /* SwiftyJSON.swift in Sources */,
 				CD39B0701C7315FF00407A9D /* EditCardsViewController.swift in Sources */,
 				CD39B0691C730E1A00407A9D /* FlashcardViewController.swift in Sources */,
 				CD9D24F71C614AFA001F75DF /* HomeViewController.swift in Sources */,

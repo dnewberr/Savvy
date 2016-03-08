@@ -27,15 +27,6 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
     // Allows unwinding to home
     @IBAction func unwindToHomeViewController(segue: UIStoryboardSegue) {}
     
-//    @IBAction func logOut(sender: AnyObject) {
-//        let loginManager = FBSDKLoginManager()
-//        loginManager.logOut() // this is an instance function
-//        
-//        print("User will now be logged out of Facebook.")
-//        
-//        performSegueWithIdentifier("homeToLogin", sender: sender)
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Populates array with flashcards for testing purposes
