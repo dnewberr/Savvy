@@ -9,6 +9,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+    @IBOutlet weak var setNameLabel: UILabel!
     @IBAction func studySet(sender: AnyObject) {
         performSegueWithIdentifier("resultToStudy", sender: sender)
     }
@@ -27,6 +28,7 @@ class ResultViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

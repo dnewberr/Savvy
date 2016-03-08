@@ -9,7 +9,7 @@
 import UIKit
 
 class GameViewController: UIViewController {
-
+    @IBOutlet weak var setNameLabel: UILabel!
     @IBAction func submitAnswers(sender: AnyObject) {
         performSegueWithIdentifier("gameToResult", sender: sender)
     }
@@ -30,7 +30,13 @@ class GameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "gameToResult" {
+            let dest = segue.destinationViewController as! GameViewController
+            dest.setNameLabel.text = setNameLabel.text
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

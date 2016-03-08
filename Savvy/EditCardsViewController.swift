@@ -8,15 +8,20 @@
 
 import UIKit
 
+class EditTableViewCell : UITableViewCell {
+    
+    @IBOutlet weak var definitionTextField: UITextField!
+    @IBOutlet weak var termNameTextField: UITextField!
+}
 
-class EditCardsViewController: UIViewController {
+class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var cardsToCreate : Int!
     var cardSetName : String!
     var setDueDate : NSDate?
     var prevSceneId: String!
-    var prevScene: UIViewController!
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var editCardsTableView: UITableView!
  
     @IBAction func done(sender: AnyObject) {
         let alertController = UIAlertController(title: "",
@@ -27,7 +32,7 @@ class EditCardsViewController: UIViewController {
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Default,
                 handler: { (action: UIAlertAction!) in
-                    self.presentViewController(self.prevScene, animated: false, completion: nil)
+                    self.performSegueWithIdentifier(self.prevSceneId, sender: sender)
             }))
         
         alertController.addAction(
@@ -48,7 +53,7 @@ class EditCardsViewController: UIViewController {
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Destructive,
                 handler: { (action: UIAlertAction!) in
-                    self.presentViewController(self.prevScene, animated: false, completion: nil)
+                    self.performSegueWithIdentifier(self.prevSceneId, sender: sender)
             }))
         
         alertController.addAction(
@@ -63,15 +68,29 @@ class EditCardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if prevSceneId == "View" {
-            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! ViewSetsViewController
-        } else {
-            prevScene = self.storyboard!.instantiateViewControllerWithIdentifier(prevSceneId) as! HomeViewController
-        }
+        prevSceneId = prevSceneId == "View" ? "editCardsToViewSet" : "editCardsToHome"
         
         nameLabel.text? = cardSetName
+        
+        //self.editCardsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "editCell")
     }
 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cardsToCreate;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = editCardsTableView.dequeueReusableCellWithIdentifier("editCell") as! EditTableViewCell
+        
+        
+        return cell
+    }
+    
+    /*func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        print("You selected cell #\(indexPath.row)!")
+    }*/
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -9,7 +9,8 @@
 import UIKit
 
 class StudySetViewController: UIViewController {
-
+    @IBOutlet weak var setNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,6 +19,13 @@ class StudySetViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "studyToGame" {
+            let dest = segue.destinationViewController as! GameViewController
+            dest.setNameLabel.text = setNameLabel.text
+        }
+    }
 
     /*
     // MARK: - Navigation

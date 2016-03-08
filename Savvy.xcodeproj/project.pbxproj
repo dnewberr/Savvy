@@ -243,6 +243,7 @@
 		CD6B23FC1C758CDC004C6401 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				C367C56A1C8E8D2900143775 /* SwiftyJSON.swift */,
 				CD6B24A41C759644004C6401 /* Alamofire */,
 				CD6B24AC1C75964B004C6401 /* Facebook */,
 			);
@@ -302,7 +303,6 @@
 				CD39B07D1C74319600407A9D /* EditCards */,
 				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
 				C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */,
-				C367C56A1C8E8D2900143775 /* SwiftyJSON.swift */,
 				CD39B07C1C74318E00407A9D /* Badges */,
 				CD9D24C61C6135FC001F75DF /* Main.storyboard */,
 				CD9D24CB1C6135FC001F75DF /* LaunchScreen.storyboard */,
