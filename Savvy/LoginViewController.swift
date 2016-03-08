@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
+    var user: UserModel?
     
     // Allows unwinding to login
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {}
@@ -19,14 +20,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageName = "background"
-        self.view?.backgroundColor = UIColor(patternImage: UIImage(named: imageName)!)    }
+        self.view?.backgroundColor = UIColor(patternImage: UIImage(named: imageName)!)
+        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onProfileUpdated:", name:FBSDKProfileDidChangeNotification, object: nil)
+    }
     
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
+            
             print("User was successfully logged in to Facebook.")
+            user = UserModel.init(username: FBSDKProfile.currentProfile().userID)
             reviewOrHomeScene()
         }
     }
+    
+    func onProfileUpdated(notification: NSNotification) {
+        
+    }
+    
     
     func reviewOrHomeScene() {
         performSegueWithIdentifier("loginToHome", sender: nil)
@@ -40,9 +51,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loginToHome" {
+            let dest = segue.destinationViewController as! HomeViewController
+            dest.user = user
+        }
     }
 }
 

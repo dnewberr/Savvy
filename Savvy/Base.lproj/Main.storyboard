@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -714,8 +714,8 @@
                         <outlet property="dueDatePicker" destination="HkS-Io-dtL" id="muG-K4-D75"/>
                         <outlet property="numCardsTextField" destination="joW-WM-HPR" id="5Ll-Qx-AYn"/>
                         <outlet property="setNameTextField" destination="5ZX-Wb-xXl" id="lsc-yt-9qe"/>
-                        <segue destination="Xj0-CB-8Lz" kind="unwind" identifier="editToHome" unwindAction="unwindToHomeViewController:" id="tqg-EO-RTh"/>
-                        <segue destination="Xj0-CB-8Lz" kind="unwind" identifier="editToViewSets" unwindAction="unwindToViewSetsViewController:" id="IJZ-hF-UcP"/>
+                        <segue destination="Xj0-CB-8Lz" kind="unwind" identifier="createSetToHome" unwindAction="unwindToHomeViewController:" id="tqg-EO-RTh"/>
+                        <segue destination="Xj0-CB-8Lz" kind="unwind" identifier="createSetToViewSets" unwindAction="unwindToViewSetsViewController:" id="IJZ-hF-UcP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-t5-9fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -771,10 +771,10 @@
                                 <color key="sectionIndexBackgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editCell" rowHeight="60" id="xkS-wD-04x" customClass="EditTableViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="560" height="60"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="560" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xkS-wD-04x" id="YbG-fl-gbX">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agU-Pf-D0G">
@@ -857,20 +857,18 @@
                     <connections>
                         <outlet property="editCardsTableView" destination="Heh-Jm-4sg" id="Z3t-Xd-pF8"/>
                         <outlet property="nameLabel" destination="Pkb-bI-AkD" id="J2R-MR-deu"/>
-                        <segue destination="w6k-X3-KLg" kind="show" identifier="editCardsToHome" id="81R-Ep-1sR"/>
-                        <segue destination="VJb-lF-fGQ" kind="show" identifier="editCardsToViewSet" id="2jV-cD-pRY"/>
+                        <segue destination="CiO-Vb-4BY" kind="unwind" identifier="editCardsToCreateSet" unwindAction="unwindToCreateSetViewController:" id="r1s-sH-yUJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arC-Js-goO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CiO-Vb-4BY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1416" y="1752"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="81R-Ep-1sR"/>
-        <segue reference="ejC-XN-Ikq"/>
-        <segue reference="2jV-cD-pRY"/>
         <segue reference="JtU-gy-wvQ"/>
+        <segue reference="ejC-XN-Ikq"/>
         <segue reference="0YN-Wt-iT0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>

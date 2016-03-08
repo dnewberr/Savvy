@@ -18,7 +18,6 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     var cardsToCreate : Int!
     var cardSetName : String!
     var setDueDate : NSDate?
-    var prevSceneId: String!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var editCardsTableView: UITableView!
@@ -32,7 +31,7 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Default,
                 handler: { (action: UIAlertAction!) in
-                    self.performSegueWithIdentifier(self.prevSceneId, sender: sender)
+                    self.performSegueWithIdentifier("editCardsToCreateSet", sender: sender)
             }))
         
         alertController.addAction(
@@ -53,7 +52,7 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Destructive,
                 handler: { (action: UIAlertAction!) in
-                    self.performSegueWithIdentifier(self.prevSceneId, sender: sender)
+                    self.performSegueWithIdentifier("editCardsToCreateSet", sender: sender)
             }))
         
         alertController.addAction(
@@ -67,8 +66,6 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        prevSceneId = prevSceneId == "View" ? "editCardsToViewSet" : "editCardsToHome"
         
         nameLabel.text? = cardSetName
         

@@ -9,7 +9,7 @@
 import UIKit
 
 class FlashcardViewController: UIViewController {
-    var currentCard : Flashcard!
+    var currentCard : FlashcardModel!
     var front = true
     
     @IBOutlet weak var currentView: UILabel!
@@ -17,7 +17,7 @@ class FlashcardViewController: UIViewController {
     
     @IBAction func flipCard(sender: AnyObject) {
         if front {
-            currentView.text = currentCard.description
+            currentView.text = currentCard.definition
             front = false
         } else {
             currentView.text = currentCard.term

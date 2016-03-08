@@ -12,17 +12,17 @@ import FBSDKLoginKit
 import Parse
 
 class CardCollectionViewCell: UICollectionViewCell {
-    var flashcard: Flashcard?
+    var flashcard: FlashcardModel?
     @IBOutlet weak var label: UILabel!
 }
 
 class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
+    var user: UserModel?
     // Collection of flashcards
     @IBOutlet weak var flashcardCollection: UICollectionView!
-    
     // Array to hold flashcards
-    var cardArray = Array<Flashcard>()
+    var cardArray = Array<FlashcardModel>()
     
     // Allows unwinding to home
     @IBAction func unwindToHomeViewController(segue: UIStoryboardSegue) {}
@@ -31,7 +31,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         super.viewDidLoad()
         // Populates array with flashcards for testing purposes
         for (var i = 0; i < 5; i++) {
-            cardArray.append(Flashcard(newTerm: String(i), newDef: "The def is " + String(i * 2), newDue: 0))
+            cardArray.append(FlashcardModel(newTerm: String(i), newDef: "The def is " + String(i * 2), newDue: 0))
         }
         setUpFlashcardCollection()
     }
@@ -96,11 +96,20 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         if segue.identifier == "homeToCreateSet" {
             let dest = segue.destinationViewController as! CreateSetController
             dest.prevSceneId = "Home"
+            dest.user = user
         }
         else if segue.identifier == "homeToLogin" {
             let loginManager = FBSDKLoginManager()
             loginManager.logOut() // this is an instance function
             print("User will now be logged out of Facebook.")
+        }
+        else if segue.identifier == "homeToQuizlet" {
+            let dest = segue.destinationViewController as! ImportQuizletViewController
+            dest.user = user
+        }
+        else if segue.identifier == "homeToViewSets" {
+            let dest = segue.destinationViewController as! ViewSetsViewController
+            dest.user = user
         }
     }
 }

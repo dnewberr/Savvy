@@ -13,6 +13,7 @@ class CreateSetController: UIViewController {
     var cardSetName: String!
     var setDueDate: NSDate?
     var prevSceneId: String!
+    var user: UserModel?
     
     @IBOutlet weak var numCardsTextField: UITextField!
     @IBOutlet weak var setNameTextField: UITextField!
@@ -22,6 +23,9 @@ class CreateSetController: UIViewController {
     @IBAction func switchChange(sender: AnyObject) {
          dueDatePicker.hidden = !dueDatePicker.hidden
     }
+    
+    // Allows unwinding to createSet
+    @IBAction func unwindToCreateSetViewController(segue: UIStoryboardSegue) {}
     
     @IBOutlet weak var doneButton: UIButton!
     @IBAction func donePushedAction(sender: AnyObject) {
@@ -35,10 +39,10 @@ class CreateSetController: UIViewController {
                     style: UIAlertActionStyle.Default,
                     handler: { (action: UIAlertAction!) in
                         if self.prevSceneId == "Home" {
-                            self.performSegueWithIdentifier("editToHome", sender: sender)
+                            self.performSegueWithIdentifier("createSetToHome", sender: sender)
                         }
                         else if self.prevSceneId == "View" {
-                            self.performSegueWithIdentifier("editToViewSets", sender: sender)
+                            self.performSegueWithIdentifier("createSetToViewSets", sender: sender)
                         }
                 }))
             
@@ -62,10 +66,10 @@ class CreateSetController: UIViewController {
                 style: UIAlertActionStyle.Destructive,
                 handler: { (action: UIAlertAction!) in
                     if self.prevSceneId == "Home" {
-                        self.performSegueWithIdentifier("editToHome", sender: sender)
+                        self.performSegueWithIdentifier("createSetToHome", sender: sender)
                     }
                     else if self.prevSceneId == "View" {
-                        self.performSegueWithIdentifier("editToViewSets", sender: sender)
+                        self.performSegueWithIdentifier("createSetToViewSets", sender: sender)
                     }
             }))
         
@@ -151,7 +155,6 @@ class CreateSetController: UIViewController {
                 dest.cardsToCreate = cardsToCreate
                 dest.cardSetName = cardSetName
                 dest.setDueDate = setDueDate
-                dest.prevSceneId = prevSceneId
         }
     }
 }

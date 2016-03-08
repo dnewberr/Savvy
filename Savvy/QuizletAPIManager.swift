@@ -49,7 +49,7 @@ class QuizletAPIManager {
             if let receivedCode = code {
                 let getTokenPath = "https://api.quizlet.com/oauth/token"
                 let tokenParams = ["grant_type": "authorization_code", "code": receivedCode, "redirect_uri": "cpe458-savvy://after-oauth", "client_id": clientID, "client_secret": clientSecret]
-                Alamofire.request(.POST, getTokenPath, parameters: tokenParams).response { (request, response, results, error) in
+                Alamofire.request(.POST, getTokenPath, parameters: tokenParams).response { [unowned self] (request, response, results, error) in
                     
                     if let anError = error {
                         print(anError)

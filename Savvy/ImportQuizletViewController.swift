@@ -11,11 +11,12 @@ import Alamofire
 import Parse
 
 class ImportQuizletViewController: UIViewController {
+    var user: UserModel?
     
     func authenticateQuizlet() {
         if !QuizletAPIManager.sharedInstance.hasOAuthToken() {
             QuizletAPIManager.sharedInstance.OAuthTokenCompletionHandler = {
-                (error) -> Void in
+                [unowned self] (error) -> Void in
                 if let receivedError = error {
                     print(receivedError)
                     QuizletAPIManager.sharedInstance.startOAuth2Login()
@@ -36,13 +37,12 @@ class ImportQuizletViewController: UIViewController {
         let headers = ["Authorization": "Bearer \(QuizletAPIManager.sharedInstance.OAuthToken!)"]
         
         Alamofire.request(.GET, path, headers: headers)
-            .response { (request, response, data, error) in
-                if let data = data {
+            .response { [unowned self] (request, response, data, error) in
+                if let data = data, user = self.user, username = user.username {
                     let json = JSON(data: data)
                     print(json)
                     
                     for (_, set) in json {
-                        let username = set["creator"]["username"].stringValue
                         let setName = set["title"].stringValue
                         
                         // Finding the set in Parse to make sure we don't have duplicates.
