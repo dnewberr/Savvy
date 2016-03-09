@@ -10,14 +10,9 @@ import UIKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var setNameLabel: UILabel!
-    @IBAction func submitAnswers(sender: AnyObject) {
-        performSegueWithIdentifier("gameToResult", sender: sender)
-    }
     
-    @IBAction func quit(sender: AnyObject) {
-        // alert before returning to study
-        performSegueWithIdentifier("gameToStudy", sender: sender)
-    }
+    // Allows unwinding to game
+    @IBAction func unwindToGameViewController(segue: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +27,8 @@ class GameViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gameToResult" {
-            let dest = segue.destinationViewController as! GameViewController
-            dest.setNameLabel.text = setNameLabel.text
+            let dest = segue.destinationViewController as! ResultViewController
+            //dest.setNameLabel.text = setNameLabel.text
         }
     }
     

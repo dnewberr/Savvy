@@ -33,7 +33,7 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         if segue.identifier == "viewSetsToStudy" {
             let dest = segue.destinationViewController as! StudySetViewController
-            dest.setNameLabel.text = pickerData[setPicker.selectedRowInComponent(0)]
+            dest.curSet = pickerData[setPicker.selectedRowInComponent(0)]
         }
     }
     

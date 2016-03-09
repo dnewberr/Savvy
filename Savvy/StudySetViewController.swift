@@ -10,9 +10,14 @@ import UIKit
 
 class StudySetViewController: UIViewController {
     @IBOutlet weak var setNameLabel: UILabel!
+    var curSet: String!
+    
+    // Allows unwinding to study sets
+    @IBAction func unwindToStudySetsViewController(segue: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNameLabel.text = curSet
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +28,7 @@ class StudySetViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "studyToGame" {
             let dest = segue.destinationViewController as! GameViewController
-            dest.setNameLabel.text = setNameLabel.text
+            //dest.setNameLabel.text = setNameLabel.text
         }
     }
 

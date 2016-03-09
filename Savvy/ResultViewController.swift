@@ -10,13 +10,6 @@ import UIKit
 
 class ResultViewController: UIViewController {
     @IBOutlet weak var setNameLabel: UILabel!
-    @IBAction func studySet(sender: AnyObject) {
-        performSegueWithIdentifier("resultToStudy", sender: sender)
-    }
-    
-    @IBAction func tryAgain(sender: AnyObject) {
-         performSegueWithIdentifier("resultToGame", sender: sender)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
