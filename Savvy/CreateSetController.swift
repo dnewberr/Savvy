@@ -14,6 +14,7 @@ class CreateSetController: UIViewController {
     var setDueDate: NSDate?
     var prevSceneId: String!
     var user: UserModel?
+    var flashcardsList: [FlashcardModel]?
     
     @IBOutlet weak var numCardsTextField: UITextField!
     @IBOutlet weak var setNameTextField: UITextField!
@@ -141,6 +142,29 @@ class CreateSetController: UIViewController {
         return true
     }
     
+    func checkFlashcardListSize() {
+        if flashcardsList == nil {
+            flashcardsList = [FlashcardModel]()
+            for _ in 1...cardsToCreate {
+                flashcardsList?.append(FlashcardModel())
+            }
+        }
+        else {
+            if let count = flashcardsList?.count {
+                if count < cardsToCreate {
+                    for _ in 1...(cardsToCreate - count) {
+                        flashcardsList?.append(FlashcardModel())
+                    }
+                }
+                else if count > cardsToCreate {
+                    for _ in 1...(count - cardsToCreate) {
+                        flashcardsList?.removeLast()
+                    }
+                }
+            }
+        }
+    }
+    
     // Checks the inputs before using the segue, stops if inputs are not correct
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "createSetToEditCards" {
@@ -152,9 +176,14 @@ class CreateSetController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "createSetToEditCards" {
             let dest = segue.destinationViewController as! EditCardsViewController
-                dest.cardsToCreate = cardsToCreate
-                dest.cardSetName = cardSetName
-                dest.setDueDate = setDueDate
+            dest.cardsToCreate = cardsToCreate
+            dest.cardSetName = cardSetName
+            dest.setDueDate = setDueDate
+            checkFlashcardListSize()
+            dest.flashcardsList = [FlashcardModel]()
+            for card in flashcardsList! {
+                dest.flashcardsList.append(FlashcardModel(newTerm: card.term, newDef: card.definition, newDue: card.due))
+            }
         }
     }
 }

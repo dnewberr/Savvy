@@ -10,10 +10,11 @@ import UIKit
 
 class ResultViewController: UIViewController {
     @IBOutlet weak var setNameLabel: UILabel!
+    var curSet: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setNameLabel.text = curSet
         // Do any additional setup after loading the view.
     }
 

@@ -10,13 +10,14 @@ import UIKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var setNameLabel: UILabel!
+    var curSet: String!
     
     // Allows unwinding to game
     @IBAction func unwindToGameViewController(segue: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setNameLabel.text = curSet
         // Do any additional setup after loading the view.
     }
 
@@ -28,7 +29,7 @@ class GameViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gameToResult" {
             let dest = segue.destinationViewController as! ResultViewController
-            //dest.setNameLabel.text = setNameLabel.text
+            dest.curSet = curSet
         }
     }
     

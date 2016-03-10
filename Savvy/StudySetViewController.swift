@@ -28,7 +28,7 @@ class StudySetViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "studyToGame" {
             let dest = segue.destinationViewController as! GameViewController
-            //dest.setNameLabel.text = setNameLabel.text
+            dest.curSet = curSet
         }
     }
 

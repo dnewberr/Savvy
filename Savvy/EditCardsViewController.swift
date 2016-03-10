@@ -8,16 +8,20 @@
 
 import UIKit
 
-class EditTableViewCell : UITableViewCell {
-    
-    @IBOutlet weak var definitionTextField: UITextField!
-    @IBOutlet weak var termNameTextField: UITextField!
+class EditTableViewCell: UITableViewCell {
+    @IBOutlet weak var definitionTextField: DefTextField!
+    @IBOutlet weak var termNameTextField: TermTextField!
 }
 
-class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var cardsToCreate : Int!
-    var cardSetName : String!
-    var setDueDate : NSDate?
+class DefTextField: UITextField {}
+class TermTextField: UITextField {}
+
+class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    var cardsToCreate: Int!
+    var cardSetName: String!
+    var setDueDate: NSDate?
+    var flashcardsList: [FlashcardModel]!
+    var saved = false
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var editCardsTableView: UITableView!
@@ -30,7 +34,8 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         alertController.addAction(
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Default,
-                handler: { (action: UIAlertAction!) in
+                handler: { [unowned self] (action: UIAlertAction!) in
+                    self.saved = true
                     self.performSegueWithIdentifier("editCardsToCreateSet", sender: sender)
             }))
         
@@ -51,7 +56,7 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         alertController.addAction(
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Destructive,
-                handler: { (action: UIAlertAction!) in
+                handler: { [unowned self] (action: UIAlertAction!) in
                     self.performSegueWithIdentifier("editCardsToCreateSet", sender: sender)
             }))
         
@@ -66,7 +71,6 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         nameLabel.text? = cardSetName
         
         //self.editCardsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "editCell")
@@ -79,8 +83,41 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = editCardsTableView.dequeueReusableCellWithIdentifier("editCell") as! EditTableViewCell
         
+        // Used to keep track of index path when saving edits
+        cell.termNameTextField.tag = indexPath.row
+        cell.definitionTextField.tag = indexPath.row
+        
+        cell.termNameTextField.delegate = self
+        cell.definitionTextField.delegate = self
         
         return cell
+    }
+    
+    // Displays the information of the corresponding flashcard
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = cell as! EditTableViewCell
+    
+        cell.termNameTextField.text = flashcardsList[indexPath.row].term
+        cell.definitionTextField.text = flashcardsList[indexPath.row].definition
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField is TermTextField {
+            flashcardsList[textField.tag].term = textField.text!
+        }
+        else if textField is DefTextField {
+            flashcardsList[textField.tag].definition = textField.text!
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
     }
     
     /*func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
@@ -90,5 +127,12 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "editCardsToCreateSet" && saved {
+            let dest = segue.destinationViewController as! CreateSetController
+            dest.flashcardsList = flashcardsList
+        }
     }
 }
