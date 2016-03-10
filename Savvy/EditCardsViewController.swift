@@ -17,7 +17,6 @@ class DefTextField: UITextField {}
 class TermTextField: UITextField {}
 
 class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    var cardsToCreate: Int!
     var cardSetName: String!
     var setDueDate: NSDate?
     var flashcardsList: [FlashcardModel]!
@@ -72,12 +71,12 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text? = cardSetName
-        
+        editCardsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
         //self.editCardsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "editCell")
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardsToCreate;
+        return flashcardsList.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

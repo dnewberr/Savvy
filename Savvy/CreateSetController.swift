@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateSetController: UIViewController {
+class CreateSetController: UIViewController, UITextFieldDelegate {
     var cardsToCreate: Int!
     var cardSetName: String!
     var setDueDate: NSDate?
@@ -87,6 +87,8 @@ class CreateSetController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dueDatePicker.hidden = true
+        numCardsTextField.delegate = self
+        setNameTextField.delegate = self
     }
     
     func checkInput() -> Bool {
@@ -165,6 +167,16 @@ class CreateSetController: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
     // Checks the inputs before using the segue, stops if inputs are not correct
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "createSetToEditCards" {
@@ -176,7 +188,6 @@ class CreateSetController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "createSetToEditCards" {
             let dest = segue.destinationViewController as! EditCardsViewController
-            dest.cardsToCreate = cardsToCreate
             dest.cardSetName = cardSetName
             dest.setDueDate = setDueDate
             checkFlashcardListSize()

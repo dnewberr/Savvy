@@ -690,6 +690,7 @@
                             <constraint firstItem="7wY-U7-Lbq" firstAttribute="top" secondItem="8Co-eV-00d" secondAttribute="bottom" constant="35" id="oSx-FE-YqT"/>
                             <constraint firstItem="HkS-Io-dtL" firstAttribute="leading" secondItem="z5F-o1-eE7" secondAttribute="leading" id="sSg-8w-fwb"/>
                             <constraint firstItem="8Co-eV-00d" firstAttribute="baseline" secondItem="Gcl-BH-uD4" secondAttribute="baseline" id="vnC-LB-Ppx"/>
+                            <constraint firstItem="joW-WM-HPR" firstAttribute="height" secondItem="5ZX-Wb-xXl" secondAttribute="height" id="x3s-4D-mnA"/>
                             <constraint firstItem="FxZ-pt-mfS" firstAttribute="leading" secondItem="z5F-o1-eE7" secondAttribute="leading" constant="196" id="xCn-Pg-hdB"/>
                             <constraint firstItem="joW-WM-HPR" firstAttribute="top" secondItem="2Xu-K2-j4K" secondAttribute="bottom" constant="108" id="ybU-lh-4gM"/>
                             <constraint firstItem="VUR-zj-LOZ" firstAttribute="top" secondItem="5ZX-Wb-xXl" secondAttribute="bottom" constant="59" id="ybs-iQ-Dqf"/>
@@ -751,29 +752,31 @@
                                 <color key="textColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.7725490196" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" sectionIndexMinimumDisplayRowCount="1" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Heh-Jm-4sg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" sectionIndexMinimumDisplayRowCount="1" allowsSelectionDuringEditing="YES" rowHeight="72" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Heh-Jm-4sg">
                                 <rect key="frame" x="20" y="117" width="560" height="443"/>
                                 <color key="backgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editCell" rowHeight="60" id="xkS-wD-04x" customClass="EditTableViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="560" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editCell" rowHeight="72" id="xkS-wD-04x" customClass="EditTableViewCell" customModule="Savvy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49.5" width="560" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xkS-wD-04x" id="YbG-fl-gbX">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agU-Pf-D0G" customClass="TermTextField" customModule="Savvy" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="22" width="143" height="30"/>
+                                                    <rect key="frame" x="8" y="29" width="135" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="143" id="qgt-72-Y1h"/>
+                                                        <constraint firstAttribute="width" constant="135" id="qgt-72-Y1h"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MlT-Zw-31s" customClass="DefTextField" customModule="Savvy" customModuleProvider="target">
-                                                    <rect key="frame" x="151" y="22" width="409" height="30"/>
+                                                    <rect key="frame" x="151" y="29" width="401" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="hpk-Ef-Dgf"/>
                                                     </constraints>
@@ -781,32 +784,33 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-1B-h2F">
-                                                    <rect key="frame" x="51" y="0.0" width="40" height="21"/>
+                                                    <rect key="frame" x="55" y="8" width="40" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mb4-5d-kly">
-                                                    <rect key="frame" x="319" y="0.0" width="73" height="21"/>
+                                                    <rect key="frame" x="315" y="7" width="73" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.69803921568627447" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.82745098039999998" green="0.90980392160000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="ebT-1B-h2F" firstAttribute="baseline" secondItem="mb4-5d-kly" secondAttribute="baseline" id="ELX-My-w0X"/>
-                                                <constraint firstItem="agU-Pf-D0G" firstAttribute="top" secondItem="ebT-1B-h2F" secondAttribute="bottom" constant="1" id="Gu4-9p-zRs"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="MlT-Zw-31s" secondAttribute="bottom" constant="-1" id="Y9n-EB-4Pp"/>
-                                                <constraint firstItem="ebT-1B-h2F" firstAttribute="centerX" secondItem="agU-Pf-D0G" secondAttribute="centerX" id="c2m-Pi-fht"/>
+                                                <constraint firstItem="ebT-1B-h2F" firstAttribute="baseline" secondItem="mb4-5d-kly" secondAttribute="baseline" constant="1" id="ELX-My-w0X"/>
+                                                <constraint firstItem="agU-Pf-D0G" firstAttribute="top" secondItem="ebT-1B-h2F" secondAttribute="bottom" id="Gu4-9p-zRs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="MlT-Zw-31s" secondAttribute="bottom" constant="4.5" id="Y9n-EB-4Pp"/>
+                                                <constraint firstItem="ebT-1B-h2F" firstAttribute="centerX" secondItem="agU-Pf-D0G" secondAttribute="centerX" constant="-0.5" id="c2m-Pi-fht"/>
                                                 <constraint firstItem="MlT-Zw-31s" firstAttribute="top" secondItem="mb4-5d-kly" secondAttribute="bottom" constant="1" id="d1b-az-mWq"/>
                                                 <constraint firstItem="MlT-Zw-31s" firstAttribute="leading" secondItem="agU-Pf-D0G" secondAttribute="trailing" constant="8" id="dqE-Dz-b4o"/>
-                                                <constraint firstAttribute="trailing" secondItem="MlT-Zw-31s" secondAttribute="trailing" id="hLe-wO-BVL"/>
+                                                <constraint firstAttribute="trailing" secondItem="MlT-Zw-31s" secondAttribute="trailing" constant="8" id="hLe-wO-BVL"/>
                                                 <constraint firstItem="mb4-5d-kly" firstAttribute="centerX" secondItem="MlT-Zw-31s" secondAttribute="centerX" id="mzC-A9-YWn"/>
                                                 <constraint firstItem="MlT-Zw-31s" firstAttribute="leading" secondItem="agU-Pf-D0G" secondAttribute="trailing" constant="8" id="poC-b6-ALc"/>
                                                 <constraint firstItem="MlT-Zw-31s" firstAttribute="bottom" secondItem="agU-Pf-D0G" secondAttribute="bottom" id="tmG-Gf-Lbz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="MlT-Zw-31s" firstAttribute="leading" secondItem="xkS-wD-04x" secondAttribute="leading" constant="151" id="edS-Yx-Ada"/>
                                         </constraints>
