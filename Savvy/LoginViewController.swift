@@ -27,8 +27,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            
-            print("User was successfully logged in to Facebook.")
             user = UserModel.init(username: FBSDKProfile.currentProfile().userID)
             reviewOrHomeScene()
         }

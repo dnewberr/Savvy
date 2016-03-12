@@ -34,6 +34,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
             cardArray.append(FlashcardModel(newTerm: String(i), newDef: "The def is " + String(i * 2), newDue: 0))
         }
         setUpFlashcardCollection()
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {

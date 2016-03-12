@@ -9,14 +9,14 @@
 import UIKit
 
 class EditTableViewCell: UITableViewCell {
-    @IBOutlet weak var definitionTextField: DefTextField!
-    @IBOutlet weak var termNameTextField: TermTextField!
+    @IBOutlet weak var termNameTextView: TermTextView!
+    @IBOutlet weak var definitionTextView: DefTextView!
 }
 
-class DefTextField: UITextField {}
-class TermTextField: UITextField {}
+class DefTextView: UITextView {}
+class TermTextView: UITextView {}
 
-class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     var cardSetName: String!
     var setDueDate: NSDate?
     var flashcardsList: [FlashcardModel]!
@@ -72,7 +72,6 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         nameLabel.text? = cardSetName
         editCardsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        //self.editCardsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "editCell")
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,11 +82,11 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = editCardsTableView.dequeueReusableCellWithIdentifier("editCell") as! EditTableViewCell
         
         // Used to keep track of index path when saving edits
-        cell.termNameTextField.tag = indexPath.row
-        cell.definitionTextField.tag = indexPath.row
+        cell.termNameTextView.tag = indexPath.row
+        cell.definitionTextView.tag = indexPath.row
         
-        cell.termNameTextField.delegate = self
-        cell.definitionTextField.delegate = self
+        cell.termNameTextView.delegate = self
+        cell.definitionTextView.delegate = self
         
         return cell
     }
@@ -96,33 +95,23 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let cell = cell as! EditTableViewCell
     
-        cell.termNameTextField.text = flashcardsList[indexPath.row].term
-        cell.definitionTextField.text = flashcardsList[indexPath.row].definition
+        cell.termNameTextView.text = flashcardsList[indexPath.row].term
+        cell.definitionTextView.text = flashcardsList[indexPath.row].definition
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        if textField is TermTextField {
-            flashcardsList[textField.tag].term = textField.text!
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView is TermTextView {
+            flashcardsList[textView.tag].term = textView.text!
         }
-        else if textField is DefTextField {
-            flashcardsList[textField.tag].definition = textField.text!
+        else if textView is DefTextView {
+            flashcardsList[textView.tag].definition = textView.text!
         }
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
-    
-    /*func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        print("You selected cell #\(indexPath.row)!")
-    }*/
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
