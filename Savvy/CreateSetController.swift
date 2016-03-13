@@ -7,16 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class CreateSetController: UIViewController, UITextFieldDelegate {
-    var cardsToCreate: Int!
     var cardSetName: String!
-    var setDueDate: NSDate?
     var prevSceneId: String!
     var user: UserModel?
     var flashcardsList: [FlashcardModel]?
     
-    @IBOutlet weak var numCardsTextField: UITextField!
     @IBOutlet weak var setNameTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
@@ -38,7 +36,8 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
             alertController.addAction(
                 UIAlertAction(title: "Yes",
                     style: UIAlertActionStyle.Default,
-                    handler: { (action: UIAlertAction!) in
+                    handler: { [unowned self] (action: UIAlertAction!) in
+                        self.saveToParse()
                         if self.prevSceneId == "Home" {
                             self.performSegueWithIdentifier("createSetToHome", sender: sender)
                         }
@@ -65,7 +64,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         alertController.addAction(
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Destructive,
-                handler: { (action: UIAlertAction!) in
+                handler: { [unowned self] (action: UIAlertAction!) in
                     if self.prevSceneId == "Home" {
                         self.performSegueWithIdentifier("createSetToHome", sender: sender)
                     }
@@ -87,32 +86,10 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         dueDatePicker.hidden = true
-        numCardsTextField.delegate = self
         setNameTextField.delegate = self
     }
     
     func checkInput() -> Bool {
-        if let numCards = numCardsTextField.text {
-            let numCards = Int(numCards)
-            if numCards != nil && numCards > 0 {
-                cardsToCreate = numCards
-            } else {
-                let alertController = UIAlertController(title: "",
-                    message: "The number of cards must be a natural number greater than 0 (ie, 1, 2, 3, ...).",
-                    preferredStyle: UIAlertControllerStyle.Alert)
-                
-                alertController.addAction(
-                    UIAlertAction(title: "Dismiss",
-                        style: UIAlertActionStyle.Default,handler: nil))
-                
-                self.presentViewController(alertController,
-                    animated: true, completion: nil)
-                
-                return false
-            }
-        }
-        
-        
         if let setName = setNameTextField.text {
             if setName.isEmpty {
                 let alertController = UIAlertController(title: "",
@@ -137,30 +114,67 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
                 cardSetName = setName
             }
         }
-        if !dueDatePicker.hidden {
-            setDueDate = dueDatePicker.date
-        }
         
         return true
     }
     
-    func checkFlashcardListSize() {
-        if flashcardsList == nil {
-            flashcardsList = [FlashcardModel]()
-            for _ in 1...cardsToCreate {
-                flashcardsList?.append(FlashcardModel())
-            }
-        }
-        else {
-            if let count = flashcardsList?.count {
-                if count < cardsToCreate {
-                    for _ in 1...(cardsToCreate - count) {
-                        flashcardsList?.append(FlashcardModel())
-                    }
-                }
-                else if count > cardsToCreate {
-                    for _ in 1...(count - cardsToCreate) {
-                        flashcardsList?.removeLast()
+    func saveToParse() {
+        if let username = user!.username {
+            // Making sure we don't have duplicate sets
+            let query = PFQuery(className: "Set")
+            query.whereKey("username", equalTo: username)
+            query.whereKey("set", equalTo: cardSetName)
+            query.findObjectsInBackgroundWithBlock { [weak self] (objects, error) -> Void in
+                if error == nil {
+                    if let actualSelf = self, objects = objects {
+                        if objects.count == 0 {
+                            // No objects, so save it to Parse.
+                            let setObject = PFObject(className: "Set")
+                            setObject["username"] = username
+                            setObject["set"] = actualSelf.cardSetName
+                            if !actualSelf.dueDatePicker.hidden {
+                                setObject["dueDate"] = actualSelf.dueDatePicker.date
+                            }
+                            setObject.saveInBackground()
+                        }
+                        else {
+                            // The set is already there, so just update the due date.
+                            if !actualSelf.dueDatePicker.hidden {
+                                objects[0]["dueDate"] = actualSelf.dueDatePicker.date
+                            }
+                            else {
+                                objects[0]["dueDate"] = nil
+                            }
+                            objects[0].saveInBackground()
+                        }
+                        
+                        for card in actualSelf.flashcardsList! {
+                            // Finding the card in Parse to make sure we don't have duplicates.
+                            let query = PFQuery(className: "Flashcard")
+                            query.whereKey("username", equalTo: username)
+                            query.whereKey("set", equalTo: actualSelf.cardSetName)
+                            query.whereKey("term", equalTo: card.term)
+                            query.findObjectsInBackgroundWithBlock() { (objects, error) -> Void in
+                                if error == nil {
+                                    if let objects = objects {
+                                        if objects.count == 0 {
+                                            // No objects, so save it to Parse.
+                                            let cardObject = PFObject(className: "Flashcard")
+                                            cardObject["username"] = username
+                                            cardObject["set"] = actualSelf.cardSetName
+                                            cardObject["term"] = card.term
+                                            cardObject["definition"] = card.definition
+                                            cardObject.saveInBackground()
+                                        }
+                                        else {
+                                            // There is already an object, so update the definition
+                                            objects[0]["definition"] = card.definition
+                                            objects[0].saveInBackground()
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -189,8 +203,10 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "createSetToEditCards" {
             let dest = segue.destinationViewController as! EditCardsViewController
             dest.cardSetName = cardSetName
-            dest.setDueDate = setDueDate
-            checkFlashcardListSize()
+            
+            if flashcardsList == nil {
+                flashcardsList = [FlashcardModel.init()]
+            }
             dest.flashcardsList = [FlashcardModel]()
             for card in flashcardsList! {
                 dest.flashcardsList.append(FlashcardModel(newTerm: card.term, newDef: card.definition, newDue: card.due))

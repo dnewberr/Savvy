@@ -18,7 +18,6 @@ class TermTextView: UITextView {}
 
 class EditCardsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     var cardSetName: String!
-    var setDueDate: NSDate?
     var flashcardsList: [FlashcardModel]!
     var saved = false
     
@@ -68,10 +67,16 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
             animated: true, completion: nil)
     }
     
+    @IBAction func addCard(sender: AnyObject) {
+        flashcardsList.append(FlashcardModel.init())
+        let indexPath = [NSIndexPath(forRow: flashcardsList.count - 1, inSection: 0)]
+        editCardsTableView.insertRowsAtIndexPaths(indexPath, withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text? = cardSetName
-        editCardsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,6 +111,12 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         else if textView is DefTextView {
             flashcardsList[textView.tag].definition = textView.text!
         }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPathArr = [indexPath]
+        flashcardsList.removeAtIndex(indexPath.row)
+        editCardsTableView.deleteRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Fade)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

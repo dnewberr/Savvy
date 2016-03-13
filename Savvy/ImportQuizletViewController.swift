@@ -57,9 +57,7 @@ class ImportQuizletViewController: UIViewController {
                                         let setObject = PFObject(className: "Set")
                                         setObject["username"] = username
                                         setObject["set"] = setName
-                                        setObject.saveInBackgroundWithBlock { (success, error) -> Void in
-                                            print("Set \(set["title"].stringValue) is saved")
-                                        }
+                                        setObject.saveInBackground()
                                     }
                                     for (_, card) in set["terms"] {
                                         // Finding the card in Parse to make sure we don't have duplicates.
@@ -77,15 +75,12 @@ class ImportQuizletViewController: UIViewController {
                                                         cardObject["set"] = setName
                                                         cardObject["term"] = card["term"].stringValue
                                                         cardObject["definition"] = card["definition"].stringValue
-                                                        cardObject.saveInBackgroundWithBlock { (success, error) -> Void in
-                                                            print("Card \(cardObject["term"]) is saved")
-                                                        }
+                                                        cardObject.saveInBackground()
                                                     }
                                                     else {
                                                         // There is already an object, so update the definition
                                                         objects[0]["definition"] = card["definition"].stringValue
                                                         objects[0].saveInBackground()
-                                                        print("Card \(objects[0]["term"]) is updated")
                                                     }
                                                 }
                                             }

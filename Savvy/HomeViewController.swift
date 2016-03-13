@@ -102,7 +102,6 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         else if segue.identifier == "homeToLogin" {
             let loginManager = FBSDKLoginManager()
             loginManager.logOut() // this is an instance function
-            print("User will now be logged out of Facebook.")
         }
         else if segue.identifier == "homeToQuizlet" {
             let dest = segue.destinationViewController as! ImportQuizletViewController

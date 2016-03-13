@@ -29,6 +29,7 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         if segue.identifier == "viewSetsToCreateSet" {
             let dest = segue.destinationViewController as! CreateSetController
             dest.prevSceneId = "View"
+            dest.cardSetName = pickerData[setPicker.selectedRowInComponent(0)]
         }
         
         if segue.identifier == "viewSetsToStudy" {
