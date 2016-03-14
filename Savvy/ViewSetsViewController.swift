@@ -16,7 +16,14 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var setPicker: UIPickerView!
     
     // Allows unwinding to view sets
-    @IBAction func unwindToViewSetsViewController(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToViewSetsViewController(segue: UIStoryboardSegue) {
+        pickerData = user.getSets()
+        for data in pickerData {
+            print(data)
+        }
+        setPicker.reloadAllComponents()
+        print("Now I'm angry!")
+    }
     
     override func viewDidLoad() {
         setPicker.dataSource = self

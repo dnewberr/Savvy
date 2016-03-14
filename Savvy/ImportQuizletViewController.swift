@@ -40,55 +40,9 @@ class ImportQuizletViewController: UIViewController {
             .response { [unowned self] (request, response, data, error) in
                 if let data = data {
                     let json = JSON(data: data)
-                    print(json)
                     
                     for (_, set) in json {
-                        let setName = set["title"].stringValue
-                        
-                        // Finding the set in Parse to make sure we don't have duplicates.
-                        let query = PFQuery(className: "Set")
-                        query.whereKey("username", equalTo: self.user.username)
-                        query.whereKey("set", equalTo: setName)
-                        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-                            if error == nil {
-                                if let objects = objects {
-                                    if objects.count == 0 {
-                                        // No objects, so save it to Parse.
-                                        let setObject = PFObject(className: "Set")
-                                        setObject["username"] = self.user.username
-                                        setObject["set"] = setName
-                                        setObject.saveInBackground()
-                                    }
-                                    for (_, card) in set["terms"] {
-                                        // Finding the card in Parse to make sure we don't have duplicates.
-                                        let query = PFQuery(className: "Flashcard")
-                                        query.whereKey("username", equalTo: self.user.username)
-                                        query.whereKey("set", equalTo: setName)
-                                        query.whereKey("term", equalTo: card["term"].stringValue)
-                                        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-                                            if error == nil {
-                                                if let objects = objects {
-                                                    if objects.count == 0 {
-                                                        // No objects, so save it to Parse.
-                                                        let cardObject = PFObject(className: "Flashcard")
-                                                        cardObject["username"] = self.user.username
-                                                        cardObject["set"] = setName
-                                                        cardObject["term"] = card["term"].stringValue
-                                                        cardObject["definition"] = card["definition"].stringValue
-                                                        cardObject.saveInBackground()
-                                                    }
-                                                    else {
-                                                        // There is already an object, so update the definition
-                                                        objects[0]["definition"] = card["definition"].stringValue
-                                                        objects[0].saveInBackground()
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        self.user.saveToParseFromQuizlet(set["title"].stringValue, cardsInSet: set["terms"])
                     }
                 }
         }
