@@ -18,11 +18,7 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Allows unwinding to view sets
     @IBAction func unwindToViewSetsViewController(segue: UIStoryboardSegue) {
         pickerData = user.getSets()
-        for data in pickerData {
-            print(data)
-        }
         setPicker.reloadAllComponents()
-        print("Now I'm angry!")
     }
     
     override func viewDidLoad() {
