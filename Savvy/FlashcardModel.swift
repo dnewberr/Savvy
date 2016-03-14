@@ -11,20 +11,17 @@ import Foundation
 class FlashcardModel {
     var term : String
     var definition : String
-    var due : Int?
-    var termSide: Bool!
+    var termSide: Bool
     
     init() {
         term = ""
         definition = ""
-        due = nil
         termSide = true
     }
     
-    init(newTerm : String, newDef : String, newDue : Int?) {
+    init(newTerm : String, newDef : String) {
         term = newTerm
         definition = newDef
-        due = newDue
         termSide = true
     }
 }

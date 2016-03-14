@@ -11,6 +11,7 @@ import UIKit
 class StudySetViewController: UIViewController {
     @IBOutlet weak var setNameLabel: UILabel!
     var curSet: String!
+    var user: UserModel!
     
     // Allows unwinding to study sets
     @IBAction func unwindToStudySetsViewController(segue: UIStoryboardSegue) {}

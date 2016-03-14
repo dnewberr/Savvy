@@ -10,7 +10,7 @@ import Foundation
 import Parse
 
 class UserModel {
-    var username : String?
+    var username : String
     
     init (username : String) {
         self.username = username
@@ -18,16 +18,29 @@ class UserModel {
     
     func getSets() -> [String] {
         var arr: [String] = []
-        if let username = username {
-            let query = PFQuery(className: "Set")
-            query.whereKey("username", equalTo: username)
-            do {
-                let objects = try query.findObjects()
-                for obj in objects {
-                    arr.append(obj["set"] as! String)
-                }
-            } catch {}
-        }
+        let query = PFQuery(className: "Set")
+        query.whereKey("username", equalTo: username)
+        do {
+            let objects = try query.findObjects()
+            for obj in objects {
+                arr.append(obj["set"] as! String)
+            }
+        } catch {}
+        
+        return arr
+    }
+    
+    func getCardsForSet(setName: String) -> [FlashcardModel] {
+        var arr: [FlashcardModel] = []
+        let query = PFQuery(className: "Flashcard")
+        query.whereKey("username", equalTo: username)
+        query.whereKey("set", equalTo: setName)
+        do {
+            let objects = try query.findObjects()
+            for obj in objects {
+                arr.append(FlashcardModel.init(newTerm: obj["term"] as! String, newDef: obj["definition"] as! String))
+            }
+        } catch {}
         
         return arr
     }

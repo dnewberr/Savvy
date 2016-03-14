@@ -11,7 +11,7 @@ import Alamofire
 import Parse
 
 class ImportQuizletViewController: UIViewController {
-    var user: UserModel?
+    var user: UserModel!
     
     func authenticateQuizlet() {
         if !QuizletAPIManager.sharedInstance.hasOAuthToken() {
@@ -38,7 +38,7 @@ class ImportQuizletViewController: UIViewController {
         
         Alamofire.request(.GET, path, headers: headers)
             .response { [unowned self] (request, response, data, error) in
-                if let data = data, user = self.user, username = user.username {
+                if let data = data {
                     let json = JSON(data: data)
                     print(json)
                     
@@ -47,7 +47,7 @@ class ImportQuizletViewController: UIViewController {
                         
                         // Finding the set in Parse to make sure we don't have duplicates.
                         let query = PFQuery(className: "Set")
-                        query.whereKey("username", equalTo: username)
+                        query.whereKey("username", equalTo: self.user.username)
                         query.whereKey("set", equalTo: setName)
                         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
                             if error == nil {
@@ -55,14 +55,14 @@ class ImportQuizletViewController: UIViewController {
                                     if objects.count == 0 {
                                         // No objects, so save it to Parse.
                                         let setObject = PFObject(className: "Set")
-                                        setObject["username"] = username
+                                        setObject["username"] = self.user.username
                                         setObject["set"] = setName
                                         setObject.saveInBackground()
                                     }
                                     for (_, card) in set["terms"] {
                                         // Finding the card in Parse to make sure we don't have duplicates.
                                         let query = PFQuery(className: "Flashcard")
-                                        query.whereKey("username", equalTo: username)
+                                        query.whereKey("username", equalTo: self.user.username)
                                         query.whereKey("set", equalTo: setName)
                                         query.whereKey("term", equalTo: card["term"].stringValue)
                                         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
@@ -71,7 +71,7 @@ class ImportQuizletViewController: UIViewController {
                                                     if objects.count == 0 {
                                                         // No objects, so save it to Parse.
                                                         let cardObject = PFObject(className: "Flashcard")
-                                                        cardObject["username"] = username
+                                                        cardObject["username"] = self.user.username
                                                         cardObject["set"] = setName
                                                         cardObject["term"] = card["term"].stringValue
                                                         cardObject["definition"] = card["definition"].stringValue

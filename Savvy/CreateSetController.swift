@@ -12,7 +12,7 @@ import Parse
 class CreateSetController: UIViewController, UITextFieldDelegate {
     var cardSetName: String!
     var prevSceneId: String!
-    var user: UserModel?
+    var user: UserModel!
     var flashcardsList: [FlashcardModel]?
     
     @IBOutlet weak var setNameTextField: UITextField!
@@ -87,6 +87,10 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         dueDatePicker.hidden = true
         setNameTextField.delegate = self
+        
+        if cardSetName != nil {
+            setNameTextField.text = cardSetName
+        }
     }
     
     func checkInput() -> Bool {
@@ -119,58 +123,59 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
     }
     
     func saveToParse() {
-        if let username = user!.username {
-            // Making sure we don't have duplicate sets
-            let query = PFQuery(className: "Set")
-            query.whereKey("username", equalTo: username)
-            query.whereKey("set", equalTo: cardSetName)
-            query.findObjectsInBackgroundWithBlock { [weak self] (objects, error) -> Void in
-                if error == nil {
-                    if let actualSelf = self, objects = objects {
-                        if objects.count == 0 {
-                            // No objects, so save it to Parse.
-                            let setObject = PFObject(className: "Set")
-                            setObject["username"] = username
-                            setObject["set"] = actualSelf.cardSetName
-                            if !actualSelf.dueDatePicker.hidden {
-                                setObject["dueDate"] = actualSelf.dueDatePicker.date
-                            }
-                            setObject.saveInBackground()
+        // Making sure we don't have duplicate sets
+        let query = PFQuery(className: "Set")
+        query.whereKey("username", equalTo: user.username)
+        query.whereKey("set", equalTo: cardSetName)
+        query.findObjectsInBackgroundWithBlock { [weak self] (objects, error) -> Void in
+            if error == nil {
+                if let actualSelf = self, objects = objects {
+                    if objects.count == 0 {
+                        // No objects, so save it to Parse.
+                        let setObject = PFObject(className: "Set")
+                        setObject["username"] = actualSelf.user.username
+                        setObject["set"] = actualSelf.cardSetName
+                        if !actualSelf.dueDatePicker.hidden {
+                            setObject["dueDate"] = actualSelf.dueDatePicker.date
                         }
                         else {
-                            // The set is already there, so just update the due date.
-                            if !actualSelf.dueDatePicker.hidden {
-                                objects[0]["dueDate"] = actualSelf.dueDatePicker.date
-                            }
-                            else {
-                                objects[0]["dueDate"] = nil
-                            }
-                            objects[0].saveInBackground()
+                            setObject["dueDate"] = NSDate.distantFuture()
                         }
-                        
-                        for card in actualSelf.flashcardsList! {
-                            // Finding the card in Parse to make sure we don't have duplicates.
-                            let query = PFQuery(className: "Flashcard")
-                            query.whereKey("username", equalTo: username)
-                            query.whereKey("set", equalTo: actualSelf.cardSetName)
-                            query.whereKey("term", equalTo: card.term)
-                            query.findObjectsInBackgroundWithBlock() { (objects, error) -> Void in
-                                if error == nil {
-                                    if let objects = objects {
-                                        if objects.count == 0 {
-                                            // No objects, so save it to Parse.
-                                            let cardObject = PFObject(className: "Flashcard")
-                                            cardObject["username"] = username
-                                            cardObject["set"] = actualSelf.cardSetName
-                                            cardObject["term"] = card.term
-                                            cardObject["definition"] = card.definition
-                                            cardObject.saveInBackground()
-                                        }
-                                        else {
-                                            // There is already an object, so update the definition
-                                            objects[0]["definition"] = card.definition
-                                            objects[0].saveInBackground()
-                                        }
+                        setObject.saveInBackground()
+                    }
+                    else {
+                        // The set is already there, so just update the due date.
+                        if !actualSelf.dueDatePicker.hidden {
+                            objects[0]["dueDate"] = actualSelf.dueDatePicker.date
+                        }
+                        else {
+                            objects[0]["dueDate"] = NSDate.distantFuture()
+                        }
+                        objects[0].saveInBackground()
+                    }
+                    
+                    for card in actualSelf.flashcardsList! {
+                        // Finding the card in Parse to make sure we don't have duplicates.
+                        let query = PFQuery(className: "Flashcard")
+                        query.whereKey("username", equalTo: actualSelf.user.username)
+                        query.whereKey("set", equalTo: actualSelf.cardSetName)
+                        query.whereKey("term", equalTo: card.term)
+                        query.findObjectsInBackgroundWithBlock() { (objects, error) -> Void in
+                            if error == nil {
+                                if let objects = objects {
+                                    if objects.count == 0 {
+                                        // No objects, so save it to Parse.
+                                        let cardObject = PFObject(className: "Flashcard")
+                                        cardObject["username"] = actualSelf.user.username
+                                        cardObject["set"] = actualSelf.cardSetName
+                                        cardObject["term"] = card.term
+                                        cardObject["definition"] = card.definition
+                                        cardObject.saveInBackground()
+                                    }
+                                    else {
+                                        // There is already an object, so update the definition
+                                        objects[0]["definition"] = card.definition
+                                        objects[0].saveInBackground()
                                     }
                                 }
                             }
@@ -209,7 +214,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
             }
             dest.flashcardsList = [FlashcardModel]()
             for card in flashcardsList! {
-                dest.flashcardsList.append(FlashcardModel(newTerm: card.term, newDef: card.definition, newDue: card.due))
+                dest.flashcardsList.append(FlashcardModel(newTerm: card.term, newDef: card.definition))
             }
         }
     }

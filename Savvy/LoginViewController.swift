@@ -12,7 +12,7 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-    var user: UserModel?
+    var user: UserModel!
     
     // Allows unwinding to login
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {}

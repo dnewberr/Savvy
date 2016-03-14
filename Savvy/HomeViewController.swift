@@ -17,8 +17,7 @@ class CardCollectionViewCell: UICollectionViewCell {
 }
 
 class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
-    var user: UserModel?
+    var user: UserModel!
     // Collection of flashcards
     @IBOutlet weak var flashcardCollection: UICollectionView!
     // Array to hold flashcards
@@ -31,7 +30,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         super.viewDidLoad()
         // Populates array with flashcards for testing purposes
         for (var i = 0; i < 5; i++) {
-            cardArray.append(FlashcardModel(newTerm: String(i), newDef: "The def is " + String(i * 2), newDue: 0))
+            cardArray.append(FlashcardModel(newTerm: String(i), newDef: "The def is " + String(i * 2)))
         }
         setUpFlashcardCollection()
         automaticallyAdjustsScrollViewInsets = false

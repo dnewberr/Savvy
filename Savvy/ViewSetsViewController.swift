@@ -11,7 +11,7 @@ import Parse
 
 class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     var pickerData: [String]!
-    var user: UserModel?
+    var user: UserModel!
     
     @IBOutlet weak var setPicker: UIPickerView!
     
@@ -22,19 +22,23 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         setPicker.dataSource = self
         setPicker.delegate = self
         
-        pickerData = user?.getSets()
+        pickerData = user.getSets()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewSetsToCreateSet" {
             let dest = segue.destinationViewController as! CreateSetController
+            let set = pickerData[setPicker.selectedRowInComponent(0)]
+            dest.user = user
             dest.prevSceneId = "View"
-            dest.cardSetName = pickerData[setPicker.selectedRowInComponent(0)]
+            dest.cardSetName = set
+            dest.flashcardsList = user.getCardsForSet(set)
         }
         
         if segue.identifier == "viewSetsToStudy" {
             let dest = segue.destinationViewController as! StudySetViewController
             dest.curSet = pickerData[setPicker.selectedRowInComponent(0)]
+            dest.user = user
         }
     }
     
