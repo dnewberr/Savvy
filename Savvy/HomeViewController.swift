@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         if let tappedCellPath = tappedCellPath {
             let cell = flashcardCollection.cellForItemAtIndexPath(tappedCellPath) as! CardCollectionViewCell
             if let card = cell.flashcard {
-                if card.termSide == true {
+                if card.termSide {
                     cell.label.text = card.definition
                     card.termSide = false
                 }

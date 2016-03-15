@@ -391,13 +391,31 @@
                                     <segue destination="VkE-1u-XN4" kind="show" identifier="studyToGame" id="uHR-cP-rWv"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mnj-oL-bLc">
+                                <rect key="frame" x="20" y="133" width="560" height="203"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="203" id="gQX-pt-q4q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mTc-Wm-7Hp" appends="YES" id="dkC-9v-Qvw"/>
+                                    <outletCollection property="gestureRecognizers" destination="QOY-Rj-oIv" appends="YES" id="ik1-6L-Nbp"/>
+                                    <outletCollection property="gestureRecognizers" destination="pTm-pT-ljB" appends="YES" id="n22-Gv-mRz"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yPN-7A-QMN" firstAttribute="leading" secondItem="fki-b3-dvE" secondAttribute="leadingMargin" id="2jf-Ct-5T9"/>
+                            <constraint firstItem="mnj-oL-bLc" firstAttribute="leading" secondItem="fki-b3-dvE" secondAttribute="leadingMargin" id="5f9-BI-u0s"/>
                             <constraint firstItem="yPN-7A-QMN" firstAttribute="trailing" secondItem="Jot-kV-E8H" secondAttribute="trailing" id="LtR-mb-KxK"/>
+                            <constraint firstItem="mnj-oL-bLc" firstAttribute="top" secondItem="yPN-7A-QMN" secondAttribute="bottom" constant="8" symbolic="YES" id="Oqm-EU-VPd"/>
                             <constraint firstItem="Jot-kV-E8H" firstAttribute="trailing" secondItem="fki-b3-dvE" secondAttribute="trailingMargin" id="QZL-Oo-hSn"/>
+                            <constraint firstItem="mnj-oL-bLc" firstAttribute="centerX" secondItem="yPN-7A-QMN" secondAttribute="centerX" id="cf3-5t-lMZ"/>
                             <constraint firstItem="4kC-3v-mub" firstAttribute="centerX" secondItem="yPN-7A-QMN" secondAttribute="centerX" id="deb-Gh-tjK"/>
                             <constraint firstItem="HM4-ny-1hD" firstAttribute="leading" secondItem="yPN-7A-QMN" secondAttribute="leading" id="jEB-ff-K27"/>
                             <constraint firstItem="HM4-ny-1hD" firstAttribute="top" secondItem="2F3-ST-QlF" secondAttribute="bottom" id="lSa-HC-GdC"/>
@@ -407,11 +425,30 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="curCard" destination="mnj-oL-bLc" id="mF4-az-vNd"/>
                         <outlet property="setNameLabel" destination="yPN-7A-QMN" id="39L-fZ-byH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcQ-qK-Tym" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="k3Z-Wg-hzv" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="mTc-Wm-7Hp">
+                    <connections>
+                        <action selector="tappedCard:" destination="A0S-O4-Ong" id="0Jw-qd-Nc5"/>
+                        <outlet property="delegate" destination="A0S-O4-Ong" id="KWU-ov-mHx"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="QOY-Rj-oIv">
+                    <connections>
+                        <action selector="swipedCard:" destination="A0S-O4-Ong" id="E88-ev-3CR"/>
+                        <outlet property="delegate" destination="A0S-O4-Ong" id="MXu-0a-UT3"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="pTm-pT-ljB">
+                    <connections>
+                        <action selector="swipedCard:" destination="A0S-O4-Ong" id="zBY-Tw-KB8"/>
+                        <outlet property="delegate" destination="A0S-O4-Ong" id="wN6-nT-x5e"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1900" y="-602"/>
         </scene>
@@ -427,15 +464,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70b-bR-fUT">
-                                <rect key="frame" x="138" y="28" width="325" height="68"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="325" id="Sl8-tB-fBy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="0.7725490196" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-E4-dW9">
                                 <rect key="frame" x="34" y="555" width="30" height="30"/>
                                 <state key="normal" title="Quit"/>
@@ -453,6 +481,15 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUL-cl-Q9W">
                                 <rect key="frame" x="0.0" y="104" width="600" height="438"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70b-bR-fUT">
+                                <rect key="frame" x="138" y="28" width="325" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="Sl8-tB-fBy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.7725490196" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
