@@ -16,6 +16,38 @@ class UserModel {
         self.username = username
     }
     
+    func getClosestDueDateSet() -> String {
+        var cdds = ""
+        var due = NSDate.distantFuture()
+        
+        let query = PFQuery(className: "Set")
+        query.whereKey("username", equalTo: username)
+        do {
+            let objects = try query.findObjects()
+            for obj in objects {
+                let earlierDate = due.earlierDate(obj["dueDate"] as! NSDate)
+                if earlierDate != due {
+                    due = earlierDate
+                    cdds = obj["set"] as! String
+                }
+            }
+        } catch {}
+        
+        return cdds
+    }
+    
+    func getDueDateForSet(set: String) -> NSDate? {
+        let query = PFQuery(className: "Set")
+        query.whereKey("username", equalTo: username)
+        query.whereKey("set", equalTo: set)
+        do {
+            let objects = try query.findObjects()
+            return objects[0]["dueDate"] as? NSDate
+        } catch {}
+        
+        return nil
+    }
+    
     func getSets() -> [String] {
         var arr: [String] = []
         let query = PFQuery(className: "Set")

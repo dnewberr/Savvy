@@ -28,6 +28,30 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         pickerData = user.getSets()
     }
     
+    @IBAction func deleteSet(sender: AnyObject) {
+        let alertController = UIAlertController(title: "",
+            message: "Are you sure you want to delete this set?",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Yes",
+                style: UIAlertActionStyle.Destructive,
+                handler: { [unowned self] (action: UIAlertAction!) in
+                    self.user.deleteFromParse(self.pickerData[self.setPicker.selectedRowInComponent(0)])
+                    self.pickerData = self.user.getSets()
+                    self.setPicker.reloadAllComponents()
+                }))
+        
+        alertController.addAction(
+            UIAlertAction(title: "No",
+                style: UIAlertActionStyle.Default,
+                handler: nil))
+        
+        self.presentViewController(alertController,
+            animated: true, completion: nil)
+
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewSetsToCreateSet" {
             let dest = segue.destinationViewController as! CreateSetController
@@ -36,6 +60,7 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             dest.prevSceneId = "View"
             dest.cardSetName = set
             dest.flashcardsList = user.getCardsForSet(set)
+            dest.dueDate = user.getDueDateForSet(set)
         }
         
         if segue.identifier == "viewSetsToStudy" {

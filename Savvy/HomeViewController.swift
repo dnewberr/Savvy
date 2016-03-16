@@ -24,14 +24,13 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
     var cardArray = Array<FlashcardModel>()
     
     // Allows unwinding to home
-    @IBAction func unwindToHomeViewController(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToHomeViewController(segue: UIStoryboardSegue) {
+        setUpFlashcardCollection()
+        flashcardCollection.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Populates array with flashcards for testing purposes
-        for (var i = 0; i < 5; i++) {
-            cardArray.append(FlashcardModel(newTerm: String(i), newDef: "The def is " + String(i * 2)))
-        }
         setUpFlashcardCollection()
         automaticallyAdjustsScrollViewInsets = false
     }
@@ -48,8 +47,9 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         super.didReceiveMemoryWarning()
     }
     
-    // Where we would presumably populate the flashcard array.
+    // Populates the flashcard array
     func setUpFlashcardCollection() {
+        cardArray = user.getCardsForSet(user.getClosestDueDateSet())
         flashcardCollection.dataSource = self
         flashcardCollection.delegate = self
     }
@@ -96,6 +96,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         if segue.identifier == "homeToCreateSet" {
             let dest = segue.destinationViewController as! CreateSetController
             dest.prevSceneId = "Home"
+            dest.dueDate = nil
             dest.user = user
         }
         else if segue.identifier == "homeToLogin" {

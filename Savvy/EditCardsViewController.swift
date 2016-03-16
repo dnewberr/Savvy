@@ -20,30 +20,33 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     var cardSetName: String!
     var flashcardsList: [FlashcardModel]!
     var saved = false
+    var activeField: UITextView?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var editCardsTableView: UITableView!
  
     @IBAction func done(sender: AnyObject) {
-        let alertController = UIAlertController(title: "",
-            message: "Save these changes?",
-            preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        alertController.addAction(
-            UIAlertAction(title: "Yes",
-                style: UIAlertActionStyle.Default,
-                handler: { [unowned self] (action: UIAlertAction!) in
-                    self.saved = true
-                    self.performSegueWithIdentifier("editCardsToCreateSet", sender: sender)
-            }))
-        
-        alertController.addAction(
-            UIAlertAction(title: "No",
-                style: UIAlertActionStyle.Default,
-                handler: nil))
-        
-        self.presentViewController(alertController,
-            animated: true, completion: nil)
+        if checkInput() {
+            let alertController = UIAlertController(title: "",
+                message: "Save these changes?",
+                preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            alertController.addAction(
+                UIAlertAction(title: "Yes",
+                    style: UIAlertActionStyle.Default,
+                    handler: { [unowned self] (action: UIAlertAction!) in
+                        self.saved = true
+                        self.performSegueWithIdentifier("editCardsToCreateSet", sender: sender)
+                }))
+            
+            alertController.addAction(
+                UIAlertAction(title: "No",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil))
+            
+            self.presentViewController(alertController,
+                animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancel(sender: AnyObject) {
@@ -73,10 +76,43 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         editCardsTableView.insertRowsAtIndexPaths(indexPath, withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
+    func checkInput() -> Bool {
+        for card in flashcardsList {
+            if card.term == "" {
+                let alertController = UIAlertController(title: "",
+                    message: "Empty term in flashcard found. Please enter a term or remove the flashcard.",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: "Dismiss",
+                        style: UIAlertActionStyle.Default, handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+                return false
+            }
+            else if card.definition == "" {
+                let alertController = UIAlertController(title: "",
+                    message: "Empty definition in flashcard found. Please enter a definition or remove the flashcard.",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: "Dismiss",
+                        style: UIAlertActionStyle.Default, handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+                return false
+            }
+        }
+        
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text? = cardSetName
+        registerForKeyboardNotifications()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,6 +140,16 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.definitionTextView.text = flashcardsList[indexPath.row].definition
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPathArr = [indexPath]
+        flashcardsList.removeAtIndex(indexPath.row)
+        editCardsTableView.deleteRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        self.activeField = textView
+    }
+    
     func textViewDidEndEditing(textView: UITextView) {
         if textView is TermTextView {
             flashcardsList[textView.tag].term = textView.text!
@@ -111,17 +157,44 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
         else if textView is DefTextView {
             flashcardsList[textView.tag].definition = textView.text!
         }
+        
+        self.activeField = nil
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let indexPathArr = [indexPath]
-        flashcardsList.removeAtIndex(indexPath.row)
-        editCardsTableView.deleteRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Fade)
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    func keyboardWasShown(aNotification: NSNotification) {
+        let info = aNotification.userInfo as! [String: AnyObject],
+        kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size,
+        contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        
+        self.editCardsTableView.contentInset = contentInsets
+        self.editCardsTableView.scrollIndicatorInsets = contentInsets
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        // Your app might not need or want this behavior.
+        var aRect = self.view.frame
+        aRect.size.height -= kbSize.height
+        
+        let pointInTable = activeField!.superview!.convertPoint(activeField!.frame.origin, toView: editCardsTableView)
+        let rectInTable = activeField!.superview!.convertRect(activeField!.frame, toView: editCardsTableView)
+        
+        if !CGRectContainsPoint(aRect, pointInTable) {
+            self.editCardsTableView.scrollRectToVisible(rectInTable, animated: true)
+        }
+    }
+    
+    func keyboardWillBeHidden(aNotification: NSNotification) {
+        let contentInsets = UIEdgeInsetsZero
+        self.editCardsTableView.contentInset = contentInsets
+        self.editCardsTableView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @IBAction func dismissKeyboard(sender: AnyObject) {
         view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
     }
     
     override func didReceiveMemoryWarning() {

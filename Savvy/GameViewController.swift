@@ -15,17 +15,20 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var flashcards: [FlashcardModel]!
     var answers: [FlashcardModel]! = []
     var showTerms: Bool!
+    var activeField: UITextView?
     
     @IBOutlet weak var setNameLabel: UILabel!
     @IBOutlet weak var studyCardsTable: UITableView!
     
     // Allows unwinding to game
-    @IBAction func unwindToGameViewController(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToGameViewController(segue: UIStoryboardSegue) {
+        registerForKeyboardNotifications()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNameLabel.text = curSet
-        
+        registerForKeyboardNotifications()
         // Randomizes order of flashcards
         /*flashcards = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(user.getCardsForSet(curSet)) as! [FlashcardModel]*/
     }
@@ -81,11 +84,47 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let answer = answers.filter({$0.definition == flashcards[textView.tag].definition}).first
             answer?.term = textView.text
         }
+        
+        self.activeField = nil
     }
     
+    func textViewDidBeginEditing(textView: UITextView) {
+        self.activeField = textView
+    }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWasShown(aNotification: NSNotification) {
+        let info = aNotification.userInfo as! [String: AnyObject],
+        kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size,
+        contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        
+        self.studyCardsTable.contentInset = contentInsets
+        self.studyCardsTable.scrollIndicatorInsets = contentInsets
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        // Your app might not need or want this behavior.
+        var aRect = self.view.frame
+        aRect.size.height -= kbSize.height
+        
+        let pointInTable = activeField!.superview!.convertPoint(activeField!.frame.origin, toView: studyCardsTable)
+        let rectInTable = activeField!.superview!.convertRect(activeField!.frame, toView: studyCardsTable)
+        
+        if !CGRectContainsPoint(aRect, pointInTable) {
+            self.studyCardsTable.scrollRectToVisible(rectInTable, animated: true)
+        }
+    }
+    
+    func keyboardWillBeHidden(aNotification: NSNotification) {
+        let contentInsets = UIEdgeInsetsZero
+        self.studyCardsTable.contentInset = contentInsets
+        self.studyCardsTable.scrollIndicatorInsets = contentInsets
+    }
+    
+    @IBAction func dismissKeyboard(sender: UITapGestureRecognizer) {
         view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
     }
 }

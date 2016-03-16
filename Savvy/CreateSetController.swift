@@ -11,6 +11,7 @@ import Parse
 
 class CreateSetController: UIViewController, UITextFieldDelegate {
     var cardSetName: String!
+    var dueDate: NSDate?
     var prevSetName: String!
     var prevSceneId: String!
     var user: UserModel!
@@ -96,7 +97,6 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dueDatePicker.hidden = true
         setNameTextField.delegate = self
         
         setNameTextField.text = cardSetName
@@ -105,6 +105,15 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         }
         else {
             prevSetName = cardSetName
+        }
+        
+        if dueDate != nil && dueDate != NSDate.distantFuture() {
+            dueDatePicker.hidden = false
+            dueDatePicker.date = dueDate!
+            dateSwitch.setOn(true, animated: false)
+        }
+        else {
+            dueDatePicker.hidden = true
         }
     }
     
@@ -146,7 +155,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         if identifier == "createSetToEditCards" {
             return checkInput()
         }
-        return false
+        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

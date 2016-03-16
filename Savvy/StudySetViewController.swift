@@ -47,6 +47,19 @@ class StudySetViewController: UIViewController {
         self.presentViewController(alertController,
             animated: true, completion: nil)
     }
+    
+    @IBAction func help(sender: AnyObject) {
+        let alertController = UIAlertController(title: "",
+            message: "Tap the card to switch between terms and definitions. Swipe left or right to switch between cards in the set.",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Dismiss",
+                style: UIAlertActionStyle.Default, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     // Allows unwinding to study sets
     @IBAction func unwindToStudySetsViewController(segue: UIStoryboardSegue) {}
     
