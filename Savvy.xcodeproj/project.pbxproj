@@ -40,6 +40,7 @@
 		CDB26B131C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B091C8CFE4D00BEEE4F /* Alamofire.framework */; };
 		CDB26B141C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B111C8CFE4D00BEEE4F /* Alamofire.framework */; };
 		CDB26B151C8CFE9B00BEEE4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB26B0D1C8CFE4D00BEEE4F /* Alamofire.framework */; };
+		CDE1E47E1C9930F200E52573 /* GameResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE1E47D1C9930F200E52573 /* GameResultModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		CD9D24F21C613709001F75DF /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		CD9D24F61C614AFA001F75DF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CD9D24FC1C69E466001F75DF /* CreateSetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSetController.swift; sourceTree = "<group>"; };
+		CDE1E47D1C9930F200E52573 /* GameResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResultModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			children = (
 				CD39B0731C733C5800407A9D /* GameViewController.swift */,
 				CD39B0751C733C6200407A9D /* ResultViewController.swift */,
+				CDE1E47D1C9930F200E52573 /* GameResultModel.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				CD39B07B1C74318A00407A9D /* BadgesViewController.swift in Sources */,
 				C3D7F1DB1C7574D800DA538B /* QuizletAPIManager.swift in Sources */,
 				CD9D24FD1C69E467001F75DF /* CreateSetController.swift in Sources */,
+				CDE1E47E1C9930F200E52573 /* GameResultModel.swift in Sources */,
 				CD39B0741C733C5900407A9D /* GameViewController.swift in Sources */,
 				C3BC86F41C6A8B7500252F97 /* ImportQuizletViewController.swift in Sources */,
 				C30810641C8F5CEF00D22632 /* UserModel.swift in Sources */,

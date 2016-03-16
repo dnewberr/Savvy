@@ -124,12 +124,6 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
 
                 return false
             } else {
-            // check to see if it already exist; if so => warning
-            // return false
-            // print("name already exists; want to overwrite?")
-            
-            // else
-            
                 cardSetName = setName
             }
         }

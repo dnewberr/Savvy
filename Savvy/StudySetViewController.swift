@@ -15,8 +15,38 @@ class StudySetViewController: UIViewController {
     var user: UserModel!
     var flashcards: [FlashcardModel]!
     var curIndex: Int!
+    var showTerms: Bool!
     @IBOutlet weak var curCard: UITextView!
     
+    @IBAction func startGame(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Start Game",
+            message: "Do you want to start the game showing terms or definitions?",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Terms",
+                style: UIAlertActionStyle.Default,
+                handler: { [unowned self] (action: UIAlertAction!) in
+                    self.showTerms = true
+                    self.performSegueWithIdentifier("studyToGame", sender: sender)
+        }))
+        
+        alertController.addAction(
+            UIAlertAction(title: "Definitions",
+                style: UIAlertActionStyle.Default,
+                handler: { [unowned self] (action: UIAlertAction!) in
+                    self.showTerms = false
+                    self.performSegueWithIdentifier("studyToGame", sender: sender)
+        }))
+        
+        alertController.addAction(
+            UIAlertAction(title: "Cancel",
+                style: UIAlertActionStyle.Destructive,
+                handler: nil))
+        
+        self.presentViewController(alertController,
+            animated: true, completion: nil)
+    }
     // Allows unwinding to study sets
     @IBAction func unwindToStudySetsViewController(segue: UIStoryboardSegue) {}
     
@@ -73,6 +103,9 @@ class StudySetViewController: UIViewController {
         if segue.identifier == "studyToGame" {
             let dest = segue.destinationViewController as! GameViewController
             dest.curSet = curSet
+            //dest.user = user
+            dest.flashcards = flashcards
+            dest.showTerms = showTerms
         }
     }
 
