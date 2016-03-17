@@ -13,7 +13,7 @@ import GameplayKit
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     var curSet: String!
     var flashcards: [FlashcardModel]!
-    var answers: [FlashcardModel]! = []
+    var answers: [FlashcardModel]!
     var showTerms: Bool!
     var activeField: UITextView?
     
@@ -37,8 +37,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 answers.append(FlashcardModel(newTerm: "", newDef: flashcards[i].definition))
             }
         }
-        // Randomizes order of flashcards
-        /*flashcards = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(user.getCardsForSet(curSet)) as! [FlashcardModel]*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +50,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if activeField != nil {
                 textViewDidEndEditing(activeField!)
             }
+            
             dest.curSet = curSet
             dest.answers = answers
             dest.flashcards = flashcards
@@ -88,11 +87,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func textViewDidEndEditing(textView: UITextView) {
         if showTerms.boolValue {
-            let answer = answers.filter({$0.term == flashcards[textView.tag].term}).first
+            let answer = answers.filter({flashcards[textView.tag].equalTerms($0.term)}).first
             answer?.definition = textView.text
             
         } else {
-            let answer = answers.filter({$0.definition == flashcards[textView.tag].definition}).first
+            let answer = answers.filter({flashcards[textView.tag].equalDefs($0.definition)}).first
             answer?.term = textView.text
         }
         

@@ -77,7 +77,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-xF-LIC">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-xF-LIC">
                                                     <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -88,6 +88,12 @@
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="GvV-xF-LIC" secondAttribute="bottom" id="1bL-kl-1Sq"/>
+                                            <constraint firstAttribute="trailing" secondItem="GvV-xF-LIC" secondAttribute="trailing" id="KQY-jL-utT"/>
+                                            <constraint firstItem="GvV-xF-LIC" firstAttribute="top" secondItem="liH-mB-5ep" secondAttribute="top" id="ekm-cy-uff"/>
+                                            <constraint firstItem="GvV-xF-LIC" firstAttribute="leading" secondItem="liH-mB-5ep" secondAttribute="leading" id="tyf-Zh-Lyg"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="cardTextView" destination="GvV-xF-LIC" id="U7p-jZ-PuQ"/>
                                         </connections>
@@ -307,8 +313,8 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5V9-y8-Y8l">
                                                     <rect key="frame" x="25" y="0.0" width="142" height="111"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Badge Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb5-f6-wzQ">
-                                                    <rect key="frame" x="47" y="126" width="99" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Badge Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kb5-f6-wzQ">
+                                                    <rect key="frame" x="0.0" y="126" width="193" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -320,8 +326,11 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="5V9-y8-Y8l" secondAttribute="bottom" constant="44" id="QCN-k3-mbJ"/>
                                             <constraint firstItem="5V9-y8-Y8l" firstAttribute="top" secondItem="i7T-U0-nVh" secondAttribute="top" id="Xjb-LJ-tIc"/>
+                                            <constraint firstItem="kb5-f6-wzQ" firstAttribute="leading" secondItem="i7T-U0-nVh" secondAttribute="leading" id="cTM-zv-rwF"/>
                                             <constraint firstItem="5V9-y8-Y8l" firstAttribute="leading" secondItem="i7T-U0-nVh" secondAttribute="leading" constant="25" id="gIq-GA-Fzj"/>
                                             <constraint firstAttribute="trailing" secondItem="5V9-y8-Y8l" secondAttribute="trailing" constant="26" id="hZT-03-gIs"/>
+                                            <constraint firstItem="kb5-f6-wzQ" firstAttribute="bottom" secondItem="i7T-U0-nVh" secondAttribute="bottomMargin" id="oCs-4O-p8t"/>
+                                            <constraint firstItem="kb5-f6-wzQ" firstAttribute="centerX" secondItem="5V9-y8-Y8l" secondAttribute="centerX" id="uqi-8P-RZD"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="badgeImage" destination="5V9-y8-Y8l" id="s0k-S0-dYS"/>

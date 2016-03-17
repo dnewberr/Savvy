@@ -93,6 +93,18 @@ class UserModel {
         return result
     }
     
+    func deleteBadgeFromParse(badgeName: String) {
+        let query = PFQuery(className: "Badges")
+        query.whereKey("username", equalTo: username)
+        query.whereKey("badgeName", equalTo: badgeName)
+        do {
+            let objects = try query.findObjects()
+            if objects.count > 0 {
+                try objects[0].delete()
+            }
+        } catch {}
+    }
+    
     func deleteFromParse(setName: String) {
         let query = PFQuery(className: "Set")
         query.whereKey("username", equalTo: username)
@@ -130,7 +142,6 @@ class UserModel {
             }
         } catch {}
     }
-    
     
     
     func saveToParse(setName: String, flashcards: [FlashcardModel], dueDate: NSDate?) {

@@ -42,19 +42,10 @@ class BadgesViewController: UIViewController, UICollectionViewDataSource, UIColl
     // Sets up the cells. The terms are shown initially.
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("badgeCell", forIndexPath: indexPath) as! BadgeCollectionViewCell
+        
         cell.badgeName.text = badges[indexPath.row]
         cell.badgeImage.image = UIImage(named: badges[indexPath.row])
         
         return cell
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         setUpFlashcardCollection()
         flashcardCollection.reloadData()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpFlashcardCollection()
