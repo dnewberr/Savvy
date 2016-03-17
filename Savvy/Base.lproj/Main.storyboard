@@ -54,14 +54,54 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SavvyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uIl-es-8qC">
-                                <rect key="frame" x="205" y="11" width="191" height="153"/>
+                                <rect key="frame" x="205" y="28" width="191" height="153"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="191" id="6xh-w6-ncf"/>
                                     <constraint firstAttribute="height" constant="153" id="KxW-8A-Cxe"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDU-th-AgX">
+                                <rect key="frame" x="266" y="443" width="68" height="30"/>
+                                <state key="normal" title="View Sets"/>
+                                <connections>
+                                    <segue destination="VJb-lF-fGQ" kind="show" identifier="homeToViewSets" id="7oa-IB-YtB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX6-mO-lz8">
+                                <rect key="frame" x="233" y="475" width="134" height="30"/>
+                                <state key="normal" title="Import from Quizlet"/>
+                                <connections>
+                                    <segue destination="2ip-e6-fH1" kind="show" identifier="homeToQuizlet" id="ru1-i5-M8H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds8-ma-MsV">
+                                <rect key="frame" x="256" y="508" width="89" height="30"/>
+                                <state key="normal" title="View Badges"/>
+                                <connections>
+                                    <segue destination="2dI-NB-OIm" kind="show" identifier="homeToBadges" id="gDF-jX-lfa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Bk-99R">
+                                <rect key="frame" x="264" y="412" width="73" height="30"/>
+                                <state key="normal" title="Create Set"/>
+                                <connections>
+                                    <segue destination="WtO-q9-Hmd" kind="show" identifier="homeToCreateSet" id="Pae-XG-81T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21">
+                                <rect key="frame" x="235" y="570" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="zav-VQ-kBJ"/>
+                                </constraints>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.29411764709999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NtS-QD-bn3" kind="unwind" identifier="homeToLogin" unwindAction="unwindToLoginViewController:" id="xrd-cv-rGQ"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-Bu-QN8">
-                                <rect key="frame" x="20" y="180" width="560" height="201"/>
+                                <rect key="frame" x="20" y="199" width="560" height="201"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.90980392160000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LN6-SF-G8a">
                                     <size key="itemSize" width="246" height="141"/>
@@ -103,46 +143,6 @@
                                     <outletCollection property="gestureRecognizers" destination="mRm-u5-7Ne" appends="YES" id="Cwz-o4-DvI"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDU-th-AgX">
-                                <rect key="frame" x="266" y="443" width="68" height="30"/>
-                                <state key="normal" title="View Sets"/>
-                                <connections>
-                                    <segue destination="VJb-lF-fGQ" kind="show" identifier="homeToViewSets" id="7oa-IB-YtB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX6-mO-lz8">
-                                <rect key="frame" x="233" y="475" width="134" height="30"/>
-                                <state key="normal" title="Import from Quizlet"/>
-                                <connections>
-                                    <segue destination="2ip-e6-fH1" kind="show" identifier="homeToQuizlet" id="ru1-i5-M8H"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds8-ma-MsV">
-                                <rect key="frame" x="256" y="508" width="89" height="30"/>
-                                <state key="normal" title="View Badges"/>
-                                <connections>
-                                    <segue destination="2dI-NB-OIm" kind="show" identifier="homeToBadges" id="gDF-jX-lfa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Bk-99R">
-                                <rect key="frame" x="264" y="412" width="73" height="30"/>
-                                <state key="normal" title="Create Set"/>
-                                <connections>
-                                    <segue destination="WtO-q9-Hmd" kind="show" identifier="homeToCreateSet" id="Pae-XG-81T"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-ww-V21">
-                                <rect key="frame" x="235" y="570" width="130" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="zav-VQ-kBJ"/>
-                                </constraints>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" red="0.29411764709999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="NtS-QD-bn3" kind="unwind" identifier="homeToLogin" unwindAction="unwindToLoginViewController:" id="xrd-cv-rGQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.82745098039999998" green="0.90980392160000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.047084731543624164" green="0.18878460570469799" blue="0.43689702181207934" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,9 +158,9 @@
                             <constraint firstItem="Ds8-ma-MsV" firstAttribute="top" secondItem="WX6-mO-lz8" secondAttribute="bottom" constant="3" id="dz7-wf-6O5"/>
                             <constraint firstItem="pDU-th-AgX" firstAttribute="top" secondItem="NFf-Bu-QN8" secondAttribute="bottom" constant="36" id="eF1-JC-6uv"/>
                             <constraint firstItem="pDU-th-AgX" firstAttribute="centerX" secondItem="k1I-Bk-99R" secondAttribute="centerX" id="eTD-bk-IN7"/>
-                            <constraint firstItem="NFf-Bu-QN8" firstAttribute="top" secondItem="BnI-Fq-jwb" secondAttribute="bottom" constant="160" id="eTd-4W-AA8"/>
+                            <constraint firstItem="NFf-Bu-QN8" firstAttribute="top" secondItem="BnI-Fq-jwb" secondAttribute="bottom" constant="179" id="eTd-4W-AA8"/>
                             <constraint firstItem="NFf-Bu-QN8" firstAttribute="leading" secondItem="taz-Pg-QU6" secondAttribute="leadingMargin" id="fvW-Ey-kDG"/>
-                            <constraint firstItem="k1I-Bk-99R" firstAttribute="top" secondItem="NFf-Bu-QN8" secondAttribute="bottom" constant="31" id="gDT-gF-q16"/>
+                            <constraint firstItem="k1I-Bk-99R" firstAttribute="top" secondItem="NFf-Bu-QN8" secondAttribute="bottom" constant="12" id="gDT-gF-q16"/>
                             <constraint firstItem="WX6-mO-lz8" firstAttribute="top" secondItem="pDU-th-AgX" secondAttribute="bottom" constant="2" id="gNi-jf-rm5"/>
                             <constraint firstItem="Mzx-ww-V21" firstAttribute="bottom" secondItem="Hku-9l-1MN" secondAttribute="top" id="idP-e8-pR3"/>
                             <constraint firstItem="k1I-Bk-99R" firstAttribute="top" secondItem="NFf-Bu-QN8" secondAttribute="bottom" constant="8" id="iuy-KN-XrO"/>
@@ -168,7 +168,7 @@
                             <constraint firstItem="WX6-mO-lz8" firstAttribute="centerX" secondItem="Ds8-ma-MsV" secondAttribute="centerX" id="s9z-9b-Cbg"/>
                             <constraint firstItem="pDU-th-AgX" firstAttribute="centerX" secondItem="k1I-Bk-99R" secondAttribute="centerX" id="vvr-SS-hCf"/>
                             <constraint firstItem="NFf-Bu-QN8" firstAttribute="centerX" secondItem="uIl-es-8qC" secondAttribute="centerX" constant="-0.5" id="wIq-75-rbM"/>
-                            <constraint firstItem="uIl-es-8qC" firstAttribute="top" secondItem="taz-Pg-QU6" secondAttribute="topMargin" constant="11" id="xMo-my-8dM"/>
+                            <constraint firstItem="uIl-es-8qC" firstAttribute="top" secondItem="taz-Pg-QU6" secondAttribute="topMargin" constant="28" id="xMo-my-8dM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

@@ -13,7 +13,7 @@ import GameplayKit
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     var curSet: String!
     var flashcards: [FlashcardModel]!
-    var answers: [FlashcardModel]!
+    var answers: [FlashcardModel]! = []
     var showTerms: Bool!
     var activeField: UITextView?
     

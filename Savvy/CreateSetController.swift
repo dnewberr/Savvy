@@ -30,7 +30,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneButton: UIButton!
     @IBAction func donePushedAction(sender: AnyObject) {
-        if checkInput() {
+        if checkInput(false) {
             let alertController = UIAlertController(title: "",
                 message: "Save these changes?",
                 preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -50,6 +50,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
                             }
                             else {
                                 self.user.saveToParse(self.cardSetName, flashcards: self.flashcardsList!, dueDate: NSDate.distantFuture())
+                                
                             }
                             
                             if self.prevSceneId == "Home" {
@@ -119,7 +120,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func checkInput() -> Bool {
+    func checkInput(editCards: Bool) -> Bool {
         if let setName = setNameTextField.text {
             if setName.isEmpty {
                 let alertController = UIAlertController(title: "",
@@ -150,6 +151,21 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
                 
                 return false
             }
+            else if flashcardsList == nil && !editCards.boolValue {
+                let alertController = UIAlertController(title: "",
+                    message: "A set must have cards!",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: "Dismiss",
+                        style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController,
+                    animated: true, completion: nil)
+                
+                return false
+
+            }
             else {
                 cardSetName = setName
             }
@@ -170,7 +186,7 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
     // Checks the inputs before using the segue, stops if inputs are not correct
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "createSetToEditCards" {
-            return checkInput()
+            return checkInput(true)
         }
         return true
     }

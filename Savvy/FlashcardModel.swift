@@ -12,6 +12,7 @@ class FlashcardModel: Hashable {
     var term : String
     var definition : String
     var termSide: Bool
+    // random hashValue to comply with Hashable
     var hashValue: Int {
         return (31 &* definition.hashValue) &+ term.hashValue
     }
