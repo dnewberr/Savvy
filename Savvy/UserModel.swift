@@ -77,6 +77,22 @@ class UserModel {
         return arr
     }
     
+    func getBadges() -> [String] {
+        var result: [String] = []
+        
+        let query = PFQuery(className: "Badges")
+        query.whereKey("username", equalTo: username)
+        query.whereKey("obtained", equalTo: true)
+        do {
+            let objects = try query.findObjects()
+            for obj in objects {
+                result.append(obj["badgeName"] as! String)
+            }
+        } catch {}
+        
+        return result
+    }
+    
     func deleteFromParse(setName: String) {
         let query = PFQuery(className: "Set")
         query.whereKey("username", equalTo: username)
@@ -94,6 +110,28 @@ class UserModel {
             }
         } catch {}
     }
+    
+    func saveBadgeToParse(badgeName: String) {
+        let query = PFQuery(className: "Badges")
+        query.whereKey("username", equalTo: username)
+        query.whereKey("badgeName", equalTo: badgeName)
+        do {
+            let objects = try query.findObjects()
+            if objects.count == 0 {
+                // No objects, so save it to Parse.
+                let setObject = PFObject(className: "Badges")
+                setObject["username"] = username
+                setObject["obtained"] = true
+                setObject["badgeName"] = badgeName
+                try setObject.save()
+            }
+            else {
+                objects[0]["obtained"] = true
+            }
+        } catch {}
+    }
+    
+    
     
     func saveToParse(setName: String, flashcards: [FlashcardModel], dueDate: NSDate?) {
         // Making sure we don't have duplicate sets

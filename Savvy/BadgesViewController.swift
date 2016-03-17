@@ -8,12 +8,26 @@
 
 import UIKit
 
-class BadgesViewController: UIViewController {
+class BadgeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var badgeName: UILabel!
+    @IBOutlet weak var badgeImage: UIImageView!
+}
 
+class BadgesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    @IBOutlet weak var badgesCollectionView: UICollectionView!
+    var user: UserModel!
+    var badges: [String]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getBadges()
         // Do any additional setup after loading the view.
+    }
+    
+    func getBadges() {
+        badges = user.getBadges()
+        badgesCollectionView.dataSource = self
+        badgesCollectionView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +35,18 @@ class BadgesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return badges.count
+    }
+    
+    // Sets up the cells. The terms are shown initially.
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("badgeCell", forIndexPath: indexPath) as! BadgeCollectionViewCell
+        cell.badgeName.text = badges[indexPath.row]
+        cell.badgeImage.image = UIImage(named: badges[indexPath.row])
+        
+        return cell
+    }
     /*
     // MARK: - Navigation
 

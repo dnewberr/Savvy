@@ -44,6 +44,8 @@ class ImportQuizletViewController: UIViewController {
                     for (_, set) in json {
                         self.user.saveToParseFromQuizlet(set["title"].stringValue, cardsInSet: set["terms"])
                     }
+                    
+                    self.user.saveBadgeToParse("BEST BADGE YOU'VE EVER RECEIVED")
                 }
         }
     }

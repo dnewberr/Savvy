@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -297,15 +297,36 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="badgeCell" id="i7T-U0-nVh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="badgeCell" id="i7T-U0-nVh" customClass="BadgeCollectionViewCell" customModule="Savvy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="193" height="155"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="193" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5V9-y8-Y8l">
+                                                    <rect key="frame" x="25" y="0.0" width="142" height="111"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Badge Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb5-f6-wzQ">
+                                                    <rect key="frame" x="47" y="126" width="99" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.82745098039999998" green="0.90980392160000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="5V9-y8-Y8l" secondAttribute="bottom" constant="44" id="QCN-k3-mbJ"/>
+                                            <constraint firstItem="5V9-y8-Y8l" firstAttribute="top" secondItem="i7T-U0-nVh" secondAttribute="top" id="Xjb-LJ-tIc"/>
+                                            <constraint firstItem="5V9-y8-Y8l" firstAttribute="leading" secondItem="i7T-U0-nVh" secondAttribute="leading" constant="25" id="gIq-GA-Fzj"/>
+                                            <constraint firstAttribute="trailing" secondItem="5V9-y8-Y8l" secondAttribute="trailing" constant="26" id="hZT-03-gIs"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="badgeImage" destination="5V9-y8-Y8l" id="s0k-S0-dYS"/>
+                                            <outlet property="badgeName" destination="kb5-f6-wzQ" id="wsp-MO-Bzk"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -324,6 +345,9 @@
                             <constraint firstItem="V2D-Yp-lpx" firstAttribute="top" secondItem="Q0v-Jn-NDj" secondAttribute="bottom" constant="8" symbolic="YES" id="nBS-C6-USM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="badgesCollectionView" destination="Bgu-Co-6jI" id="kJj-DN-WKV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82s-ut-eME" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FMs-2Z-bPf" userLabel="Exit" sceneMemberID="exit"/>
@@ -390,7 +414,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="studyCardCell" id="rne-t3-YJr" customClass="CardCollectionViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89.5" width="283" height="219"/>
+                                        <rect key="frame" x="0.0" y="90" width="283" height="219"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="283" height="219"/>
@@ -656,7 +680,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.792156862745098" green="0.8901960784313725" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wrongAnswerCell" rowHeight="272" id="eWi-Cu-MAq" customClass="ResultTableCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="272"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="272"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWi-Cu-MAq" id="NR9-AR-lYA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="272"/>
@@ -1000,7 +1024,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editCell" rowHeight="138" id="xkS-wD-04x" customClass="EditTableViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="560" height="138"/>
+                                        <rect key="frame" x="0.0" y="50" width="560" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xkS-wD-04x" id="YbG-fl-gbX">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="138"/>

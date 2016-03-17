@@ -49,7 +49,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gameToResult" {
             let dest = segue.destinationViewController as! ResultViewController
-            
+            if activeField != nil {
+                textViewDidEndEditing(activeField!)
+            }
             dest.curSet = curSet
             dest.answers = answers
             dest.flashcards = flashcards

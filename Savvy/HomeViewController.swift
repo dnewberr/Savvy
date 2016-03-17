@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpFlashcardCollection()
+        
         automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -109,6 +110,10 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         }
         else if segue.identifier == "homeToViewSets" {
             let dest = segue.destinationViewController as! ViewSetsViewController
+            dest.user = user
+        }
+        else if segue.identifier == "homeToBadges" {
+            let dest = segue.destinationViewController as! BadgesViewController
             dest.user = user
         }
     }
