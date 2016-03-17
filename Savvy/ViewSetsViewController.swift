@@ -37,9 +37,13 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             UIAlertAction(title: "Yes",
                 style: UIAlertActionStyle.Destructive,
                 handler: { [unowned self] (action: UIAlertAction!) in
-                    self.user.deleteFromParse(self.pickerData[self.setPicker.selectedRowInComponent(0)])
-                    self.pickerData = self.user.getSets()
-                    self.setPicker.reloadAllComponents()
+                    let deletingAlert = UIAlertController(title: "Deleting...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    self.presentViewController(deletingAlert, animated: true, completion: {
+                        self.user.deleteFromParse(self.pickerData[self.setPicker.selectedRowInComponent(0)])
+                        self.pickerData = self.user.getSets()
+                        self.setPicker.reloadAllComponents()
+                        deletingAlert.dismissViewControllerAnimated(true, completion: nil)
+                    })
                 }))
         
         alertController.addAction(

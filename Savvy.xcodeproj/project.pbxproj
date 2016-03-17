@@ -231,14 +231,6 @@
 			name = Badges;
 			sourceTree = "<group>";
 		};
-		CD39B07D1C74319600407A9D /* EditCards */ = {
-			isa = PBXGroup;
-			children = (
-				CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */,
-			);
-			name = EditCards;
-			sourceTree = "<group>";
-		};
 		CD6B23FC1C758CDC004C6401 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +292,7 @@
 				CD9D24C41C6135FC001F75DF /* LoginViewController.swift */,
 				CD9D24F61C614AFA001F75DF /* HomeViewController.swift */,
 				CD9D24FC1C69E466001F75DF /* CreateSetController.swift */,
-				CD39B07D1C74319600407A9D /* EditCards */,
+				CD39B06F1C7315FF00407A9D /* EditCardsViewController.swift */,
 				C3BC86F11C6A782600252F97 /* ViewSetsViewController.swift */,
 				C38030BB1C6DA41400C37FBA /* StudySetViewController.swift */,
 				CD39B07C1C74318E00407A9D /* Badges */,

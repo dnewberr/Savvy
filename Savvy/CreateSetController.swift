@@ -147,11 +147,10 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    @IBAction func dismissKeyboard(sender: AnyObject) {
         view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
     }
-    
+
     // Checks the inputs before using the segue, stops if inputs are not correct
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "createSetToEditCards" {
@@ -172,6 +171,8 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
             for card in flashcardsList! {
                 dest.flashcardsList.append(FlashcardModel(newTerm: card.term, newDef: card.definition))
             }
+            
+            setNameTextField.resignFirstResponder()
         }
     }
 }

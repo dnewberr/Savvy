@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -339,8 +339,6 @@
         <!--Study Set View Controller-->
         <scene sceneID="HgM-je-7Vb">
             <objects>
-                <exit id="k3Z-Wg-hzv" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TcQ-qK-Tym" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Study" id="A0S-O4-Ong" customClass="StudySetViewController" customModule="Savvy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2F3-ST-QlF"/>
@@ -398,7 +396,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="studyCardCell" id="rne-t3-YJr" customClass="CardCollectionViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90" width="297" height="219"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="297" height="219"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="297" height="219"/>
@@ -459,6 +457,8 @@
                         <segue destination="VkE-1u-XN4" kind="show" identifier="studyToGame" id="HKm-4n-X7v"/>
                     </connections>
                 </viewController>
+                <exit id="k3Z-Wg-hzv" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TcQ-qK-Tym" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="hcQ-kQ-IrM">
                     <connections>
                         <action selector="tappedCell:" destination="A0S-O4-Ong" id="Pgm-C8-Dtu"/>
@@ -505,8 +505,9 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="121" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A55-64-vd5">
                                 <rect key="frame" x="0.0" y="94" width="620" height="441"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.79215686269999996" green="0.89019607840000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.79215686269999996" green="0.89019607840000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cardCell" rowHeight="121" id="tCY-RD-UcH" customClass="EditTableViewCell" customModule="Savvy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="620" height="121"/>
@@ -562,7 +563,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Crp-0V-A4y" secondAttribute="bottom" constant="-0.5" id="kDO-LV-Ebe"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.79215686269999996" green="0.89019607840000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="definitionTextView" destination="lrz-78-FTS" id="HBh-1b-FMg"/>
                                             <outlet property="termNameTextView" destination="Crp-0V-A4y" id="Nv3-6N-Gbi"/>
@@ -660,20 +661,24 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="272" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-qH-bHE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="272" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-qH-bHE">
                                 <rect key="frame" x="0.0" y="149" width="600" height="393"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.792156862745098" green="0.8901960784313725" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.792156862745098" green="0.8901960784313725" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wrongAnswerCell" rowHeight="272" id="eWi-Cu-MAq" customClass="ResultTableCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="272"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="600" height="272"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWi-Cu-MAq" id="NR9-AR-lYA">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="271"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="272"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHj-E6-M7A">
                                                     <rect key="frame" x="8" y="7" width="101" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="101" id="6qG-Lf-Jz0"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -684,17 +689,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-Jm-xOl" customClass="TermTextView" customModule="Savvy" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="29" width="145" height="101"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="101" id="bvr-yx-rY4"/>
-                                                        <constraint firstAttribute="width" constant="145" id="wop-2i-iYT"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WX1-Ro-bdE" customClass="TermTextView" customModule="Savvy" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="158" width="145" height="101"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -716,30 +710,43 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-Jm-xOl" customClass="TermTextView" customModule="Savvy" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="29" width="145" height="101"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="101" id="93O-KC-G5a"/>
+                                                        <constraint firstAttribute="width" constant="145" id="xRf-Rz-FLL"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.82745098039999998" green="0.90980392160000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="919-vE-qBB" firstAttribute="leading" secondItem="Hny-Jm-xOl" secondAttribute="leading" id="3W0-Yx-q5T"/>
-                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="trailing" secondItem="6JA-29-Ggd" secondAttribute="trailing" id="4Vj-Lj-lYD"/>
-                                                <constraint firstItem="qHj-E6-M7A" firstAttribute="leading" secondItem="NR9-AR-lYA" secondAttribute="leadingMargin" id="4cl-ZZ-BQ3"/>
-                                                <constraint firstItem="Hny-Jm-xOl" firstAttribute="leading" secondItem="qHj-E6-M7A" secondAttribute="leading" id="7gc-5q-K26"/>
-                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="top" secondItem="6JA-29-Ggd" secondAttribute="bottom" constant="28" id="7ob-Pb-VEC"/>
-                                                <constraint firstItem="Hny-Jm-xOl" firstAttribute="trailing" secondItem="WX1-Ro-bdE" secondAttribute="trailing" id="8Y2-1p-LjU"/>
-                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="leading" secondItem="6JA-29-Ggd" secondAttribute="leading" id="9hJ-Sh-Mom"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="WX1-Ro-bdE" secondAttribute="bottom" constant="4" id="Aa9-Pb-Ok9"/>
-                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="top" secondItem="Hny-Jm-xOl" secondAttribute="top" id="FN6-Gc-xeA"/>
-                                                <constraint firstItem="919-vE-qBB" firstAttribute="top" secondItem="Hny-Jm-xOl" secondAttribute="bottom" constant="7" id="NsB-zL-Su5"/>
-                                                <constraint firstItem="919-vE-qBB" firstAttribute="leading" secondItem="WX1-Ro-bdE" secondAttribute="leading" id="U17-Tx-1Ut"/>
-                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="bottom" secondItem="WX1-Ro-bdE" secondAttribute="bottom" id="ZGp-jy-nZ9"/>
-                                                <constraint firstItem="qHj-E6-M7A" firstAttribute="top" secondItem="NR9-AR-lYA" secondAttribute="topMargin" constant="-1" id="f9h-Gm-Caj"/>
-                                                <constraint firstItem="Hny-Jm-xOl" firstAttribute="bottom" secondItem="6JA-29-Ggd" secondAttribute="bottom" id="fA6-uW-1Kp"/>
-                                                <constraint firstItem="Hny-Jm-xOl" firstAttribute="top" secondItem="qHj-E6-M7A" secondAttribute="bottom" constant="1" id="ifu-Zd-2Rw"/>
-                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="top" secondItem="WX1-Ro-bdE" secondAttribute="top" id="ndV-LF-mQJ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6JA-29-Ggd" secondAttribute="trailing" constant="-1" id="pke-vc-6db"/>
-                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="leading" secondItem="Hny-Jm-xOl" secondAttribute="trailing" constant="18" id="xKp-5A-AwO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6JA-29-Ggd" secondAttribute="trailing" constant="-1" id="4D0-QR-YsF"/>
+                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="bottom" secondItem="Hny-Jm-xOl" secondAttribute="bottom" id="8Ir-1d-9MC"/>
+                                                <constraint firstItem="qHj-E6-M7A" firstAttribute="leading" secondItem="NR9-AR-lYA" secondAttribute="leadingMargin" id="Elx-jk-Yhj"/>
+                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="trailing" secondItem="4jB-eA-LCD" secondAttribute="trailing" id="GQK-RA-tDg"/>
+                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="bottom" secondItem="WX1-Ro-bdE" secondAttribute="bottom" id="GkH-cN-2qJ"/>
+                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="leading" secondItem="4jB-eA-LCD" secondAttribute="leading" id="H2e-Am-gkM"/>
+                                                <constraint firstItem="919-vE-qBB" firstAttribute="leading" secondItem="WX1-Ro-bdE" secondAttribute="leading" id="I6N-u8-NvM"/>
+                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="top" secondItem="NR9-AR-lYA" secondAttribute="topMargin" constant="21" id="OZC-ul-6OZ"/>
+                                                <constraint firstItem="4jB-eA-LCD" firstAttribute="top" secondItem="6JA-29-Ggd" secondAttribute="bottom" constant="28" id="SLe-j6-bR8"/>
+                                                <constraint firstItem="Hny-Jm-xOl" firstAttribute="top" secondItem="qHj-E6-M7A" secondAttribute="bottom" constant="1" id="V5D-3b-S9F"/>
+                                                <constraint firstItem="qHj-E6-M7A" firstAttribute="top" secondItem="NR9-AR-lYA" secondAttribute="topMargin" constant="-1" id="aSr-eE-faK"/>
+                                                <constraint firstItem="WX1-Ro-bdE" firstAttribute="top" secondItem="4jB-eA-LCD" secondAttribute="top" id="dj3-6J-CYe"/>
+                                                <constraint firstItem="WX1-Ro-bdE" firstAttribute="trailing" secondItem="Hny-Jm-xOl" secondAttribute="trailing" id="eOm-uB-YDc"/>
+                                                <constraint firstItem="WX1-Ro-bdE" firstAttribute="top" secondItem="919-vE-qBB" secondAttribute="bottom" id="gzn-FI-Cac"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WX1-Ro-bdE" secondAttribute="bottom" constant="5" id="kST-Eo-aI0"/>
+                                                <constraint firstItem="919-vE-qBB" firstAttribute="leading" secondItem="Hny-Jm-xOl" secondAttribute="leading" id="kq1-RW-j0Y"/>
+                                                <constraint firstItem="qHj-E6-M7A" firstAttribute="leading" secondItem="Hny-Jm-xOl" secondAttribute="leading" id="sEt-Pd-MAR"/>
+                                                <constraint firstItem="919-vE-qBB" firstAttribute="top" secondItem="Hny-Jm-xOl" secondAttribute="bottom" constant="7" id="sx8-Ye-FkE"/>
+                                                <constraint firstItem="Hny-Jm-xOl" firstAttribute="top" secondItem="6JA-29-Ggd" secondAttribute="top" id="wBR-gW-6wH"/>
+                                                <constraint firstItem="6JA-29-Ggd" firstAttribute="leading" secondItem="Hny-Jm-xOl" secondAttribute="trailing" constant="18" id="yAQ-Lr-18f"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.792156862745098" green="0.8901960784313725" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="answerDefTextView" destination="6JA-29-Ggd" id="YAB-IZ-P52"/>
                                             <outlet property="answerTermTextView" destination="Hny-Jm-xOl" id="5o5-fJ-K8G"/>
@@ -906,6 +913,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.047084731540000001" green="0.1887846057" blue="0.43689702180000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8Co-eV-00d" firstAttribute="trailing" secondItem="Gcl-BH-uD4" secondAttribute="trailing" id="1Jw-bi-TpD"/>
                             <constraint firstItem="HkS-Io-dtL" firstAttribute="top" secondItem="FxZ-pt-mfS" secondAttribute="bottom" constant="40" id="4qK-IS-9bD"/>
@@ -928,6 +936,9 @@
                             <constraint firstItem="5ZX-Wb-xXl" firstAttribute="baseline" secondItem="8Co-eV-00d" secondAttribute="baseline" id="zPV-CO-rk5"/>
                             <constraint firstItem="Gcl-BH-uD4" firstAttribute="trailing" secondItem="z5F-o1-eE7" secondAttribute="trailingMargin" id="zRM-1O-rn0"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="sRF-bS-iec" appends="YES" id="fJl-B6-YyT"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="dateSwitch" destination="FxZ-pt-mfS" id="dDf-Ke-IyM"/>
@@ -940,6 +951,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-t5-9fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Xj0-CB-8Lz" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="sRF-bS-iec">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="WtO-q9-Hmd" id="3cZ-X5-H5d"/>
+                        <outlet property="delegate" destination="WtO-q9-Hmd" id="Iyf-ys-pJ1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1416" y="907"/>
         </scene>
@@ -995,7 +1012,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.69803921570000005" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editCell" rowHeight="138" id="xkS-wD-04x" customClass="EditTableViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="560" height="138"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="560" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xkS-wD-04x" id="YbG-fl-gbX">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="138"/>
