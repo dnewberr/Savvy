@@ -31,6 +31,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNameLabel.text = curSet
+        
         wrongAnswers = GameResultModel.getWrongAnswers(checkTerms, flashcards: flashcards, answers: answers)
         score = (Int)(GameResultModel.calculateScore(flashcards.count, wrong: wrongAnswers.keys.count))
 
@@ -70,6 +71,11 @@ class ResultViewController: UIViewController {
         cell.answerDefTextView.text = wrong.definition
         cell.correctTermTextView.text = correct.term
         cell.correctDefTextView.text = correct.definition
+        
+        cell.answerTermTextView.textAlignment = .Center
+        cell.answerDefTextView.textAlignment = .Center
+        cell.correctTermTextView.textAlignment = .Center
+        cell.correctDefTextView.textAlignment = .Center
         
         
         /*cell.termNameTextView.tag = indexPath.row

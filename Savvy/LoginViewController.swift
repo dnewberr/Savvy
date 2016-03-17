@@ -14,13 +14,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var user: UserModel!
     
+    @IBOutlet weak var logo: UIImageView!
+    
     // Allows unwinding to login
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageName = "background"
-        self.view?.backgroundColor = UIColor(patternImage: UIImage(named: imageName)!)
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onProfileUpdated:", name:FBSDKProfileDidChangeNotification, object: nil)
     }

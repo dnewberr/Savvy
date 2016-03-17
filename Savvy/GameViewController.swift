@@ -78,6 +78,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.termNameTextView.editable = true
         }
         
+        cell.termNameTextView.textAlignment = .Center
+        cell.definitionTextView.textAlignment = .Center
        
         return cell
     }
