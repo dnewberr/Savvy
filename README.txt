@@ -16,9 +16,6 @@ Quizlet Test User:
 Username: cpe458-savvy
 Password: testuser
 
-QUIZLET API
-After logging in, select the “Import from Quizlet” option on the home screen. You are redirected to the Quizlet login screen. Log in using the username and password specified above. Select “Allow” to let Savvy use the information on the test Quizlet account. After you select “Open”, Savvy opens back up and the JSON for the test account’s Quizlet set is in the standard output.
-
 
 HOW TO CHECK APIs
 FACEBOOK
