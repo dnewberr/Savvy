@@ -29,14 +29,22 @@ class FlashcardModel: Hashable {
     }
     
     func equalTerms(lhs: String) -> Bool {
-        return lhs == self.term
+        return lhs.trimLowerCase() == self.term.trimLowerCase()
     }
     
     func equalDefs(lhs: String) -> Bool {
-        return lhs == self.definition
+        return lhs.trimLowerCase() == self.definition.trimLowerCase()
     }
 }
     //need this for hashable to make dictionary
 func ==(lhs: FlashcardModel, rhs: FlashcardModel) -> Bool {
-    return lhs.term == rhs.term && lhs.definition == rhs.definition
+    return lhs.term.trimLowerCase() == rhs.term.trimLowerCase() && lhs.definition.trimLowerCase() == rhs.definition.trimLowerCase()
+}
+
+extension String
+{
+    func trimLowerCase() -> String
+    {
+        return self.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
 }

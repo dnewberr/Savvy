@@ -29,6 +29,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         setNameLabel.text = curSet
         registerForKeyboardNotifications()
+        
+        for i in 0...(flashcards.count - 1) {
+            if showTerms.boolValue {
+                answers.append(FlashcardModel(newTerm: flashcards[i].term, newDef: ""))
+            } else {
+                answers.append(FlashcardModel(newTerm: "", newDef: flashcards[i].definition))
+            }
+        }
         // Randomizes order of flashcards
         /*flashcards = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(user.getCardsForSet(curSet)) as! [FlashcardModel]*/
     }
@@ -64,23 +72,22 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.termNameTextView.text = flashcards[indexPath.row].term
             cell.termNameTextView.editable = false
             cell.definitionTextView.editable = true
-            answers.append(FlashcardModel(newTerm: flashcards[indexPath.row].term, newDef: ""))
         } else {
             cell.definitionTextView.text = flashcards[indexPath.row].definition
             cell.definitionTextView.editable = false
             cell.termNameTextView.editable = true
-            answers.append(FlashcardModel(newTerm: "", newDef: flashcards[indexPath.row].definition))
         }
         
+       
         return cell
     }
 
     func textViewDidEndEditing(textView: UITextView) {
-        if showTerms.boolValue && !textView.text.isEmpty {
+        if showTerms.boolValue {
             let answer = answers.filter({$0.term == flashcards[textView.tag].term}).first
             answer?.definition = textView.text
             
-        } else if !showTerms.boolValue && !textView.text.isEmpty {
+        } else {
             let answer = answers.filter({$0.definition == flashcards[textView.tag].definition}).first
             answer?.term = textView.text
         }

@@ -24,7 +24,7 @@ class ResultViewController: UIViewController {
     var answers: [FlashcardModel]!
     var flashcards: [FlashcardModel]!
     var wrongAnswers: [FlashcardModel: FlashcardModel]!
-    var score: Double!
+    var score: Int!
     var checkTerms: Bool!
     
     @IBOutlet weak var wrongCardsTable: UITableView!
@@ -32,7 +32,7 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         setNameLabel.text = curSet
         wrongAnswers = GameResultModel.getWrongAnswers(checkTerms, flashcards: flashcards, answers: answers)
-        score = GameResultModel.calculateScore(flashcards.count, wrong: wrongAnswers.keys.count)
+        score = (Int)(GameResultModel.calculateScore(flashcards.count, wrong: wrongAnswers.keys.count))
 
         scoreLabel.text = "SCORE: \(score)%"
         print("\(score)%")
