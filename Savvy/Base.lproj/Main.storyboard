@@ -77,25 +77,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgP-Op-xPY">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-xF-LIC">
                                                     <rect key="frame" x="0.0" y="0.0" width="246" height="141"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstItem="LgP-Op-xPY" firstAttribute="top" secondItem="liH-mB-5ep" secondAttribute="top" id="79u-qT-r2D"/>
-                                            <constraint firstAttribute="bottom" secondItem="LgP-Op-xPY" secondAttribute="bottom" id="TZV-6x-aR1"/>
-                                            <constraint firstItem="LgP-Op-xPY" firstAttribute="leading" secondItem="liH-mB-5ep" secondAttribute="leading" id="ZQL-aT-wCP"/>
-                                            <constraint firstAttribute="trailing" secondItem="LgP-Op-xPY" secondAttribute="trailing" id="yhx-4U-hXN"/>
-                                        </constraints>
                                         <connections>
-                                            <outlet property="label" destination="LgP-Op-xPY" id="RZM-Qw-IzI"/>
+                                            <outlet property="cardTextView" destination="GvV-xF-LIC" id="U7p-jZ-PuQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -389,38 +383,32 @@
                                 <rect key="frame" x="20" y="133" width="560" height="398"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.90980392160000001" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TSd-EE-vSY">
-                                    <size key="itemSize" width="297" height="219"/>
+                                    <size key="itemSize" width="283" height="219"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="studyCardCell" id="rne-t3-YJr" customClass="CardCollectionViewCell" customModule="Savvy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89.5" width="297" height="219"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="283" height="219"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="297" height="219"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="283" height="219"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMM-wv-uvg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="219"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zjs-MT-llU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="283" height="219"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                         <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="fMM-wv-uvg" secondAttribute="trailing" id="L7t-Gl-Qvl"/>
-                                            <constraint firstAttribute="bottom" secondItem="fMM-wv-uvg" secondAttribute="bottom" id="MOg-l9-xrX"/>
-                                            <constraint firstItem="fMM-wv-uvg" firstAttribute="leading" secondItem="rne-t3-YJr" secondAttribute="leading" id="Vlb-TV-0fI"/>
-                                            <constraint firstItem="fMM-wv-uvg" firstAttribute="top" secondItem="rne-t3-YJr" secondAttribute="top" id="bgP-OL-qYo"/>
-                                        </constraints>
                                         <connections>
-                                            <outlet property="label" destination="fMM-wv-uvg" id="8pc-dm-r8g"/>
+                                            <outlet property="cardTextView" destination="zjs-MT-llU" id="JOZ-yE-pjU"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

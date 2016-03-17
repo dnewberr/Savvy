@@ -134,7 +134,23 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
                     animated: true, completion: nil)
 
                 return false
-            } else {
+            }
+            else if (prevSceneId == "Home" && user.getSets().contains(setName))
+                || (prevSceneId == "View" && setName != prevSetName && user.getSets().contains(setName)) {
+                let alertController = UIAlertController(title: "",
+                    message: "Set name is already taken.",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: "Dismiss",
+                        style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController,
+                    animated: true, completion: nil)
+                
+                return false
+            }
+            else {
                 cardSetName = setName
             }
         }

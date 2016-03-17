@@ -82,10 +82,10 @@ class StudySetViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.flashcard = card
         
         if card.termSide == true {
-            cell.label.text = card.term
+            cell.cardTextView.text = card.term
         }
         else {
-            cell.label.text = card.definition
+            cell.cardTextView.text = card.definition
         }
         
         return cell
@@ -100,11 +100,11 @@ class StudySetViewController: UIViewController, UICollectionViewDataSource, UICo
             let cell = studyCollectionView.cellForItemAtIndexPath(tappedCellPath) as! CardCollectionViewCell
             if let card = cell.flashcard {
                 if card.termSide {
-                    cell.label.text = card.definition
+                    cell.cardTextView.text = card.definition
                     card.termSide = false
                 }
                 else {
-                    cell.label.text = card.term
+                    cell.cardTextView.text = card.term
                     card.termSide = true
                 }
             }

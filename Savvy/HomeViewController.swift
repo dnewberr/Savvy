@@ -13,7 +13,7 @@ import Parse
 
 class CardCollectionViewCell: UICollectionViewCell {
     var flashcard: FlashcardModel?
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var cardTextView: UITextView!
 }
 
 class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -65,10 +65,10 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
         let card = cardArray[indexPath.row]
         cell.flashcard = card
         if card.termSide == true {
-            cell.label.text = card.term
+            cell.cardTextView.text = card.term
         }
         else {
-            cell.label.text = card.definition
+            cell.cardTextView.text = card.definition
         }
         return cell
     }
@@ -81,11 +81,11 @@ class HomeViewController: UIViewController, FBSDKLoginButtonDelegate, UICollecti
             let cell = flashcardCollection.cellForItemAtIndexPath(tappedCellPath) as! CardCollectionViewCell
             if let card = cell.flashcard {
                 if card.termSide {
-                    cell.label.text = card.definition
+                    cell.cardTextView.text = card.definition
                     card.termSide = false
                 }
                 else {
-                    cell.label.text = card.term
+                    cell.cardTextView.text = card.term
                     card.termSide = true
                 }
             }

@@ -29,31 +29,59 @@ class ViewSetsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @IBAction func deleteSet(sender: AnyObject) {
+        if pickerData.count > 0 {
+            let alertController = UIAlertController(title: "",
+                message: "Are you sure you want to delete this set?",
+                preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            alertController.addAction(
+                UIAlertAction(title: "Yes",
+                    style: UIAlertActionStyle.Destructive,
+                    handler: { [unowned self] (action: UIAlertAction!) in
+                        let deletingAlert = UIAlertController(title: "Deleting...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        self.presentViewController(deletingAlert, animated: true, completion: {
+                            self.user.deleteFromParse(self.pickerData[self.setPicker.selectedRowInComponent(0)])
+                            self.pickerData = self.user.getSets()
+                            self.setPicker.reloadAllComponents()
+                            deletingAlert.dismissViewControllerAnimated(true, completion: nil)
+                        })
+                    }))
+            
+            alertController.addAction(
+                UIAlertAction(title: "No",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil))
+            
+            self.presentViewController(alertController,
+                animated: true, completion: nil)
+        }
+        else {
+            noSetsAlert()
+        }
+    }
+    
+    func noSetsAlert() {
         let alertController = UIAlertController(title: "",
-            message: "Are you sure you want to delete this set?",
-            preferredStyle: UIAlertControllerStyle.ActionSheet)
+            message: "There are no sets. Go make some!",
+            preferredStyle: UIAlertControllerStyle.Alert)
         
         alertController.addAction(
-            UIAlertAction(title: "Yes",
-                style: UIAlertActionStyle.Destructive,
-                handler: { [unowned self] (action: UIAlertAction!) in
-                    let deletingAlert = UIAlertController(title: "Deleting...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                    self.presentViewController(deletingAlert, animated: true, completion: {
-                        self.user.deleteFromParse(self.pickerData[self.setPicker.selectedRowInComponent(0)])
-                        self.pickerData = self.user.getSets()
-                        self.setPicker.reloadAllComponents()
-                        deletingAlert.dismissViewControllerAnimated(true, completion: nil)
-                    })
-                }))
-        
-        alertController.addAction(
-            UIAlertAction(title: "No",
-                style: UIAlertActionStyle.Default,
-                handler: nil))
+            UIAlertAction(title: "Dismiss",
+                style: UIAlertActionStyle.Default,handler: nil))
         
         self.presentViewController(alertController,
             animated: true, completion: nil)
-
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "viewSetsToCreateSet" || identifier == "viewSetsToStudy" {
+            if pickerData.count == 0 {
+                noSetsAlert()
+                return false
+            }
+        }
+        
+        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -26,7 +26,7 @@ class UserModel {
             let objects = try query.findObjects()
             for obj in objects {
                 let earlierDate = due.earlierDate(obj["dueDate"] as! NSDate)
-                if earlierDate != due {
+                if earlierDate != due && earlierDate != earlierDate.earlierDate(NSDate.init()) {
                     due = earlierDate
                     cdds = obj["set"] as! String
                 }
@@ -126,24 +126,26 @@ class UserModel {
                 try objects[0].save()
             }
             
-            for card in flashcards {
+            for (ind, card) in flashcards.enumerate() {
                 // Finding the card in Parse to make sure we don't have duplicates.
                 let query = PFQuery(className: "Flashcard")
                 query.whereKey("username", equalTo: username)
                 query.whereKey("set", equalTo: setName)
-                query.whereKey("term", equalTo: card.term)
+                query.whereKey("cardNumber", equalTo: ind)
                 let objects = try query.findObjects()
                 if objects.count == 0 {
                     // No objects, so save it to Parse.
                     let cardObject = PFObject(className: "Flashcard")
                     cardObject["username"] = username
                     cardObject["set"] = setName
+                    cardObject["cardNumber"] = ind
                     cardObject["term"] = card.term
                     cardObject["definition"] = card.definition
                     try cardObject.save()
                 }
                 else {
-                    // There is already an object, so update the definition
+                    // There is already an object, so update the term and definition
+                    objects[0]["term"] = card.term
                     objects[0]["definition"] = card.definition
                     try objects[0].save()
                 }
@@ -167,29 +169,22 @@ class UserModel {
                         setObject["dueDate"] = NSDate.distantFuture()
                         setObject.saveInBackground()
                     }
-                    for (_, card) in cardsInSet {
+                    
+                    for (ind, (_, card)) in cardsInSet.enumerate() {
                         // Finding the card in Parse to make sure we don't have duplicates.
                         let query = PFQuery(className: "Flashcard")
                         query.whereKey("username", equalTo: self.username)
                         query.whereKey("set", equalTo: setName)
-                        query.whereKey("term", equalTo: card["term"].stringValue)
                         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
                             if error == nil {
                                 if let objects = objects {
-                                    if objects.count == 0 {
-                                        // No objects, so save it to Parse.
-                                        let cardObject = PFObject(className: "Flashcard")
-                                        cardObject["username"] = self.username
-                                        cardObject["set"] = setName
-                                        cardObject["term"] = card["term"].stringValue
-                                        cardObject["definition"] = card["definition"].stringValue
-                                        cardObject.saveInBackground()
-                                    }
-                                    else {
-                                        // There is already an object, so update the definition
-                                        objects[0]["definition"] = card["definition"].stringValue
-                                        objects[0].saveInBackground()
-                                    }
+                                    let cardObject = PFObject(className: "Flashcard")
+                                    cardObject["username"] = self.username
+                                    cardObject["set"] = setName
+                                    cardObject["cardNumber"] = objects.count + ind
+                                    cardObject["term"] = card["term"].stringValue
+                                    cardObject["definition"] = card["definition"].stringValue
+                                    cardObject.saveInBackground()
                                 }
                             }
                         }

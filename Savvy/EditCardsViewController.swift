@@ -26,6 +26,7 @@ class EditCardsViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var editCardsTableView: UITableView!
  
     @IBAction func done(sender: AnyObject) {
+        view.endEditing(true)
         if checkInput() {
             let alertController = UIAlertController(title: "",
                 message: "Save these changes?",
