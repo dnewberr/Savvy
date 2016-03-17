@@ -2,6 +2,12 @@
 CPE 458 Project
 dnewberr | crhoads
 
+HARDWARE CONSTRAINTS
+Tested and used on an iPhone 5/5s. Certain external frameworks aren't set up in our project to work on other devices like the iPad.
+Not designed to work in landscape mode.
+
+
+TEST USERS
 Facebook Test User:
 Email: savvy_qeucvph_student@tfbnw.net
 Password: testuser
