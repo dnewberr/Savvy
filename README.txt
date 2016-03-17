@@ -2,6 +2,9 @@
 CPE 458 Project
 dnewberr | crhoads
 
+SAVVY
+To run Savvy on the simulator, set the iPhone 5/s simulator's target to the Savvy project instead of the default Alamofire.
+
 HARDWARE CONSTRAINTS
 Tested and used on an iPhone 5/5s. Certain external frameworks aren't set up in our project to work on other devices like the iPad.
 Not designed to work in landscape mode.
