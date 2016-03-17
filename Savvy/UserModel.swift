@@ -164,6 +164,7 @@ class UserModel {
                         let setObject = PFObject(className: "Set")
                         setObject["username"] = self.username
                         setObject["set"] = setName
+                        setObject["dueDate"] = NSDate.distantFuture()
                         setObject.saveInBackground()
                     }
                     for (_, card) in cardsInSet {

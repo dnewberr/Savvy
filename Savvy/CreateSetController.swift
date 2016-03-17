@@ -39,23 +39,25 @@ class CreateSetController: UIViewController, UITextFieldDelegate {
                 UIAlertAction(title: "Yes",
                     style: UIAlertActionStyle.Default,
                     handler: { [unowned self] (action: UIAlertAction!) in
-                        if self.prevSetName != nil && self.prevSetName != self.cardSetName {
-                            self.user.deleteFromParse(self.prevSetName)
-                        }
-                        
-                        if !self.dueDatePicker.hidden {
-                            self.user.saveToParse(self.cardSetName, flashcards: self.flashcardsList!, dueDate: self.dueDatePicker.date)
-                        }
-                        else {
-                            self.user.saveToParse(self.cardSetName, flashcards: self.flashcardsList!, dueDate: NSDate.distantFuture())
-                        }
-                        
-                        if self.prevSceneId == "Home" {
-                            self.performSegueWithIdentifier("createSetToHome", sender: sender)
-                        }
-                        else if self.prevSceneId == "View" {
-                            self.performSegueWithIdentifier("createSetToViewSets", sender: sender)
-                        }
+                        let savingAlert = UIAlertController(title: "Saving...", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                        self.presentViewController(savingAlert, animated: true, completion: {
+                            if self.prevSetName != nil && self.prevSetName != self.cardSetName {
+                                self.user.deleteFromParse(self.prevSetName)
+                            }
+                            
+                            if !self.dueDatePicker.hidden {
+                                self.user.saveToParse(self.cardSetName, flashcards: self.flashcardsList!, dueDate: self.dueDatePicker.date)
+                            }
+                            else {
+                                self.user.saveToParse(self.cardSetName, flashcards: self.flashcardsList!, dueDate: NSDate.distantFuture())
+                            }
+                            
+                            if self.prevSceneId == "Home" {
+                                self.performSegueWithIdentifier("createSetToHome", sender: sender)
+                            }
+                            else if self.prevSceneId == "View" {
+                                self.performSegueWithIdentifier("createSetToViewSets", sender: sender)
+                            }})
                 }))
             
             alertController.addAction(
